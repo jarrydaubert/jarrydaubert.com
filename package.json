@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint:biome": "biome lint .",
+    "check": "biome check . && next build"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -15,6 +19,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

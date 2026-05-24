@@ -24,8 +24,12 @@ Open `http://localhost:3000`.
 
 ```bash
 bun run lint
+bun run lint:biome
+bun run format
 bun run build
 ```
+
+`bun run check` runs Biome checks and a production Next build.
 
 ## Deployment
 

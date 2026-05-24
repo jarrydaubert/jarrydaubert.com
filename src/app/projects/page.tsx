@@ -1,35 +1,10 @@
 import type { Metadata } from "next";
+import { ProjectCard } from "@/components/project-card";
+import { projects } from "@/content/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
 };
-
-const projects = [
-  {
-    name: "ProsePal",
-    summary:
-      "An AI-assisted writing product for turning intent into better greeting-card messages.",
-    status: "Status placeholder",
-  },
-  {
-    name: "PayeTax",
-    summary:
-      "A UK PAYE and tax calculator product shaped around clarity, usefulness, and trust.",
-    status: "Status placeholder",
-  },
-  {
-    name: "Evolution Padel",
-    summary:
-      "A fast, SEO-focused client website for a padel business with a practical launch path.",
-    status: "Status placeholder",
-  },
-  {
-    name: "AI operator experiments",
-    summary:
-      "Small experiments in AI-assisted software delivery, quality checks, and operator workflows.",
-    status: "Status placeholder",
-  },
-];
 
 export default function ProjectsPage() {
   return (
@@ -49,23 +24,13 @@ export default function ProjectsPage() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
-          <article
+          <ProjectCard
             key={project.name}
-            className="rounded-lg border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900"
-          >
-            <div className="space-y-3">
-              <h2 className="text-lg font-semibold text-stone-950 dark:text-stone-50">
-                {project.name}
-              </h2>
-              <p className="text-sm leading-6 text-stone-600 dark:text-stone-300">
-                {project.summary}
-              </p>
-            </div>
-            <div className="mt-6 space-y-2 text-sm text-stone-500 dark:text-stone-400">
-              <p>{project.status}</p>
-              <p>Case study coming soon</p>
-            </div>
-          </article>
+            name={project.name}
+            summary={project.summary}
+            headingLevel={2}
+            status={project.status}
+          />
         ))}
       </div>
     </section>

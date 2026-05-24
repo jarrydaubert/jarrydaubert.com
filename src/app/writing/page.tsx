@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { WritingCard } from "@/components/writing-card";
+import { plannedEssays } from "@/content/writing";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -20,22 +22,13 @@ export default function WritingPage() {
         </p>
       </header>
 
-      <article className="rounded-lg border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
-        <div className="space-y-3">
-          <h2 className="text-lg font-semibold text-stone-950 dark:text-stone-50">
-            The gap between AI-assisted development demos and actually shipping
-            with AI
-          </h2>
-          <p className="text-sm leading-6 text-stone-600 dark:text-stone-300">
-            A planned essay about the difference between impressive AI coding
-            demos and the steadier work of getting useful software into
-            production with tests, review, and evidence.
-          </p>
-        </div>
-        <p className="mt-6 text-sm text-stone-500 dark:text-stone-400">
-          Coming soon
-        </p>
-      </article>
+      {plannedEssays.map((essay) => (
+        <WritingCard
+          key={essay.title}
+          title={essay.title}
+          teaser={essay.teaser}
+        />
+      ))}
     </section>
   );
 }

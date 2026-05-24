@@ -1,19 +1,8 @@
 import Link from "next/link";
-
-const selectedWork = [
-  {
-    name: "ProsePal",
-    summary: "AI-assisted greeting-card writing app.",
-  },
-  {
-    name: "PayeTax",
-    summary: "UK PAYE/tax calculator product.",
-  },
-  {
-    name: "Evolution Padel",
-    summary: "Fast, SEO-focused client website.",
-  },
-];
+import { ProjectCard } from "@/components/project-card";
+import { WritingCard } from "@/components/writing-card";
+import { selectedWork } from "@/content/projects";
+import { plannedEssays } from "@/content/writing";
 
 export default function Home() {
   return (
@@ -71,18 +60,12 @@ export default function Home() {
         </div>
         <div className="grid gap-4 sm:grid-cols-3">
           {selectedWork.map((project) => (
-            <Link
+            <ProjectCard
               key={project.name}
+              name={project.name}
+              summary={project.summary}
               href="/projects"
-              className="rounded-lg border border-stone-200 bg-white p-5 outline-none hover:border-stone-400 focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:border-stone-800 dark:bg-stone-900 dark:hover:border-stone-600 dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
-            >
-              <h3 className="font-medium text-stone-950 dark:text-stone-50">
-                {project.name}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">
-                {project.summary}
-              </p>
-            </Link>
+            />
           ))}
         </div>
       </section>
@@ -94,15 +77,7 @@ export default function Home() {
         >
           First essay
         </h2>
-        <article className="rounded-lg border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
-          <p className="text-base font-medium text-stone-950 dark:text-stone-50">
-            The gap between AI-assisted development demos and actually shipping
-            with AI
-          </p>
-          <p className="mt-3 text-sm text-stone-500 dark:text-stone-400">
-            Coming soon
-          </p>
-        </article>
+        <WritingCard title={plannedEssays[0].title} headingLevel={3} />
       </section>
     </div>
   );
