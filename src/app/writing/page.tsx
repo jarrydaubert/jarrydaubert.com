@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { WritingCard } from "@/components/writing-card";
 import { plannedEssays } from "@/content/writing";
 
+const siteDescription =
+  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+
 export const metadata: Metadata = {
   title: "Writing",
+  description: siteDescription,
 };
 
 export default function WritingPage() {
@@ -17,8 +21,8 @@ export default function WritingPage() {
           Writing
         </h1>
         <p className="text-base leading-7 text-stone-600 dark:text-stone-300">
-          A small index for essays on software quality, product building, and
-          AI-assisted delivery.
+          Notes on software quality, AI-assisted delivery, product building, and
+          shipping discipline.
         </p>
       </header>
 
@@ -26,7 +30,8 @@ export default function WritingPage() {
         <WritingCard
           key={essay.title}
           title={essay.title}
-          teaser={essay.teaser}
+          summary={essay.summary}
+          status={essay.status}
         />
       ))}
     </section>

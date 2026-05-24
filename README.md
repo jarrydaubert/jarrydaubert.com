@@ -8,6 +8,8 @@ Personal website for Jarryd Aubert: a sharp, static-first home base for a QA-min
 - TypeScript
 - Tailwind CSS
 - Bun
+- Biome
+- ESLint
 - Vercel deployment target
 - Vercel Analytics
 

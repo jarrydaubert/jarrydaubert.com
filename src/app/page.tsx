@@ -1,10 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { WritingCard } from "@/components/writing-card";
+import { principles } from "@/content/principles";
 import { selectedWork } from "@/content/projects";
 import { plannedEssays } from "@/content/writing";
 
+const siteDescription =
+  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Jarryd Aubert",
+  },
+  description: siteDescription,
+};
+
 export default function Home() {
+  const firstEssay = plannedEssays[0];
+
   return (
     <div className="space-y-20">
       <section className="max-w-4xl space-y-10" aria-labelledby="home-title">
@@ -53,12 +67,7 @@ export default function Home() {
           Principles
         </h2>
         <ul className="grid gap-3 text-base leading-7 text-stone-700 dark:text-stone-200 sm:grid-cols-2">
-          {[
-            "Useful beats impressive.",
-            "Evidence over vibes.",
-            "Quality starts before testing.",
-            "Small systems, shipped properly.",
-          ].map((principle) => (
+          {principles.map((principle) => (
             <li
               key={principle}
               className="border-l border-stone-300 pl-4 dark:border-stone-700"
@@ -78,8 +87,8 @@ export default function Home() {
             Selected work
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-stone-600 dark:text-stone-300">
-            Early placeholders for the project stories that will become proper
-            case studies.
+            Selected products, client work, and experiments that show the shape
+            of the work.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-3">
@@ -89,6 +98,7 @@ export default function Home() {
               name={project.name}
               summary={project.summary}
               href="/projects"
+              status={project.status}
             />
           ))}
         </div>
@@ -101,7 +111,12 @@ export default function Home() {
         >
           First essay
         </h2>
-        <WritingCard title={plannedEssays[0].title} headingLevel={3} />
+        <WritingCard
+          title={firstEssay.title}
+          headingLevel={3}
+          summary={firstEssay.summary}
+          status={firstEssay.status}
+        />
       </section>
     </div>
   );

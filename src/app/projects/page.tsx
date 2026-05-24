@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
 
+const siteDescription =
+  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+
 export const metadata: Metadata = {
   title: "Projects",
+  description: siteDescription,
 };
 
 export default function ProjectsPage() {
@@ -17,8 +21,9 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-base leading-7 text-stone-600 dark:text-stone-300">
-          Starter notes for products and experiments. Proper case studies will
-          replace these placeholders.
+          Selected products, client work, and experiments across practical
+          software quality, AI-assisted delivery, and small product shipping.
+          Proper case studies will replace these starter notes.
         </p>
       </header>
 
@@ -29,7 +34,9 @@ export default function ProjectsPage() {
             name={project.name}
             summary={project.summary}
             headingLevel={2}
+            theme={project.theme}
             status={project.status}
+            caseStudyStatus={project.caseStudyStatus}
           />
         ))}
       </div>

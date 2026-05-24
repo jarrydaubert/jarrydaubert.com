@@ -1,13 +1,15 @@
 type WritingCardProps = {
   title: string;
   headingLevel?: 2 | 3;
-  teaser?: string;
+  summary?: string;
+  status?: string;
 };
 
 export function WritingCard({
   title,
   headingLevel = 2,
-  teaser,
+  summary,
+  status = "Coming soon.",
 }: WritingCardProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
@@ -17,14 +19,14 @@ export function WritingCard({
         <Heading className="text-lg font-semibold text-stone-950 dark:text-stone-50">
           {title}
         </Heading>
-        {teaser ? (
+        {summary ? (
           <p className="text-sm leading-6 text-stone-600 dark:text-stone-300">
-            {teaser}
+            {summary}
           </p>
         ) : null}
       </div>
       <p className="mt-6 text-sm text-stone-500 dark:text-stone-400">
-        Coming soon
+        {status}
       </p>
     </article>
   );

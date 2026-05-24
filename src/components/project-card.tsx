@@ -3,17 +3,21 @@ import Link from "next/link";
 type ProjectCardProps = {
   name: string;
   summary: string;
+  caseStudyStatus?: string;
   href?: string;
   headingLevel?: 2 | 3;
   status?: string;
+  theme?: string;
 };
 
 export function ProjectCard({
   name,
   summary,
+  caseStudyStatus,
   href,
   headingLevel = 3,
   status,
+  theme,
 }: ProjectCardProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   const content = (
@@ -25,11 +29,19 @@ export function ProjectCard({
         <p className="text-sm leading-6 text-stone-600 dark:text-stone-300">
           {summary}
         </p>
+        {theme ? (
+          <p className="text-sm leading-6 text-stone-600 dark:text-stone-300">
+            <span className="font-medium text-stone-800 dark:text-stone-100">
+              Theme:
+            </span>{" "}
+            {theme}
+          </p>
+        ) : null}
       </div>
-      {status ? (
+      {status || caseStudyStatus ? (
         <div className="mt-6 space-y-2 text-sm text-stone-500 dark:text-stone-400">
-          <p>{status}</p>
-          <p>Case study coming soon</p>
+          {status ? <p>{status}</p> : null}
+          {caseStudyStatus ? <p>{caseStudyStatus}</p> : null}
         </div>
       ) : null}
     </>
