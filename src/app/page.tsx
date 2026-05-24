@@ -6,20 +6,20 @@ import { plannedEssays } from "@/content/writing";
 
 export default function Home() {
   return (
-    <div className="space-y-16">
-      <section className="max-w-3xl space-y-8" aria-labelledby="home-title">
-        <div className="space-y-5">
+    <div className="space-y-20">
+      <section className="max-w-4xl space-y-10" aria-labelledby="home-title">
+        <div className="space-y-6">
           <h1
             id="home-title"
-            className="text-4xl font-semibold tracking-normal text-stone-950 dark:text-stone-50 sm:text-5xl"
+            className="text-4xl font-semibold leading-tight tracking-normal text-stone-950 dark:text-stone-50 sm:text-5xl sm:leading-tight"
           >
             Jarryd Aubert
           </h1>
-          <p className="text-2xl leading-snug text-stone-800 dark:text-stone-100">
+          <p className="max-w-3xl text-2xl leading-9 text-stone-800 dark:text-stone-100 sm:text-[1.7rem] sm:leading-10">
             QA-minded product builder shipping useful software with AI, taste,
             and tests.
           </p>
-          <p className="max-w-2xl text-base leading-7 text-stone-600 dark:text-stone-300">
+          <p className="max-w-2xl text-base leading-8 text-stone-600 dark:text-stone-300">
             I build and test practical software products, with a focus on
             quality, evidence, and useful AI-assisted workflows.
           </p>
@@ -43,6 +43,30 @@ export default function Home() {
             ))}
           </ul>
         </nav>
+      </section>
+
+      <section className="space-y-5" aria-labelledby="principles">
+        <h2
+          id="principles"
+          className="text-xl font-semibold text-stone-950 dark:text-stone-50"
+        >
+          Principles
+        </h2>
+        <ul className="grid gap-3 text-base leading-7 text-stone-700 dark:text-stone-200 sm:grid-cols-2">
+          {[
+            "Useful beats impressive.",
+            "Evidence over vibes.",
+            "Quality starts before testing.",
+            "Small systems, shipped properly.",
+          ].map((principle) => (
+            <li
+              key={principle}
+              className="border-l border-stone-300 pl-4 dark:border-stone-700"
+            >
+              {principle}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="space-y-5" aria-labelledby="selected-work">

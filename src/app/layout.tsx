@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-stone-50 text-stone-950 antialiased dark:bg-stone-950 dark:text-stone-50">
-        <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col px-5 py-6 sm:px-8 sm:py-8">
+        <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10">
           <SiteHeader />
-          <main className="flex-1 py-14 sm:py-20">{children}</main>
+          <main className="flex-1 py-16 sm:py-24">{children}</main>
           <SiteFooter />
         </div>
         <Analytics />
