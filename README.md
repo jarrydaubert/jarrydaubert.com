@@ -37,13 +37,21 @@ bun run build
 
 Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; Vercel handles static rendering automatically for this shell.
 
+- Production domain: `https://jarrydaubert.com`
+- `https://www.jarrydaubert.com` redirects to `https://jarrydaubert.com`
+- Vercel project: `jarrydaubert`
+- Vercel workspace/team: JGF
 - Package manager: Bun
+- Framework: Next.js App Router
 - Install command: `bun install`
 - Build command: `bun run build`
-- Domain: `jarrydaubert.com`
-- `www.jarrydaubert.com` redirects to `https://jarrydaubert.com`
-- DNS: Cloudflare DNS-only CNAME records for apex and `www` pointing to Vercel recommended targets
 - Vercel Analytics confirmed working
+- DNS provider: Cloudflare
+- Vercel DNS records: Cloudflare DNS-only CNAME records for `@` and `www` to Vercel's recommended target
+- Email routing: Cloudflare Email Routing active for `me@jarrydaubert.com` to Gmail
+- Catch-all email: disabled
+- DMARC: `p=none` via Cloudflare reporting
+- DNSSEC: pending/managed in Cloudflare
 
 Current Vercel project:
 

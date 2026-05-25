@@ -8,10 +8,17 @@
 - Done: Connect jarrydaubert.com
 - Done: Point DNS via Cloudflare
 - Done: Confirm Vercel Analytics
+- Done: Configure www redirect
+- Done: Enable Cloudflare Email Routing
+- Done: Create me@jarrydaubert.com forwarding
+- Done: Add basic email authentication records
+- Done: Disable catch-all email
+- Send/confirm test email to me@jarrydaubert.com
+- Wait for DNSSEC to move from pending to active
 - Human copy review
 - Write first essay
-- Add real project case studies
 - Add real GitHub/LinkedIn/email links
+- Add real project case studies
 - Run Lighthouse after deployment
 - Submit to Google Search Console after launch
-- Optional email DNS later
+- Optional later: configure send-as or full mailbox if needed
