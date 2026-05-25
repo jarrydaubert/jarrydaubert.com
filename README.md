@@ -43,6 +43,15 @@ Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; V
 - Domain: `jarrydaubert.com`
 - DNS: Cloudflare later
 
+Current Vercel project:
+
+- Owner/team: Project Javelin
+- Project: `jarrydaubert`
+- Preview: `https://jarrydaubert-gggh0lihh-jgf-project-javelin.vercel.app`
+- Default production alias: `https://jarrydaubert.vercel.app`
+
+Before connecting `jarrydaubert.com`, confirm the Vercel owner/team and project are the intended production home.
+
 ## Scope
 
 The `/workbench` route and any 3D ideas are explicitly out of scope for v1.

@@ -3,7 +3,8 @@
 - Done: Day 1 shell complete
 - Done: Content structure complete
 - Done: Deployment readiness pass complete
-- Deploy to Vercel
+- Done: Deploy Vercel preview
+- Confirm Vercel owner/team before domain connection
 - Connect jarrydaubert.com
 - Point DNS via Cloudflare
 - Write first essay
