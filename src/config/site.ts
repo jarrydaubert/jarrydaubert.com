@@ -4,7 +4,7 @@ export const site = {
   url: "https://jarrydaubert.com",
   email: "me@jarrydaubert.com",
   description:
-    "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.",
+    "Personal site of Jarryd Aubert, a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.",
   homeDescription:
     "Jarryd Aubert is a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.",
   jobTitle: "Senior QA Specialist / Product Builder",

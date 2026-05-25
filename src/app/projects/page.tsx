@@ -18,11 +18,11 @@ export default function ProjectsPage() {
       <header className="max-w-3xl space-y-4">
         <h1
           id="projects-title"
-          className="text-3xl font-semibold text-stone-950 dark:text-stone-50 sm:text-4xl"
+          className="text-3xl font-semibold text-[var(--color-fg)] sm:text-4xl"
         >
           Projects
         </h1>
-        <p className="text-base leading-7 text-stone-600 dark:text-stone-300">
+        <p className="text-base leading-7 text-[var(--color-muted)]">
           Selected products, client work, and experiments across practical
           software quality, AI-assisted delivery, and small product shipping.
           Proper case studies will replace these starter notes.

@@ -21,16 +21,16 @@ export function WritingCard({
   const content = (
     <>
       <div className="space-y-3">
-        <Heading className="text-lg font-semibold text-stone-950 dark:text-stone-50">
+        <Heading className="text-lg font-semibold text-[var(--color-fg)]">
           {title}
         </Heading>
         {summary ? (
-          <p className="text-sm leading-6 text-stone-600 dark:text-stone-300">
+          <p className="text-sm leading-6 text-[var(--color-muted)]">
             {summary}
           </p>
         ) : null}
       </div>
-      <p className="mt-6 text-sm text-stone-600 dark:text-stone-300">
+      <p className="mt-6 text-sm text-[var(--color-subtle)]">
         {status}
         {publishedAt ? (
           <>
@@ -43,13 +43,13 @@ export function WritingCard({
   );
 
   const className =
-    "rounded-lg border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900";
+    "rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors";
 
   if (href) {
     return (
       <Link
         href={href}
-        className={`${className} block outline-none hover:border-stone-400 focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:hover:border-stone-600 dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950`}
+        className={`${className} block outline-none hover:border-[var(--color-border-hover)] hover:bg-[var(--color-surface-elevated)] focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]`}
       >
         {content}
       </Link>

@@ -1,6 +1,6 @@
 # jarrydaubert.com
 
-Personal website for Jarryd Aubert — a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.
+Personal website for Jarryd Aubert, a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.
 
 Live site: [https://jarrydaubert.com](https://jarrydaubert.com)
 

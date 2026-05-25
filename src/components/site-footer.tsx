@@ -2,7 +2,7 @@ import { site } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-stone-200 pt-6 text-sm text-stone-600 dark:border-stone-800 dark:text-stone-300">
+    <footer className="border-t border-[var(--color-border)] pt-6 text-sm text-[var(--color-subtle)]">
       <p>&copy; 2026 {site.name}</p>
     </footer>
   );
