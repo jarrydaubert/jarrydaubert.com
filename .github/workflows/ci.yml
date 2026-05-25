@@ -23,14 +23,17 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Check formatting
+      - name: Run Biome format check
         run: bun run format:check
+
+      - name: Run Biome lint
+        run: bun run lint:biome
 
       - name: Run ESLint
         run: bun run lint
 
-      - name: Run Biome lint
-        run: bun run lint:biome
+      - name: Run TypeScript
+        run: bun run typecheck
 
       - name: Build
         run: bun run build

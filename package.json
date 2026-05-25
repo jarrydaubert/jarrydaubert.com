@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
     "format": "biome format --write .",
     "format:check": "biome format .",
     "lint:biome": "biome lint .",
-    "check": "biome check . && next build"
+    "lint": "eslint .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "bun run format:check && bun run lint:biome && bun run lint && bun run typecheck && bun run build"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

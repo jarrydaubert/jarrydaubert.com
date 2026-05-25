@@ -40,16 +40,18 @@ public
 bun install
 bun dev
 bun run format
-bun run lint
 bun run lint:biome
+bun run lint
+bun run typecheck
 bun run build
+bun run check
 ```
 
 ## Quality Checks
 
-The repo uses Biome for formatting, ESLint for code linting, and `next build` for production build validation.
+The repo uses Biome for formatting and general code hygiene, ESLint for Next.js-specific linting, TypeScript for type safety, and `next build` for production build validation.
 
-GitHub Actions runs format, lint, and build checks on pushes and pull requests to `main`. Dependabot checks dependencies weekly.
+GitHub Actions runs the same quality gate on pushes and pull requests to `main`: Biome format check, Biome lint, ESLint, TypeScript, and production build. Dependabot checks dependencies weekly.
 
 ## Deployment
 
