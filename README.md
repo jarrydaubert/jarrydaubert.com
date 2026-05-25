@@ -1,6 +1,10 @@
 # jarrydaubert.com
 
-Personal website for Jarryd Aubert: a sharp, static-first home base for a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.
+Personal website for Jarryd Aubert — a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.
+
+Live site: [https://jarrydaubert.com](https://jarrydaubert.com)
+
+This site is a personal home base for selected projects, writing, and contact. It presents work around practical software quality, AI-assisted delivery, and evidence-led product building.
 
 ## Stack
 
@@ -10,94 +14,51 @@ Personal website for Jarryd Aubert: a sharp, static-first home base for a QA-min
 - Bun
 - Biome
 - ESLint
-- Vercel deployment target
+- Vercel
+- Cloudflare DNS
 - Vercel Analytics
 
-## Local Setup
+## Project Structure
+
+```text
+src/app
+src/components
+src/content
+public
+.github/workflows
+```
+
+- `src/app` contains the App Router routes and metadata files.
+- `src/components` contains reusable site components.
+- `src/content` contains typed project, writing, and principle data.
+- `public` contains static assets.
+- `.github/workflows` contains CI.
+
+## Local Development
 
 ```bash
 bun install
 bun dev
-```
-
-Open `http://localhost:3000`.
-
-## Checks
-
-```bash
+bun run format
 bun run lint
 bun run lint:biome
-bun run format
 bun run build
 ```
 
-`bun run check` runs Biome checks and a production Next build.
+## Quality Checks
 
-## Deploy
+The repo uses Biome for formatting, ESLint for code linting, and `next build` for production build validation.
 
-Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; Vercel handles static rendering automatically for this shell.
+GitHub Actions runs format, lint, and build checks on pushes and pull requests to `main`. Dependabot checks dependencies weekly.
 
-- Production domain: `https://jarrydaubert.com`
-- `https://www.jarrydaubert.com` redirects to `https://jarrydaubert.com`
-- Public repository: `https://github.com/jarrydaubert/jarrydaubert.com`
-- Vercel project: `jarrydaubert`
-- Vercel workspace/team: JGF
-- Package manager: Bun
-- Framework: Next.js App Router
-- Install command: `bun install`
-- Build command: `bun run build`
-- Production deploys from the `main` branch through Vercel's Git integration
-- Vercel Analytics confirmed working
-- DNS provider: Cloudflare
-- Vercel DNS records: Cloudflare DNS-only CNAME records for `@` and `www` to Vercel's recommended target
-- Email routing: Cloudflare Email Routing active and tested for `me@jarrydaubert.com` to `jarrydaubert@gmail.com`
-- Catch-all email: disabled
-- DMARC: `p=none` via Cloudflare reporting
-- DNSSEC: pending/managed in Cloudflare
+## Deployment
 
-Current Vercel project:
+Production is deployed on Vercel. The `main` branch is the production branch, and Vercel deploys from GitHub. Cloudflare manages DNS.
 
-- Owner/team: Project Javelin
-- Project: `jarrydaubert`
-- Preview: `https://jarrydaubert-gggh0lihh-jgf-project-javelin.vercel.app`
-- Default production alias: `https://jarrydaubert.vercel.app`
+## Security
 
-## Scope
-
-The `/workbench` route and any 3D ideas are explicitly out of scope for v1.
+No secrets are required in this repository. Security concerns should be reported privately using the guidance in [SECURITY.md](./SECURITY.md). Please do not open public GitHub issues containing secrets or vulnerability details.
 
 ## License
 
-This repository is public for transparency and reference only. The source code, content, copy, visual design, and assets are not licensed for reuse without prior written permission. See [LICENSE.md](./LICENSE.md).
-
-## Repository Security
-
-- This is a public personal-site repository.
-- No deployment secrets or service tokens are required in GitHub.
-- Vercel deploys from `main` through its Git integration.
-- CI validates formatting, linting, and production builds.
-- Dependabot alerts, security updates, secret scanning, push protection, and branch protection should be enabled in GitHub settings.
-- The repository remains all-rights-reserved; see [LICENSE.md](./LICENSE.md).
-
-## Production Checklist
-
-Handled:
-
-- Domain connected
-- `www` redirect configured
-- Vercel Analytics active
-- Bun lockfile committed
-- Cloudflare Email Routing active
-- Robots and sitemap in place
-- Basic metadata, Open Graph, Twitter Card, and Person JSON-LD in place
-- Basic security headers configured
-
-Deferred intentionally:
-
-- Strict Content Security Policy
-- WAF and rate limiting
-- Log drains
-- Observability Plus
-- Speed Insights
-- Load testing
-- Enterprise controls
+This repository is public for transparency, but it is not an open-source template. All rights reserved unless stated otherwise. See [LICENSE.md](./LICENSE.md).

@@ -1,39 +1,15 @@
 # TODO
 
-- Done: Day 1 shell complete
-- Done: Content structure complete
-- Done: Deployment readiness pass complete
-- Done: Deploy Vercel preview
-- Done: Confirm Vercel owner/team before domain connection
-- Done: Connect jarrydaubert.com
-- Done: Point DNS via Cloudflare
-- Done: Confirm Vercel Analytics
-- Done: Configure www redirect
-- Done: Enable Cloudflare Email Routing
-- Done: Create me@jarrydaubert.com forwarding
-- Done: Confirm test email to me@jarrydaubert.com arrives in Gmail
-- Done: Add basic email authentication records
-- Done: Disable catch-all email
-- Done: Deploy launch hardening to production
-- Done: Confirm contact email is visible
-- Done: Confirm LinkedIn link is visible
-- Done: Confirm project stub pages are live
-- Done: Confirm Open Graph and Twitter metadata live
-- Done: Confirm Person JSON-LD is live
-- Done: Confirm basic security headers are live
-- Done: Add GitHub Actions CI
-- Done: Add Dependabot config
-- Done: Add SECURITY.md
 - Wait for DNSSEC to move from pending to active
 - Enable or confirm Dependabot alerts in GitHub settings
 - Enable or confirm Dependabot security updates in GitHub settings
 - Enable or confirm secret scanning and push protection in GitHub settings
-- Enable or confirm branch protection/ruleset for main after CI passes
-- Consider requiring CI status checks on main
+- Enable or confirm branch protection/ruleset for `main` after CI passes
+- Consider requiring CI status checks on `main`
 - Human copy review
-- Write first essay
-- Add real GitHub URL
-- Add real project case studies
+- Write the first full essay
+- Add real GitHub link on the site
+- Add richer project case studies
 - Run Lighthouse after deployment
 - Submit to Google Search Console after launch
 - Optional later: configure send-as or full mailbox if needed
