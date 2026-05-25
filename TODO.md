@@ -7,7 +7,7 @@
 - Enable or confirm branch protection/ruleset for `main` after CI passes
 - Consider requiring CI status checks on `main`
 - Human copy review
-- Write the first full essay
+- Add another full essay
 - Add real GitHub link on the site
 - Add richer project case studies
 - Run Lighthouse after deployment

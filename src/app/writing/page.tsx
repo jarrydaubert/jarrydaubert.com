@@ -32,6 +32,8 @@ export default function WritingPage() {
       {plannedEssays.map((essay) => (
         <WritingCard
           key={essay.title}
+          href={essay.href}
+          publishedAt={essay.publishedAt}
           title={essay.title}
           summary={essay.summary}
           status={essay.status}
