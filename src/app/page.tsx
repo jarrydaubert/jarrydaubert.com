@@ -109,6 +109,8 @@ export default function Home() {
           First essay
         </h2>
         <WritingCard
+          href={firstEssay.href}
+          publishedAt={firstEssay.publishedAt}
           title={firstEssay.title}
           headingLevel={3}
           summary={firstEssay.summary}
