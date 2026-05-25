@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      nextjs-and-react:
+        patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+          - "@next/*"
+      tooling:
+        patterns:
+          - "@biomejs/*"
+          - "eslint*"
+          - "typescript"
+          - "@types/*"
+          - "tailwindcss"
+          - "@tailwindcss/*"

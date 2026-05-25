@@ -70,6 +70,15 @@ The `/workbench` route and any 3D ideas are explicitly out of scope for v1.
 
 This repository is public for transparency and reference only. The source code, content, copy, visual design, and assets are not licensed for reuse without prior written permission. See [LICENSE.md](./LICENSE.md).
 
+## Repository Security
+
+- This is a public personal-site repository.
+- No deployment secrets or service tokens are required in GitHub.
+- Vercel deploys from `main` through its Git integration.
+- CI validates formatting, linting, and production builds.
+- Dependabot alerts, security updates, secret scanning, push protection, and branch protection should be enabled in GitHub settings.
+- The repository remains all-rights-reserved; see [LICENSE.md](./LICENSE.md).
+
 ## Production Checklist
 
 Handled:

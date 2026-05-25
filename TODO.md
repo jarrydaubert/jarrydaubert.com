@@ -21,7 +21,15 @@
 - Done: Confirm Open Graph and Twitter metadata live
 - Done: Confirm Person JSON-LD is live
 - Done: Confirm basic security headers are live
+- Done: Add GitHub Actions CI
+- Done: Add Dependabot config
+- Done: Add SECURITY.md
 - Wait for DNSSEC to move from pending to active
+- Enable or confirm Dependabot alerts in GitHub settings
+- Enable or confirm Dependabot security updates in GitHub settings
+- Enable or confirm secret scanning and push protection in GitHub settings
+- Enable or confirm branch protection/ruleset for main after CI passes
+- Consider requiring CI status checks on main
 - Human copy review
 - Write first essay
 - Add real GitHub URL
