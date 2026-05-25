@@ -39,12 +39,14 @@ Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; V
 
 - Production domain: `https://jarrydaubert.com`
 - `https://www.jarrydaubert.com` redirects to `https://jarrydaubert.com`
+- Public repository: `https://github.com/jarrydaubert/jarrydaubert.com`
 - Vercel project: `jarrydaubert`
 - Vercel workspace/team: JGF
 - Package manager: Bun
 - Framework: Next.js App Router
 - Install command: `bun install`
 - Build command: `bun run build`
+- Production deploys from the `main` branch through Vercel's Git integration
 - Vercel Analytics confirmed working
 - DNS provider: Cloudflare
 - Vercel DNS records: Cloudflare DNS-only CNAME records for `@` and `www` to Vercel's recommended target
@@ -63,6 +65,10 @@ Current Vercel project:
 ## Scope
 
 The `/workbench` route and any 3D ideas are explicitly out of scope for v1.
+
+## License
+
+This repository is public for transparency and reference only. The source code, content, copy, visual design, and assets are not licensed for reuse without prior written permission. See [LICENSE.md](./LICENSE.md).
 
 ## Production Checklist
 

@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     template: "%s | Jarryd Aubert",
   },
   description: siteDescription,
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "16x16 32x32" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   manifest: "/manifest.webmanifest",
   openGraph: {
     title: "Jarryd Aubert",
