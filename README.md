@@ -63,3 +63,26 @@ Current Vercel project:
 ## Scope
 
 The `/workbench` route and any 3D ideas are explicitly out of scope for v1.
+
+## Production Checklist
+
+Handled:
+
+- Domain connected
+- `www` redirect configured
+- Vercel Analytics active
+- Bun lockfile committed
+- Cloudflare Email Routing active
+- Robots and sitemap in place
+- Basic metadata, Open Graph, Twitter Card, and Person JSON-LD in place
+- Basic security headers configured
+
+Deferred intentionally:
+
+- Strict Content Security Policy
+- WAF and rate limiting
+- Log drains
+- Observability Plus
+- Speed Insights
+- Load testing
+- Enterprise controls

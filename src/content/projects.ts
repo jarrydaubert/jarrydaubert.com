@@ -1,14 +1,17 @@
 export type Project = {
   name: string;
+  slug: string;
   summary: string;
   theme: string;
   status: string;
   caseStudyStatus: string;
+  liveUrl?: string;
 };
 
 export const projects: Project[] = [
   {
     name: "ProsePal",
+    slug: "prosepal",
     summary: "AI-assisted greeting-card writing app.",
     theme: "Product building, AI-assisted writing, tone/occasion fit.",
     status: "In progress.",
@@ -16,6 +19,7 @@ export const projects: Project[] = [
   },
   {
     name: "PayeTax",
+    slug: "payetax",
     summary: "UK PAYE/tax calculator product.",
     theme:
       "Practical finance tooling, correctness, edge cases, release evidence.",
@@ -24,14 +28,17 @@ export const projects: Project[] = [
   },
   {
     name: "Evolution Padel",
+    slug: "evolution-padel",
     summary: "Fast, SEO-focused client website.",
     theme:
       "Static site delivery, analytics, SEO, performance, client handover.",
     status: "Live/client project.",
     caseStudyStatus: "Coming soon.",
+    liveUrl: "https://evolutionpadel.uk",
   },
   {
     name: "AI operator experiments",
+    slug: "ai-operator-experiments",
     summary:
       "Experiments with Codex, Hermes/R2, local models, and evidence-led AI workflows.",
     theme:
@@ -42,3 +49,7 @@ export const projects: Project[] = [
 ];
 
 export const selectedWork = projects.slice(0, 3);
+
+export function getProjectBySlug(slug: string) {
+  return projects.find((project) => project.slug === slug);
+}

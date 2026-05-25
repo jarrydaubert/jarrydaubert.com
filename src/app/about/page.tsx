@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const siteDescription =
-  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+  "About Jarryd Aubert, a UK-based Senior QA specialist and product builder working across quality, delivery, and AI-assisted workflows.";
 
 const focusAreas = [
   "Practical software quality",
@@ -104,6 +104,34 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="space-y-4" aria-labelledby="contact">
+        <h2
+          id="contact"
+          className="text-xl font-semibold text-stone-950 dark:text-stone-50"
+        >
+          Contact
+        </h2>
+        <p className="text-base leading-7 text-stone-700 dark:text-stone-200">
+          For now, the best way to reach me is by email.
+        </p>
+        <div className="flex flex-wrap gap-4 text-sm font-medium">
+          <a
+            href="mailto:me@jarrydaubert.com"
+            className="text-stone-800 underline decoration-stone-300 underline-offset-4 outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-100 dark:decoration-stone-600 dark:hover:text-white dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+          >
+            me@jarrydaubert.com
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jarrydaubert/"
+            className="text-stone-800 underline decoration-stone-300 underline-offset-4 outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-100 dark:decoration-stone-600 dark:hover:text-white dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
       </section>
     </article>
   );

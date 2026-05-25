@@ -17,7 +17,7 @@
 - Wait for DNSSEC to move from pending to active
 - Human copy review
 - Write first essay
-- Add real GitHub/LinkedIn/email links
+- Add real GitHub URL
 - Add real project case studies
 - Run Lighthouse after deployment
 - Submit to Google Search Console after launch

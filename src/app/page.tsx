@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { WritingCard } from "@/components/writing-card";
 import { principles } from "@/content/principles";
@@ -7,7 +6,17 @@ import { selectedWork } from "@/content/projects";
 import { plannedEssays } from "@/content/writing";
 
 const siteDescription =
-  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+  "Jarryd Aubert is a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jarryd Aubert",
+  url: "https://jarrydaubert.com",
+  email: "me@jarrydaubert.com",
+  jobTitle: "Senior QA Specialist / Product Builder",
+  sameAs: ["https://www.linkedin.com/in/jarrydaubert/"],
+};
 
 export const metadata: Metadata = {
   title: {
@@ -24,6 +33,10 @@ export default function Home() {
 
   return (
     <div className="space-y-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <section className="max-w-4xl space-y-10" aria-labelledby="home-title">
         <div className="space-y-6">
           <h1
@@ -41,25 +54,6 @@ export default function Home() {
             quality, evidence, and useful AI-assisted workflows.
           </p>
         </div>
-
-        <nav aria-label="Section navigation">
-          <ul className="flex flex-wrap gap-3 text-sm font-medium">
-            {[
-              { href: "/about", label: "About" },
-              { href: "/projects", label: "Projects" },
-              { href: "/writing", label: "Writing" },
-            ].map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex rounded border border-stone-300 px-3 py-2 text-stone-800 outline-none hover:border-stone-500 hover:text-stone-950 focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:border-stone-700 dark:text-stone-200 dark:hover:border-stone-500 dark:hover:text-stone-50 dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
       </section>
 
       <section className="space-y-5" aria-labelledby="principles">
@@ -100,7 +94,7 @@ export default function Home() {
               key={project.name}
               name={project.name}
               summary={project.summary}
-              href="/projects"
+              href={`/projects/${project.slug}`}
               status={project.status}
             />
           ))}

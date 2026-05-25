@@ -3,7 +3,7 @@ import { WritingCard } from "@/components/writing-card";
 import { plannedEssays } from "@/content/writing";
 
 const siteDescription =
-  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+  "Notes from Jarryd Aubert on software quality, AI-assisted delivery, product building, and shipping discipline.";
 
 export const metadata: Metadata = {
   title: "Writing",

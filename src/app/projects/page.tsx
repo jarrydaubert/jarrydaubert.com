@@ -3,7 +3,7 @@ import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
 
 const siteDescription =
-  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+  "Selected products, client work, and AI operator experiments by Jarryd Aubert.";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -40,6 +40,7 @@ export default function ProjectsPage() {
             theme={project.theme}
             status={project.status}
             caseStudyStatus={project.caseStudyStatus}
+            liveUrl={project.liveUrl}
           />
         ))}
       </div>

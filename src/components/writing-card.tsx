@@ -25,7 +25,7 @@ export function WritingCard({
           </p>
         ) : null}
       </div>
-      <p className="mt-6 text-sm text-stone-500 dark:text-stone-400">
+      <p className="mt-6 text-sm text-stone-600 dark:text-stone-300">
         {status}
       </p>
     </article>

@@ -6,6 +6,7 @@ type ProjectCardProps = {
   caseStudyStatus?: string;
   href?: string;
   headingLevel?: 2 | 3;
+  liveUrl?: string;
   status?: string;
   theme?: string;
 };
@@ -16,6 +17,7 @@ export function ProjectCard({
   caseStudyStatus,
   href,
   headingLevel = 3,
+  liveUrl,
   status,
   theme,
 }: ProjectCardProps) {
@@ -38,10 +40,22 @@ export function ProjectCard({
           </p>
         ) : null}
       </div>
-      {status || caseStudyStatus ? (
-        <div className="mt-6 space-y-2 text-sm text-stone-500 dark:text-stone-400">
+      {status || caseStudyStatus || liveUrl ? (
+        <div className="mt-6 space-y-2 text-sm text-stone-600 dark:text-stone-300">
           {status ? <p>{status}</p> : null}
           {caseStudyStatus ? <p>{caseStudyStatus}</p> : null}
+          {liveUrl ? (
+            <p>
+              <a
+                href={liveUrl}
+                className="font-medium text-stone-800 underline decoration-stone-300 underline-offset-4 outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-100 dark:decoration-stone-600 dark:hover:text-white dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live site
+              </a>
+            </p>
+          ) : null}
         </div>
       ) : null}
     </>
