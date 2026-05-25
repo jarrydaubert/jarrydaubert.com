@@ -1,48 +1,11 @@
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { buildMetadata } from "@/lib/metadata";
 import "./globals.css";
 
-const siteDescription =
-  "Personal site of Jarryd Aubert \u2014 QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://jarrydaubert.com"),
-  title: {
-    default: "Jarryd Aubert",
-    template: "%s | Jarryd Aubert",
-  },
-  description: siteDescription,
-  icons: {
-    icon: [{ url: "/favicon.ico", sizes: "16x16 32x32" }],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
-  manifest: "/manifest.webmanifest",
-  openGraph: {
-    title: "Jarryd Aubert",
-    description: siteDescription,
-    url: "https://jarrydaubert.com",
-    siteName: "Jarryd Aubert",
-    images: [
-      {
-        url: "/og-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "Jarryd Aubert",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Jarryd Aubert",
-    description: siteDescription,
-    images: ["/og-image.svg"],
-  },
-};
+export const metadata = buildMetadata();
 
 export const viewport: Viewport = {
   themeColor: [

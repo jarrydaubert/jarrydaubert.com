@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { site } from "@/config/site";
+import { buildMetadata } from "@/lib/metadata";
 
 const siteDescription =
   "About Jarryd Aubert, a UK-based Senior QA specialist and product builder working across quality, delivery, and AI-assisted workflows.";
@@ -17,13 +19,11 @@ const workingPrinciples = [
   "Use AI to accelerate work, not excuse weak judgment.",
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About",
   description: siteDescription,
-  alternates: {
-    canonical: "/about",
-  },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -118,13 +118,13 @@ export default function AboutPage() {
         </p>
         <div className="flex flex-wrap gap-4 text-sm font-medium">
           <a
-            href="mailto:me@jarrydaubert.com"
+            href={`mailto:${site.email}`}
             className="text-stone-800 underline decoration-stone-300 underline-offset-4 outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-100 dark:decoration-stone-600 dark:hover:text-white dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
           >
-            me@jarrydaubert.com
+            {site.email}
           </a>
           <a
-            href="https://www.linkedin.com/in/jarrydaubert/"
+            href={site.socials.linkedin}
             className="text-stone-800 underline decoration-stone-300 underline-offset-4 outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-100 dark:decoration-stone-600 dark:hover:text-white dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
             target="_blank"
             rel="noreferrer"

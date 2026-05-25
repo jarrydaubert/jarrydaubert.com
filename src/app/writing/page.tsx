@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { WritingCard } from "@/components/writing-card";
-import { plannedEssays } from "@/content/writing";
+import { writing } from "@/content/writing";
+import { buildMetadata } from "@/lib/metadata";
 
 const siteDescription =
   "Notes from Jarryd Aubert on software quality, AI-assisted delivery, product building, and shipping discipline.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Writing",
   description: siteDescription,
-  alternates: {
-    canonical: "/writing",
-  },
-};
+  path: "/writing",
+});
 
 export default function WritingPage() {
   return (
@@ -29,7 +28,7 @@ export default function WritingPage() {
         </p>
       </header>
 
-      {plannedEssays.map((essay) => (
+      {writing.map((essay) => (
         <WritingCard
           key={essay.title}
           href={essay.href}

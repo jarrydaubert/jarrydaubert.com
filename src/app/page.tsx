@@ -1,41 +1,29 @@
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
 import { WritingCard } from "@/components/writing-card";
+import { personJsonLd, site } from "@/config/site";
 import { principles } from "@/content/principles";
 import { selectedWork } from "@/content/projects";
-import { plannedEssays } from "@/content/writing";
+import { writing } from "@/content/writing";
+import { buildMetadata, serializeJsonLd } from "@/lib/metadata";
 
-const siteDescription =
-  "Jarryd Aubert is a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.";
+const personJsonLdScript = serializeJsonLd(personJsonLd);
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Jarryd Aubert",
-  url: "https://jarrydaubert.com",
-  email: "me@jarrydaubert.com",
-  jobTitle: "Senior QA Specialist / Product Builder",
-  sameAs: ["https://www.linkedin.com/in/jarrydaubert/"],
-};
-
-export const metadata: Metadata = {
-  title: {
-    absolute: "Jarryd Aubert",
-  },
-  description: siteDescription,
-  alternates: {
-    canonical: "/",
-  },
-};
+export const metadata: Metadata = buildMetadata({
+  title: site.name,
+  absoluteTitle: true,
+  description: site.homeDescription,
+});
 
 export default function Home() {
-  const firstEssay = plannedEssays[0];
+  const firstEssay = writing[0];
 
   return (
     <div className="space-y-20">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is static local data with '<' escaped before injection.
+        dangerouslySetInnerHTML={{ __html: personJsonLdScript }}
       />
       <section className="max-w-4xl space-y-10" aria-labelledby="home-title">
         <div className="space-y-6">
@@ -43,7 +31,7 @@ export default function Home() {
             id="home-title"
             className="text-4xl font-semibold leading-tight tracking-normal text-stone-950 dark:text-stone-50 sm:text-5xl sm:leading-tight"
           >
-            Jarryd Aubert
+            {site.name}
           </h1>
           <p className="max-w-3xl text-2xl leading-9 text-stone-800 dark:text-stone-100 sm:text-[1.7rem] sm:leading-10">
             QA-minded product builder shipping useful software with AI, taste,

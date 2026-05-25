@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
+import { buildMetadata } from "@/lib/metadata";
 
 const siteDescription =
   "Selected products, client work, and AI operator experiments by Jarryd Aubert.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Projects",
   description: siteDescription,
-  alternates: {
-    canonical: "/projects",
-  },
-};
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (
