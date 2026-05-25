@@ -14,6 +14,13 @@
 - Done: Confirm test email to me@jarrydaubert.com arrives in Gmail
 - Done: Add basic email authentication records
 - Done: Disable catch-all email
+- Done: Deploy launch hardening to production
+- Done: Confirm contact email is visible
+- Done: Confirm LinkedIn link is visible
+- Done: Confirm project stub pages are live
+- Done: Confirm Open Graph and Twitter metadata live
+- Done: Confirm Person JSON-LD is live
+- Done: Confirm basic security headers are live
 - Wait for DNSSEC to move from pending to active
 - Human copy review
 - Write first essay
