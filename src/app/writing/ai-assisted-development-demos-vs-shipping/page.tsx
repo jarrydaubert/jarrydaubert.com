@@ -17,12 +17,23 @@ export const metadata: Metadata = {
     title: essay.title,
     description,
     url: essay.href,
+    siteName: "Jarryd Aubert",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Jarryd Aubert",
+      },
+    ],
     type: "article",
     publishedTime: essay.publishedAt,
   },
   twitter: {
+    card: "summary_large_image",
     title: essay.title,
     description,
+    images: ["/og-image.svg"],
   },
 };
 
