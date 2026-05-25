@@ -11,6 +11,9 @@ updates:
           - "react"
           - "react-dom"
           - "@next/*"
+        update-types:
+          - "minor"
+          - "patch"
       tooling:
         patterns:
           - "@biomejs/*"
@@ -19,3 +22,6 @@ updates:
           - "@types/*"
           - "tailwindcss"
           - "@tailwindcss/*"
+        update-types:
+          - "minor"
+          - "patch"
