@@ -11,9 +11,9 @@
 - Done: Configure www redirect
 - Done: Enable Cloudflare Email Routing
 - Done: Create me@jarrydaubert.com forwarding
+- Done: Confirm test email to me@jarrydaubert.com arrives in Gmail
 - Done: Add basic email authentication records
 - Done: Disable catch-all email
-- Send/confirm test email to me@jarrydaubert.com
 - Wait for DNSSEC to move from pending to active
 - Human copy review
 - Write first essay

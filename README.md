@@ -48,7 +48,7 @@ Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; V
 - Vercel Analytics confirmed working
 - DNS provider: Cloudflare
 - Vercel DNS records: Cloudflare DNS-only CNAME records for `@` and `www` to Vercel's recommended target
-- Email routing: Cloudflare Email Routing active for `me@jarrydaubert.com` to Gmail
+- Email routing: Cloudflare Email Routing active and tested for `me@jarrydaubert.com` to `jarrydaubert@gmail.com`
 - Catch-all email: disabled
 - DMARC: `p=none` via Cloudflare reporting
 - DNSSEC: pending/managed in Cloudflare
