@@ -41,7 +41,9 @@ Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; V
 - Install command: `bun install`
 - Build command: `bun run build`
 - Domain: `jarrydaubert.com`
-- DNS: Cloudflare later
+- `www.jarrydaubert.com` redirects to `https://jarrydaubert.com`
+- DNS: Cloudflare DNS-only CNAME records for apex and `www` pointing to Vercel recommended targets
+- Vercel Analytics confirmed working
 
 Current Vercel project:
 
@@ -49,8 +51,6 @@ Current Vercel project:
 - Project: `jarrydaubert`
 - Preview: `https://jarrydaubert-gggh0lihh-jgf-project-javelin.vercel.app`
 - Default production alias: `https://jarrydaubert.vercel.app`
-
-Before connecting `jarrydaubert.com`, confirm the Vercel owner/team and project are the intended production home.
 
 ## Scope
 
