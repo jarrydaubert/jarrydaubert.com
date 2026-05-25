@@ -1,12 +1,13 @@
 # TODO
 
-- Connect real GitHub/LinkedIn/email
-- Add first full essay
-- Add proper project case studies
-- Add favicon
-- Add Open Graph image
-- Confirm Vercel Analytics
-- Run Lighthouse before launch
-- Connect domain in Vercel
-- Point Cloudflare DNS to Vercel
+- Done: Day 1 shell complete
+- Done: Content structure complete
+- Done: Deployment readiness pass complete
+- Deploy to Vercel
+- Connect jarrydaubert.com
+- Point DNS via Cloudflare
+- Write first essay
+- Add real project case studies
+- Add real GitHub/LinkedIn/email links
+- Run Lighthouse after deployment
 - Submit to Google Search Console after launch

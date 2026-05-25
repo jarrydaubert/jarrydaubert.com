@@ -20,6 +20,9 @@ const workingPrinciples = [
 export const metadata: Metadata = {
   title: "About",
   description: siteDescription,
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

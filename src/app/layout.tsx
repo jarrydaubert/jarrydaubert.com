@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jarrydaubert.com"),
   title: {
     default: "Jarryd Aubert",
     template: "%s | Jarryd Aubert",

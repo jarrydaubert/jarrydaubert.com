@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     absolute: "Jarryd Aubert",
   },
   description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function Home() {

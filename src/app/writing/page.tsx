@@ -8,6 +8,9 @@ const siteDescription =
 export const metadata: Metadata = {
   title: "Writing",
   description: siteDescription,
+  alternates: {
+    canonical: "/writing",
+  },
 };
 
 export default function WritingPage() {

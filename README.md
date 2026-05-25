@@ -33,9 +33,15 @@ bun run build
 
 `bun run check` runs Biome checks and a production Next build.
 
-## Deployment
+## Deploy
 
-Deploy to Vercel as a standard Next.js project. Do not add `output: 'export'`; Vercel handles static rendering automatically for this shell.
+Hosted on Vercel as a standard Next.js project. Do not add `output: 'export'`; Vercel handles static rendering automatically for this shell.
+
+- Package manager: Bun
+- Install command: `bun install`
+- Build command: `bun run build`
+- Domain: `jarrydaubert.com`
+- DNS: Cloudflare later
 
 ## Scope
 
