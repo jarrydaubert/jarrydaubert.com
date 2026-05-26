@@ -50,7 +50,7 @@ export default function Home() {
           <div className="space-y-5">
             <h1
               id="home-title"
-              className="max-w-3xl text-5xl font-semibold leading-[1.03] tracking-normal text-[var(--color-fg)] sm:text-6xl lg:text-7xl"
+              className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-[var(--color-fg)] sm:text-6xl lg:text-6xl"
             >
               Useful software, shipped with judgement.
             </h1>
@@ -131,7 +131,7 @@ export default function Home() {
             id="selected-work"
             className="text-2xl font-semibold text-[var(--color-fg)]"
           >
-            Case-file entries.
+            Selected work.
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-[var(--color-muted)]">
             Selected products, client work, and experiments that show the shape
