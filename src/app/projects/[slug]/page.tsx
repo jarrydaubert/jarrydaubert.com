@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
+import { buildMetadata } from "@/lib/metadata";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -27,13 +28,11 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return buildMetadata({
     title: project.name,
     description: `${project.summary} ${project.theme}`,
-    alternates: {
-      canonical: `/projects/${project.slug}`,
-    },
-  };
+    path: `/projects/${project.slug}`,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -47,28 +46,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <article className="max-w-3xl space-y-10">
       <header className="space-y-4">
-        <p className="text-sm font-medium text-stone-600 dark:text-stone-300">
+        <p className="text-sm font-medium text-[var(--color-accent)]">
           Project
         </p>
-        <h1 className="text-3xl font-semibold text-stone-950 dark:text-stone-50 sm:text-4xl">
+        <h1 className="text-3xl font-semibold text-[var(--color-fg)] sm:text-4xl">
           {project.name}
         </h1>
-        <p className="text-lg leading-8 text-stone-700 dark:text-stone-200">
+        <p className="text-lg leading-8 text-[var(--color-muted)]">
           {project.summary}
         </p>
       </header>
 
-      <div className="space-y-5 text-base leading-8 text-stone-600 dark:text-stone-300">
+      <div className="space-y-5 text-base leading-8 text-[var(--color-muted)]">
         <p>
-          <span className="font-medium text-stone-800 dark:text-stone-100">
+          <span className="font-medium text-[var(--color-fg)]">
             Theme/focus:
           </span>{" "}
           {project.theme}
         </p>
         <p>
-          <span className="font-medium text-stone-800 dark:text-stone-100">
-            Status:
-          </span>{" "}
+          <span className="font-medium text-[var(--color-fg)]">Status:</span>{" "}
           {project.status}
         </p>
         <p>Full case study coming soon.</p>
@@ -76,7 +73,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p>
             <a
               href={project.liveUrl}
-              className="font-medium text-stone-800 underline decoration-stone-300 underline-offset-4 outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-100 dark:decoration-stone-600 dark:hover:text-white dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+              className="font-medium text-[var(--color-fg)] underline decoration-[var(--color-border-hover)] underline-offset-4 outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
               target="_blank"
               rel="noreferrer"
             >
@@ -88,7 +85,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <Link
         href="/projects"
-        className="inline-flex rounded border border-stone-300 px-3 py-2 text-sm font-medium text-stone-800 outline-none hover:border-stone-500 hover:text-stone-950 focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:border-stone-700 dark:text-stone-200 dark:hover:border-stone-500 dark:hover:text-stone-50 dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+        className="inline-flex rounded-sm border border-[var(--color-border)] px-3 py-2 text-sm font-medium text-[var(--color-fg)] outline-none transition-colors hover:border-[var(--color-border-hover)] hover:text-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
       >
         Back to projects
       </Link>

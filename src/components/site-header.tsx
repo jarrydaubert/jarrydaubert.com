@@ -1,27 +1,22 @@
 import Link from "next/link";
-
-const navItems = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/writing", label: "Writing" },
-];
+import { site } from "@/config/site";
 
 export function SiteHeader() {
   return (
-    <header className="flex flex-col gap-5 border-b border-stone-200 pb-7 dark:border-stone-800 sm:flex-row sm:items-center sm:justify-between">
+    <header className="flex flex-col gap-5 border-b border-[var(--color-border)] pb-7 sm:flex-row sm:items-center sm:justify-between">
       <Link
         href="/"
-        className="text-lg font-semibold tracking-normal text-stone-950 outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:text-stone-50 dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+        className="text-lg font-semibold tracking-normal text-[var(--color-fg)] outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
       >
-        Jarryd Aubert
+        {site.name}
       </Link>
       <nav aria-label="Primary navigation">
-        <ul className="flex flex-wrap gap-x-6 gap-y-3 text-[0.95rem] leading-6 text-stone-700 dark:text-stone-300">
-          {navItems.map((item) => (
+        <ul className="flex flex-wrap gap-x-6 gap-y-3 text-[0.95rem] leading-6 text-[var(--color-muted)]">
+          {site.nav.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="font-medium outline-none hover:text-stone-950 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-50 dark:hover:text-stone-50 dark:focus-visible:ring-stone-50 dark:focus-visible:ring-offset-stone-950"
+                className="font-medium outline-none transition-colors hover:text-[var(--color-fg)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
               >
                 {item.label}
               </Link>
