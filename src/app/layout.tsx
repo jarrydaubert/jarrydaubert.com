@@ -25,7 +25,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10">
+        <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10 xl:max-w-[74rem]">
           <SiteHeader />
           <main id="main-content" className="flex-1 py-14 sm:py-20">
             {children}

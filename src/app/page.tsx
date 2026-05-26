@@ -54,7 +54,7 @@ export default function Home() {
             >
               Useful software, shipped with judgement.
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl sm:leading-9">
+            <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl sm:leading-9 lg:max-w-[44rem]">
               I design, build, test, and ship small AI-assisted software
               products, with the quality discipline to know what is ready,
               risky, or not worth shipping.
