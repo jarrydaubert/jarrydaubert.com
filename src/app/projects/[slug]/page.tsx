@@ -89,7 +89,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <span className="font-medium text-[var(--color-fg)]">Status:</span>{" "}
           {project.status}
         </p>
-        <p>Full case study coming soon.</p>
+        <p>
+          <span className="font-medium text-[var(--color-fg)]">
+            Role/focus:
+          </span>{" "}
+          {project.roleFocus}
+        </p>
+        <p>
+          <span className="font-medium text-[var(--color-fg)]">
+            Quality focus:
+          </span>{" "}
+          {project.qualityFocus}
+        </p>
         {project.liveUrl ? (
           <p>
             <a

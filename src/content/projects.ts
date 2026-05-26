@@ -3,8 +3,9 @@ export type Project = {
   slug: string;
   summary: string;
   theme: string;
+  roleFocus: string;
+  qualityFocus: string;
   status: string;
-  caseStudyStatus: string;
   previewImage?: {
     src: string;
     alt: string;
@@ -18,8 +19,9 @@ export const projects: Project[] = [
     slug: "prosepal",
     summary: "AI-assisted greeting-card writing app.",
     theme: "Product building, AI-assisted writing, tone/occasion fit.",
-    status: "In progress.",
-    caseStudyStatus: "Coming soon.",
+    roleFocus: "Product build, AI-assisted writing workflow, tone controls.",
+    qualityFocus: "Generic-output checks, tone review, edge-case occasions.",
+    status: "Live product.",
     liveUrl: "https://www.prosepal.app/",
     previewImage: {
       src: "https://www.prosepal.app/og-image-v5.jpg",
@@ -32,8 +34,9 @@ export const projects: Project[] = [
     summary: "UK PAYE/tax calculator product.",
     theme:
       "Practical finance tooling, correctness, edge cases, release evidence.",
-    status: "In progress.",
-    caseStudyStatus: "Coming soon.",
+    roleFocus: "Calculator UX, product build, release checks.",
+    qualityFocus: "Correctness, edge cases, annualised salary warnings.",
+    status: "Live product.",
     liveUrl: "https://payetax.co.uk/",
     previewImage: {
       src: "https://payetax.co.uk/images/og-image.png",
@@ -46,8 +49,9 @@ export const projects: Project[] = [
     summary: "Fast, SEO-focused client website.",
     theme:
       "Static site delivery, analytics, SEO, performance, client handover.",
-    status: "Live/client project.",
-    caseStudyStatus: "Coming soon.",
+    roleFocus: "Static rebuild, deployment, analytics, DNS/support handover.",
+    qualityFocus: "Performance, SEO, forms, Search Console.",
+    status: "Live client project.",
     liveUrl: "https://www.evolutionpadel.uk/",
     previewImage: {
       src: "https://www.evolutionpadel.uk/images/lobby-feature-wall.jpeg",
@@ -61,8 +65,9 @@ export const projects: Project[] = [
       "Experiments with Codex, Hermes/R2, local models, and evidence-led AI workflows.",
     theme:
       "AI-assisted development, operator workflows, verification, release discipline.",
+    roleFocus: "Operator workflow experiments, local models, release evidence.",
+    qualityFocus: "Prompt boundaries, diff review, checks, rollback thinking.",
     status: "Ongoing experiments.",
-    caseStudyStatus: "Notes coming soon.",
   },
 ];
 

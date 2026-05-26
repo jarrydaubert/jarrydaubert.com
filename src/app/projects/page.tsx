@@ -25,7 +25,6 @@ export default function ProjectsPage() {
         <p className="text-base leading-7 text-[var(--color-muted)]">
           Selected products, client work, and experiments across practical
           software quality, AI-assisted delivery, and small product shipping.
-          Proper case studies will replace these starter notes.
         </p>
       </header>
 
@@ -35,10 +34,12 @@ export default function ProjectsPage() {
             key={project.name}
             name={project.name}
             summary={project.summary}
+            href={`/projects/${project.slug}`}
             headingLevel={2}
             theme={project.theme}
+            roleFocus={project.roleFocus}
+            qualityFocus={project.qualityFocus}
             status={project.status}
-            caseStudyStatus={project.caseStudyStatus}
             liveUrl={project.liveUrl}
             previewImage={project.previewImage}
           />

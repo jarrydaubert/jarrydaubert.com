@@ -15,7 +15,7 @@ export function WritingCard({
   headingLevel = 2,
   publishedAt,
   summary,
-  status = "Coming soon.",
+  status,
 }: WritingCardProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   const content = (
@@ -30,15 +30,15 @@ export function WritingCard({
           </p>
         ) : null}
       </div>
-      <p className="mt-6 text-sm text-[var(--color-subtle)]">
-        {status}
-        {publishedAt ? (
-          <>
-            <span aria-hidden="true"> / </span>
+      {status || publishedAt ? (
+        <p className="mt-6 text-sm text-[var(--color-subtle)]">
+          {status}
+          {status && publishedAt ? <span aria-hidden="true"> / </span> : null}
+          {publishedAt ? (
             <time dateTime={publishedAt}>{publishedAt}</time>
-          </>
-        ) : null}
-      </p>
+          ) : null}
+        </p>
+      ) : null}
     </>
   );
 

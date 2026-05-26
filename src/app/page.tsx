@@ -27,7 +27,7 @@ export default function Home() {
       value: "ProsePal, PayeTax, Evolution Padel",
     },
     {
-      label: "Release bias",
+      label: "Release principles",
       value: "acceptance criteria, checks, metadata, ownership",
     },
   ];
@@ -55,8 +55,9 @@ export default function Home() {
               Useful software, shipped with judgement.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl sm:leading-9">
-              I build small software products, stress-test them, and write about
-              the judgement required to ship AI-assisted work properly.
+              I design, build, test, and ship small AI-assisted software
+              products, with the quality discipline to know what is ready,
+              risky, or not worth shipping.
             </p>
           </div>
         </div>
@@ -145,8 +146,9 @@ export default function Home() {
               name={project.name}
               summary={project.summary}
               href={`/projects/${project.slug}`}
-              caseStudyStatus={project.caseStudyStatus}
               previewImage={project.previewImage}
+              qualityFocus={project.qualityFocus}
+              roleFocus={project.roleFocus}
               status={project.status}
               theme={project.theme}
             />

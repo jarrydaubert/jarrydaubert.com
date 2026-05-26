@@ -4,7 +4,6 @@ import Image from "next/image";
 type ProjectCardProps = {
   name: string;
   summary: string;
-  caseStudyStatus?: string;
   href?: string;
   headingLevel?: 2 | 3;
   liveUrl?: string;
@@ -12,6 +11,8 @@ type ProjectCardProps = {
     src: string;
     alt: string;
   };
+  qualityFocus?: string;
+  roleFocus?: string;
   status?: string;
   theme?: string;
 };
@@ -19,17 +20,21 @@ type ProjectCardProps = {
 export function ProjectCard({
   name,
   summary,
-  caseStudyStatus,
   href,
   headingLevel = 3,
   liveUrl,
   previewImage,
+  qualityFocus,
+  roleFocus,
   status,
   theme,
 }: ProjectCardProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
-  const content = (
-    <>
+  const className =
+    "rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-border-hover)] hover:bg-[var(--color-surface-elevated)]";
+
+  return (
+    <article className={className}>
       {previewImage ? (
         <div className="mb-5 overflow-hidden rounded-sm border border-[var(--color-border)] bg-[var(--color-bg)]">
           <Image
@@ -57,8 +62,24 @@ export function ProjectCard({
           </p>
         ) : null}
       </div>
-      {status || caseStudyStatus || liveUrl ? (
-        <div className="mt-7 space-y-3 border-t border-[var(--color-border)] pt-5 text-sm text-[var(--color-muted)]">
+      {status || roleFocus || qualityFocus || liveUrl || href ? (
+        <div className="mt-7 space-y-3 border-t border-[var(--color-border)] pt-5 text-sm leading-6 text-[var(--color-muted)]">
+          {roleFocus ? (
+            <p>
+              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
+                Role/focus
+              </span>{" "}
+              {roleFocus}
+            </p>
+          ) : null}
+          {qualityFocus ? (
+            <p>
+              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
+                Quality focus
+              </span>{" "}
+              {qualityFocus}
+            </p>
+          ) : null}
           {status ? (
             <p>
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
@@ -67,16 +88,16 @@ export function ProjectCard({
               {status}
             </p>
           ) : null}
-          {caseStudyStatus ? (
-            <p>
-              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
-                Case study
-              </span>{" "}
-              {caseStudyStatus}
-            </p>
-          ) : null}
-          {liveUrl ? (
-            <p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 pt-1">
+            {href ? (
+              <Link
+                href={href}
+                className="font-medium text-[var(--color-fg)] underline decoration-[var(--color-border-hover)] underline-offset-4 outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)]"
+              >
+                View project note
+              </Link>
+            ) : null}
+            {liveUrl ? (
               <a
                 href={liveUrl}
                 className="font-medium text-[var(--color-fg)] underline decoration-[var(--color-border-hover)] underline-offset-4 outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)]"
@@ -85,29 +106,10 @@ export function ProjectCard({
               >
                 Live site
               </a>
-            </p>
-          ) : null}
-          {href ? (
-            <p className="font-medium text-[var(--color-fg)]">Open case file</p>
-          ) : null}
+            ) : null}
+          </div>
         </div>
       ) : null}
-    </>
+    </article>
   );
-
-  const className =
-    "rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors";
-
-  if (href) {
-    return (
-      <Link
-        href={href}
-        className={`${className} block outline-none hover:border-[var(--color-border-hover)] hover:bg-[var(--color-surface-elevated)] focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]`}
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  return <article className={className}>{content}</article>;
 }
