@@ -5,6 +5,10 @@ export type Project = {
   theme: string;
   status: string;
   caseStudyStatus: string;
+  previewImage?: {
+    src: string;
+    alt: string;
+  };
   liveUrl?: string;
 };
 
@@ -16,6 +20,11 @@ export const projects: Project[] = [
     theme: "Product building, AI-assisted writing, tone/occasion fit.",
     status: "In progress.",
     caseStudyStatus: "Coming soon.",
+    liveUrl: "https://www.prosepal.app/",
+    previewImage: {
+      src: "https://www.prosepal.app/og-image-v5.jpg",
+      alt: "ProsePal social preview.",
+    },
   },
   {
     name: "PayeTax",
@@ -25,6 +34,11 @@ export const projects: Project[] = [
       "Practical finance tooling, correctness, edge cases, release evidence.",
     status: "In progress.",
     caseStudyStatus: "Coming soon.",
+    liveUrl: "https://payetax.co.uk/",
+    previewImage: {
+      src: "https://payetax.co.uk/images/og-image.png",
+      alt: "PayeTax social preview.",
+    },
   },
   {
     name: "Evolution Padel",
@@ -34,7 +48,11 @@ export const projects: Project[] = [
       "Static site delivery, analytics, SEO, performance, client handover.",
     status: "Live/client project.",
     caseStudyStatus: "Coming soon.",
-    liveUrl: "https://evolutionpadel.uk",
+    liveUrl: "https://www.evolutionpadel.uk/",
+    previewImage: {
+      src: "https://www.evolutionpadel.uk/images/lobby-feature-wall.jpeg",
+      alt: "Evolution Padel reception and feature wall render.",
+    },
   },
   {
     name: "AI operator experiments",

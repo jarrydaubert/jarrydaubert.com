@@ -5,15 +5,15 @@ This is a staged backlog for `jarrydaubert.com`. The site is live, so architectu
 ## Current Launch And Ops
 
 - [ ] Wait for DNSSEC to move from pending to active.
-- [ ] Enable or confirm Dependabot alerts in GitHub settings.
-- [ ] Enable or confirm Dependabot security updates in GitHub settings.
-- [ ] Enable or confirm secret scanning and push protection in GitHub settings.
-- [ ] Enable or confirm branch protection/ruleset for `main` after CI passes.
-- [ ] Consider requiring CI status checks on `main`.
+- [x] Enable or confirm Dependabot alerts in GitHub settings.
+- [x] Enable or confirm Dependabot security updates in GitHub settings.
+- [x] Enable or confirm secret scanning and push protection in GitHub settings.
+- [x] Enable or confirm branch protection/ruleset for `main` after CI passes.
+- [x] Consider requiring CI status checks on `main`.
 - [ ] Human copy review.
-- [ ] Add real GitHub link on the site.
+- [x] Add real GitHub link on the site.
 - [ ] Run Lighthouse after deployment.
-- [ ] Submit to Google Search Console after launch.
+- [x] Submit to Google Search Console after launch.
 - [ ] Optional later: configure send-as or full mailbox if needed.
 
 ## Architecture Principles

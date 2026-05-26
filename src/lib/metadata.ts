@@ -7,6 +7,12 @@ type BuildMetadataOptions = {
   title?: string;
   absoluteTitle?: boolean;
   description?: string;
+  image?: {
+    url: string;
+    width?: number;
+    height?: number;
+    alt: string;
+  };
   path?: string;
   type?: MetadataType;
   publishedAt?: string;
@@ -30,6 +36,7 @@ export function buildMetadata({
   title,
   absoluteTitle = false,
   description = site.description,
+  image = site.ogImage,
   path = "/",
   type = "website",
   publishedAt,
@@ -45,7 +52,6 @@ export function buildMetadata({
         ? { absolute: title }
         : title;
   const displayTitle = title ?? site.name;
-  const image = site.ogImage;
 
   return {
     metadataBase: new URL(site.url),
@@ -69,8 +75,8 @@ export function buildMetadata({
       images: [
         {
           url: image.url,
-          width: image.width,
-          height: image.height,
+          width: image.width ?? site.ogImage.width,
+          height: image.height ?? site.ogImage.height,
           alt: image.alt,
         },
       ],

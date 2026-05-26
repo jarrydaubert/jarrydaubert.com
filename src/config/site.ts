@@ -16,6 +16,7 @@ export const site = {
     alt: "Jarryd Aubert",
   },
   socials: {
+    github: "https://github.com/jarrydaubert/jarrydaubert.com",
     linkedin: "https://www.linkedin.com/in/jarrydaubert/",
   },
   nav: [
@@ -32,5 +33,5 @@ export const personJsonLd = {
   url: site.url,
   email: site.email,
   jobTitle: site.jobTitle,
-  sameAs: [site.socials.linkedin],
+  sameAs: [site.socials.github, site.socials.linkedin],
 } as const;

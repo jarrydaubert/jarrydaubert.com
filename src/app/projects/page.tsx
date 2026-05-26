@@ -40,6 +40,7 @@ export default function ProjectsPage() {
             status={project.status}
             caseStudyStatus={project.caseStudyStatus}
             liveUrl={project.liveUrl}
+            previewImage={project.previewImage}
           />
         ))}
       </div>

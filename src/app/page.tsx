@@ -146,6 +146,7 @@ export default function Home() {
               summary={project.summary}
               href={`/projects/${project.slug}`}
               caseStudyStatus={project.caseStudyStatus}
+              previewImage={project.previewImage}
               status={project.status}
               theme={project.theme}
             />

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type ProjectCardProps = {
   name: string;
@@ -7,6 +8,10 @@ type ProjectCardProps = {
   href?: string;
   headingLevel?: 2 | 3;
   liveUrl?: string;
+  previewImage?: {
+    src: string;
+    alt: string;
+  };
   status?: string;
   theme?: string;
 };
@@ -18,12 +23,26 @@ export function ProjectCard({
   href,
   headingLevel = 3,
   liveUrl,
+  previewImage,
   status,
   theme,
 }: ProjectCardProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   const content = (
     <>
+      {previewImage ? (
+        <div className="mb-5 overflow-hidden rounded-sm border border-[var(--color-border)] bg-[var(--color-bg)]">
+          <Image
+            src={previewImage.src}
+            alt={previewImage.alt}
+            width={1200}
+            height={630}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            loading="lazy"
+            className="aspect-[1200/630] w-full object-cover"
+          />
+        </div>
+      ) : null}
       <div className="space-y-4">
         <Heading className="text-lg font-semibold text-[var(--color-fg)]">
           {name}
