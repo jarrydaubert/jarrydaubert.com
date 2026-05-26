@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
@@ -31,6 +32,12 @@ export async function generateMetadata({
   return buildMetadata({
     title: project.name,
     description: `${project.summary} ${project.theme}`,
+    image: project.previewImage
+      ? {
+          url: project.previewImage.src,
+          alt: project.previewImage.alt,
+        }
+      : undefined,
     path: `/projects/${project.slug}`,
   });
 }
@@ -56,6 +63,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {project.summary}
         </p>
       </header>
+
+      {project.previewImage ? (
+        <div className="overflow-hidden rounded-md border border-[var(--color-border)] bg-[var(--color-surface)]">
+          <Image
+            src={project.previewImage.src}
+            alt={project.previewImage.alt}
+            width={1200}
+            height={630}
+            priority
+            sizes="(min-width: 768px) 48rem, 100vw"
+            className="aspect-[1200/630] w-full object-cover"
+          />
+        </div>
+      ) : null}
 
       <div className="space-y-5 text-base leading-8 text-[var(--color-muted)]">
         <p>
