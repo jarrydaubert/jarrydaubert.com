@@ -2,6 +2,7 @@
   "name": "jarrydaubert",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "bun@1.3.14",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +13,10 @@
     "lint": "eslint .",
     "lint:fix": "biome check --write .",
     "typecheck": "next typegen && tsc --noEmit",
-    "check": "bun run format:check && bun run lint:biome && bun run lint && bun run typecheck && bun run build"
+    "check:repo": "bun run format:check && bun run lint:biome && bun run lint && bun run typecheck",
+    "fix-all": "biome check --write . && bun run typecheck",
+    "harness:local": "bun run check:repo && bun run build",
+    "check": "bun run check:repo && bun run build"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
