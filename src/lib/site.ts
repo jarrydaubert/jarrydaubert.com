@@ -9,12 +9,6 @@ export const site = {
     "Jarryd Aubert is a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.",
   jobTitle: "Senior QA Specialist / Product Builder",
   locale: "en_GB",
-  ogImage: {
-    url: "/og-image.svg",
-    width: 1200,
-    height: 630,
-    alt: "Jarryd Aubert",
-  },
   socials: {
     github: "https://github.com/jarrydaubert/jarrydaubert.com",
     linkedin: "https://www.linkedin.com/in/jarrydaubert/",
@@ -35,3 +29,25 @@ export const personJsonLd = {
   jobTitle: site.jobTitle,
   sameAs: [site.socials.github, site.socials.linkedin],
 } as const;
+
+type ArticleInput = {
+  title: string;
+  description: string;
+  publishedAt: string;
+  updatedAt?: string;
+  href: string;
+};
+
+export function articleJsonLd(essay: ArticleInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: essay.title,
+    description: essay.description,
+    datePublished: essay.publishedAt,
+    dateModified: essay.updatedAt ?? essay.publishedAt,
+    url: `${site.url}${essay.href}`,
+    mainEntityOfPage: `${site.url}${essay.href}`,
+    author: { "@type": "Person", name: site.name, url: site.url },
+  };
+}
