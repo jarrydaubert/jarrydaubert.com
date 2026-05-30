@@ -1,113 +1,52 @@
-import Link from "next/link";
-import Image from "next/image";
+import { Card } from "@/components/card";
+import { Figure } from "@/components/figure";
+import type { Project } from "@/lib/content";
 
-type ProjectCardProps = {
-  name: string;
-  summary: string;
-  caseStudyStatus?: string;
-  href?: string;
-  headingLevel?: 2 | 3;
-  liveUrl?: string;
-  previewImage?: {
-    src: string;
-    alt: string;
-  };
-  status?: string;
-  theme?: string;
-};
+const LABEL = "text-xs font-semibold uppercase tracking-[0.14em] text-accent";
 
+/**
+ * Always-linked project teaser → links to the case file. The live-site link
+ * lives on the detail page (a card cannot nest an interactive anchor).
+ */
 export function ProjectCard({
-  name,
-  summary,
-  caseStudyStatus,
-  href,
-  headingLevel = 3,
-  liveUrl,
-  previewImage,
-  status,
-  theme,
-}: ProjectCardProps) {
+  project,
+  headingLevel = 2,
+}: {
+  project: Project;
+  headingLevel?: 2 | 3;
+}) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
-  const content = (
-    <>
-      {previewImage ? (
-        <div className="mb-5 overflow-hidden rounded-sm border border-[var(--color-border)] bg-[var(--color-bg)]">
-          <Image
-            src={previewImage.src}
-            alt={previewImage.alt}
-            width={1200}
-            height={630}
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            loading="lazy"
-            className="aspect-[1200/630] w-full object-cover"
-          />
-        </div>
+
+  return (
+    <Card href={project.href}>
+      {project.previewImage ? (
+        <Figure
+          src={project.previewImage.src}
+          alt={project.previewImage.alt}
+          width={project.previewImage.width}
+          height={project.previewImage.height}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="mb-5"
+        />
       ) : null}
       <div className="space-y-4">
-        <Heading className="text-lg font-semibold text-[var(--color-fg)]">
-          {name}
+        <Heading className="text-lg font-semibold text-fg">
+          {project.name}
         </Heading>
-        <p className="text-sm leading-6 text-[var(--color-muted)]">{summary}</p>
-        {theme ? (
-          <p className="text-sm leading-6 text-[var(--color-muted)]">
-            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
-              Focus
-            </span>{" "}
-            {theme}
-          </p>
-        ) : null}
+        <p className="text-sm leading-6 text-muted">{project.summary}</p>
+        <p className="text-sm leading-6 text-muted">
+          <span className={LABEL}>Focus</span> {project.theme}
+        </p>
       </div>
-      {status || caseStudyStatus || liveUrl ? (
-        <div className="mt-7 space-y-3 border-t border-[var(--color-border)] pt-5 text-sm text-[var(--color-muted)]">
-          {status ? (
-            <p>
-              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
-                Current state
-              </span>{" "}
-              {status}
-            </p>
-          ) : null}
-          {caseStudyStatus ? (
-            <p>
-              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
-                Case study
-              </span>{" "}
-              {caseStudyStatus}
-            </p>
-          ) : null}
-          {liveUrl ? (
-            <p>
-              <a
-                href={liveUrl}
-                className="font-medium text-[var(--color-fg)] underline decoration-[var(--color-border-hover)] underline-offset-4 outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)]"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live site
-              </a>
-            </p>
-          ) : null}
-          {href ? (
-            <p className="font-medium text-[var(--color-fg)]">Open case file</p>
-          ) : null}
-        </div>
-      ) : null}
-    </>
+      <div className="mt-7 space-y-3 border-t border-border pt-5 text-sm text-muted">
+        <p>
+          <span className={LABEL}>Current state</span> {project.status}
+        </p>
+        <p>
+          <span className={LABEL}>Case study</span> {project.caseStudyStatus}
+        </p>
+        <p className="font-medium text-fg">Open case file</p>
+      </div>
+    </Card>
   );
-
-  const className =
-    "rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors";
-
-  if (href) {
-    return (
-      <Link
-        href={href}
-        className={`${className} block outline-none hover:border-[var(--color-border-hover)] hover:bg-[var(--color-surface-elevated)] focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]`}
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  return <article className={className}>{content}</article>;
 }
