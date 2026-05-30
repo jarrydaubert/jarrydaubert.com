@@ -135,7 +135,7 @@ export default function AboutPage() {
         >
           <h2
             id="operating-profile"
-            className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+            className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-[0.16em] text-subtle"
           >
             Operating profile
           </h2>

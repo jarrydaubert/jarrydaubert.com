@@ -44,13 +44,13 @@ const components = {
   ),
   code: (props: ComponentProps<"code">) => (
     <code
-      className="rounded bg-surface px-1.5 py-0.5 text-[0.9em] text-fg"
+      className="rounded bg-surface px-1.5 py-0.5 font-mono text-[0.85em] text-fg"
       {...props}
     />
   ),
   pre: (props: ComponentProps<"pre">) => (
     <pre
-      className="overflow-x-auto rounded-md border border-border bg-surface p-4 text-sm [&_code]:bg-transparent [&_code]:p-0"
+      className="overflow-x-auto rounded-md border border-border bg-surface p-4 font-mono text-sm [&_code]:bg-transparent [&_code]:p-0"
       {...props}
     />
   ),
@@ -86,7 +86,5 @@ export async function Prose({ source }: { source: string }) {
     },
   });
 
-  return (
-    <div className="space-y-7 text-base leading-8 text-muted">{content}</div>
-  );
+  return <div className="space-y-7 text-base leading-8 text-fg">{content}</div>;
 }

@@ -20,6 +20,11 @@ export function SiteHeader() {
               </Link>
             </li>
           ))}
+          <li>
+            <Link href={`mailto:${site.email}`} variant="nav">
+              Contact
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

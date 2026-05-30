@@ -16,6 +16,8 @@
   --color-ring: #d6ad67;
   --color-accent: #c49a55;
   --color-accent-soft: #2b2419;
+  --font-mono:
+    ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, monospace;
 }
 
 :root {
@@ -24,13 +26,12 @@
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(
-      circle at 20% 0%,
-      color-mix(in srgb, var(--color-accent) 14%, transparent),
-      transparent 34rem
-    ),
-    linear-gradient(145deg, #17130f 0%, var(--color-bg) 42%, #0d0c0a 100%);
+  background: linear-gradient(
+    145deg,
+    #17130f 0%,
+    var(--color-bg) 42%,
+    #0d0c0a 100%
+  );
   color: var(--color-fg);
   font-family:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -77,4 +78,16 @@ body {
   transition:
     border-color 150ms ease,
     background-color 150ms ease;
+}
+
+/* Honor reduced-motion before any transform/reveal motion lands site-wide. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

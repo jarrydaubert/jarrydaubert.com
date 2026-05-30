@@ -23,7 +23,7 @@ const operatingNotes = [
 ];
 
 const LABEL = "text-xs font-semibold uppercase tracking-[0.14em] text-subtle";
-const EYEBROW = "text-xs font-semibold uppercase tracking-[0.16em] text-accent";
+const EYEBROW = "text-xs font-semibold uppercase tracking-[0.16em] text-subtle";
 
 export default function Home() {
   const firstEssay = allEssays[0];
@@ -37,7 +37,7 @@ export default function Home() {
         aria-labelledby="home-title"
       >
         <div className="max-w-3xl space-y-7">
-          <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-subtle uppercase">
             QA-minded product builder
           </p>
           <div className="space-y-5">
@@ -52,10 +52,19 @@ export default function Home() {
               the judgement required to ship AI-assisted work properly.
             </p>
           </div>
+          <div>
+            <Link
+              href={`mailto:${site.email}`}
+              variant="back"
+              className="border-transparent bg-accent font-semibold text-bg hover:border-transparent hover:bg-ring hover:text-bg"
+            >
+              Email me
+            </Link>
+          </div>
         </div>
 
         <div className="rounded-md border border-border bg-[color-mix(in_srgb,var(--color-surface)_86%,transparent)] p-5 [--focus-offset-color:var(--color-surface)]">
-          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold tracking-[0.16em] text-accent uppercase">
+          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold tracking-[0.16em] text-subtle uppercase">
             Operating note
           </p>
           <dl className="space-y-5">
