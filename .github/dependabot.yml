@@ -18,11 +18,11 @@ updates:
       tooling:
         patterns:
           - "@biomejs/*"
-          - "eslint*"
           - "typescript"
           - "@types/*"
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "vitest"
         update-types:
           - "minor"
           - "patch"
