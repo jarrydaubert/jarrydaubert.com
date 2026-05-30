@@ -23,7 +23,7 @@ const components = {
     ),
   h2: (props: ComponentProps<"h2">) => (
     <h2
-      className="scroll-mt-24 pt-4 text-xl font-semibold text-fg"
+      className="scroll-mt-24 pt-4 text-2xl font-semibold text-fg"
       {...props}
     />
   ),

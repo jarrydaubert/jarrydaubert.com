@@ -6,18 +6,22 @@
    independent hex literal; tokens.test.ts fails CI on drift or low contrast. */
 @theme {
   --color-bg: #11100d;
-  --color-surface: #171512;
-  --color-surface-elevated: #1e1a16;
+  --color-surface: #1c1916;
+  --color-surface-elevated: #26211b;
   --color-fg: #f2eee7;
   --color-muted: #b9b0a3;
-  --color-subtle: #8d8475;
+  --color-subtle: #968d7e;
   --color-border: #342d25;
   --color-border-hover: #5a4b38;
   --color-ring: #d6ad67;
   --color-accent: #c49a55;
   --color-accent-soft: #2b2419;
+  --font-display: var(--font-display-loaded), ui-serif, Georgia, serif;
   --font-mono:
-    ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, monospace;
+    var(--font-mono-loaded), ui-monospace, "SF Mono", "Cascadia Code",
+    "JetBrains Mono", Menlo, monospace;
+  --shadow-elevated:
+    0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.55);
 }
 
 :root {
@@ -41,6 +45,14 @@ body {
 ::selection {
   background: var(--color-ring);
   color: #17130f;
+}
+
+/* The editorial display voice — applied to every heading from one place. Body
+   stays on the system sans stack (set on body) for reading speed. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
 }
 
 /* Keyboard focus ring. Offset color defaults to the page bg but inherits an
@@ -80,7 +92,10 @@ body {
     background-color 150ms ease;
 }
 
-/* Honor reduced-motion before any transform/reveal motion lands site-wide. */
+/* Honor reduced-motion before any transform/reveal motion lands site-wide.
+   !important is the canonical pattern here: the reset must override any
+   animation/transition regardless of where it was declared. */
+/* biome-ignore-start lint/complexity/noImportantStyles: reduced-motion reset must win over all motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -91,3 +106,4 @@ body {
     scroll-behavior: auto !important;
   }
 }
+/* biome-ignore-end lint/complexity/noImportantStyles: reduced-motion reset must win over all motion */

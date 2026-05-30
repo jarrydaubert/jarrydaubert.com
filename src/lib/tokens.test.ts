@@ -46,9 +46,14 @@ const PAIRS: Array<[string, string]> = [
   ["muted", "surface-elevated"],
   ["subtle", "bg"],
   ["subtle", "surface"],
+  ["subtle", "surface-elevated"],
   ["accent", "bg"],
   ["accent", "surface"],
   ["accent", "surface-elevated"],
+  // The highlighted essay box uses accent-soft as a text background.
+  ["fg", "accent-soft"],
+  ["muted", "accent-soft"],
+  ["subtle", "accent-soft"],
 ];
 
 describe("design tokens", () => {
