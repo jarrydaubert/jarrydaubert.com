@@ -10,12 +10,12 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "lint:biome": "biome lint .",
-    "lint": "eslint .",
     "lint:fix": "biome check --write .",
     "typecheck": "next typegen && tsc --noEmit",
-    "check:repo": "bun run format:check && bun run lint:biome && bun run lint && bun run typecheck",
+    "test": "vitest run",
     "fix-all": "biome check --write . && bun run typecheck",
     "harness:local": "bun run check:repo && bun run build",
+    "check:repo": "bun run format:check && bun run lint:biome && bun run typecheck && bun run test",
     "check": "bun run check:repo && bun run build"
   },
   "dependencies": {
@@ -43,6 +43,9 @@
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
+  },
+  "overrides": {
+    "postcss": "8.5.15"
   },
   "ignoreScripts": [
     "sharp",
