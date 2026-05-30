@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/config/site";
+import { site } from "@/lib/site";
 
 type MetadataType = "website" | "article";
 
@@ -7,12 +7,6 @@ type BuildMetadataOptions = {
   title?: string;
   absoluteTitle?: boolean;
   description?: string;
-  image?: {
-    url: string;
-    width?: number;
-    height?: number;
-    alt: string;
-  };
   path?: string;
   type?: MetadataType;
   publishedAt?: string;
@@ -23,7 +17,6 @@ export function absoluteUrl(path = "/") {
   if (path.startsWith("http://") || path.startsWith("https://")) {
     return path;
   }
-
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   return `${site.url}${normalizedPath}`;
 }
@@ -32,11 +25,15 @@ export function serializeJsonLd(data: unknown) {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
+/**
+ * Single metadata builder. OG/Twitter images are NOT set here — the file-based
+ * `opengraph-image` convention owns them for every route (default + per-essay),
+ * so social cards are real PNGs, never the old SVG.
+ */
 export function buildMetadata({
   title,
   absoluteTitle = false,
   description = site.description,
-  image = site.ogImage,
   path = "/",
   type = "website",
   publishedAt,
@@ -44,10 +41,7 @@ export function buildMetadata({
 }: BuildMetadataOptions = {}): Metadata {
   const metadataTitle =
     title === undefined
-      ? {
-          default: site.name,
-          template: `%s | ${site.name}`,
-        }
+      ? { default: site.name, template: `%s | ${site.name}` }
       : absoluteTitle
         ? { absolute: title }
         : title;
@@ -72,14 +66,7 @@ export function buildMetadata({
       description,
       url: absoluteUrl(path),
       siteName: site.name,
-      images: [
-        {
-          url: image.url,
-          width: image.width ?? site.ogImage.width,
-          height: image.height ?? site.ogImage.height,
-          alt: image.alt,
-        },
-      ],
+      locale: site.locale,
       type,
       ...(type === "article" && publishedAt
         ? {
@@ -92,7 +79,6 @@ export function buildMetadata({
       card: "summary_large_image",
       title: displayTitle,
       description,
-      images: [image.url],
     },
   };
 }
