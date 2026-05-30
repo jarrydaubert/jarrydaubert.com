@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
+import { Link } from "@/components/link";
 import { ProjectCard } from "@/components/project-card";
-import { personJsonLd, site } from "@/config/site";
 import { principles } from "@/content/principles";
-import { selectedWork } from "@/content/projects";
-import { writing } from "@/content/writing";
-import { buildMetadata, serializeJsonLd } from "@/lib/metadata";
-
-const personJsonLdScript = serializeJsonLd(personJsonLd);
+import { allEssays, selectedWork } from "@/lib/content";
+import { buildMetadata } from "@/lib/metadata";
+import { personJsonLd, site } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: site.name,
@@ -15,78 +13,67 @@ export const metadata: Metadata = buildMetadata({
   description: site.homeDescription,
 });
 
+const operatingNotes = [
+  { label: "Focus", value: "QA, product delivery, AI-assisted workflows" },
+  { label: "Current work", value: "ProsePal, PayeTax, Evolution Padel" },
+  {
+    label: "Release bias",
+    value: "acceptance criteria, checks, metadata, ownership",
+  },
+];
+
+const LABEL = "text-xs font-semibold uppercase tracking-[0.14em] text-subtle";
+const EYEBROW = "text-xs font-semibold uppercase tracking-[0.16em] text-accent";
+
 export default function Home() {
-  const firstEssay = writing[0];
-  const operatingNotes = [
-    {
-      label: "Focus",
-      value: "QA, product delivery, AI-assisted workflows",
-    },
-    {
-      label: "Current work",
-      value: "ProsePal, PayeTax, Evolution Padel",
-    },
-    {
-      label: "Release bias",
-      value: "acceptance criteria, checks, metadata, ownership",
-    },
-  ];
+  const firstEssay = allEssays[0];
 
   return (
     <div className="space-y-24">
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is static local data with '<' escaped before injection.
-        dangerouslySetInnerHTML={{ __html: personJsonLdScript }}
-      />
+      <JsonLd data={personJsonLd} />
+
       <section
         className="grid gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.72fr)] lg:items-end"
         aria-labelledby="home-title"
       >
         <div className="max-w-3xl space-y-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent)]">
+          <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
             QA-minded product builder
           </p>
           <div className="space-y-5">
             <h1
               id="home-title"
-              className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-[var(--color-fg)] sm:text-6xl lg:text-6xl"
+              className="max-w-3xl text-5xl font-semibold leading-[1.02] text-fg sm:text-6xl"
             >
               Useful software, shipped with judgement.
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl sm:leading-9">
+            <p className="max-w-2xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
               I build small software products, stress-test them, and write about
               the judgement required to ship AI-assisted work properly.
             </p>
           </div>
         </div>
 
-        <div className="rounded-md border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-surface)_86%,transparent)] p-5">
-          <p className="mb-5 border-b border-[var(--color-border)] pb-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)]">
+        <div className="rounded-md border border-border bg-[color-mix(in_srgb,var(--color-surface)_86%,transparent)] p-5 [--focus-offset-color:var(--color-surface)]">
+          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold tracking-[0.16em] text-accent uppercase">
             Operating note
           </p>
           <dl className="space-y-5">
             {operatingNotes.map((note) => (
               <div key={note.label} className="space-y-1">
-                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-subtle)]">
-                  {note.label}
-                </dt>
-                <dd className="text-sm leading-6 text-[var(--color-fg)]">
-                  {note.value}
-                </dd>
+                <dt className={LABEL}>{note.label}</dt>
+                <dd className="text-sm leading-6 text-fg">{note.value}</dd>
               </div>
             ))}
             <div className="space-y-1">
-              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-subtle)]">
-                Contact
-              </dt>
+              <dt className={LABEL}>Contact</dt>
               <dd>
-                <a
+                <Link
                   href={`mailto:${site.email}`}
-                  className="text-sm font-medium text-[var(--color-fg)] underline decoration-[var(--color-border-hover)] underline-offset-4 outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)]"
+                  className="text-sm font-medium"
                 >
                   {site.email}
-                </a>
+                </Link>
               </dd>
             </div>
           </dl>
@@ -95,28 +82,18 @@ export default function Home() {
 
       <section className="space-y-6" aria-labelledby="principles">
         <div className="max-w-2xl space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)]">
-            Principles
-          </p>
-          <h2
-            id="principles"
-            className="text-2xl font-semibold text-[var(--color-fg)]"
-          >
+          <p className={EYEBROW}>Principles</p>
+          <h2 id="principles" className="text-2xl font-semibold text-fg">
             Rules for useful work.
           </h2>
         </div>
         <ol className="grid gap-4 text-base leading-7 sm:grid-cols-2">
           {principles.map((principle, index) => (
-            <li
-              key={principle}
-              className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
-            >
-              <span className="mb-5 block text-sm font-semibold text-[var(--color-accent)]">
+            <li key={principle} className="card p-5">
+              <span className="mb-5 block text-sm font-semibold text-accent">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="text-lg font-semibold text-[var(--color-fg)]">
-                {principle}
-              </span>
+              <span className="text-lg font-semibold text-fg">{principle}</span>
             </li>
           ))}
         </ol>
@@ -124,71 +101,54 @@ export default function Home() {
 
       <section className="space-y-6" aria-labelledby="selected-work">
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)]">
-            Selected work
-          </p>
-          <h2
-            id="selected-work"
-            className="text-2xl font-semibold text-[var(--color-fg)]"
-          >
+          <p className={EYEBROW}>Selected work</p>
+          <h2 id="selected-work" className="text-2xl font-semibold text-fg">
             Selected work.
           </h2>
-          <p className="max-w-2xl text-sm leading-6 text-[var(--color-muted)]">
+          <p className="max-w-2xl text-sm leading-6 text-muted">
             Selected products, client work, and experiments that show the shape
             of the work.
           </p>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {selectedWork.map((project) => (
-            <ProjectCard
-              key={project.name}
-              name={project.name}
-              summary={project.summary}
-              href={`/projects/${project.slug}`}
-              caseStudyStatus={project.caseStudyStatus}
-              previewImage={project.previewImage}
-              status={project.status}
-              theme={project.theme}
-            />
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </section>
 
-      <section
-        className="rounded-md border border-[var(--color-border-hover)] bg-[var(--color-surface-elevated)] p-6 sm:p-8"
-        aria-labelledby="first-essay"
-      >
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)]">
-              Writing
-            </p>
-            <time
-              dateTime={firstEssay.publishedAt}
-              className="block text-sm text-[var(--color-subtle)]"
-            >
-              {firstEssay.publishedAt}
-            </time>
+      {firstEssay ? (
+        <section
+          className="rounded-md border border-border-hover bg-surface-elevated p-6 sm:p-8 [--focus-offset-color:var(--color-surface-elevated)]"
+          aria-labelledby="first-essay"
+        >
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div className="space-y-3">
+              <p className={EYEBROW}>Writing</p>
+              <time
+                dateTime={firstEssay.publishedAt}
+                className="block text-sm text-subtle"
+              >
+                {firstEssay.publishedAt}
+              </time>
+            </div>
+            <div className="space-y-5">
+              <h2
+                id="first-essay"
+                className="max-w-3xl text-3xl font-semibold leading-tight text-fg sm:text-4xl"
+              >
+                {firstEssay.title}
+              </h2>
+              <p className="max-w-2xl text-base leading-8 text-muted">
+                {firstEssay.summary}
+              </p>
+              <Link href={firstEssay.href} className="text-sm font-semibold">
+                Read the essay
+              </Link>
+            </div>
           </div>
-          <div className="space-y-5">
-            <h2
-              id="first-essay"
-              className="max-w-3xl text-3xl font-semibold leading-tight text-[var(--color-fg)] sm:text-4xl"
-            >
-              {firstEssay.title}
-            </h2>
-            <p className="max-w-2xl text-base leading-8 text-[var(--color-muted)]">
-              {firstEssay.summary}
-            </p>
-            <Link
-              href={firstEssay.href}
-              className="inline-flex text-sm font-semibold text-[var(--color-fg)] underline decoration-[var(--color-accent)] underline-offset-4 outline-none transition-colors hover:text-[var(--color-accent)] focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface-elevated)]"
-            >
-              Read the essay
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </div>
   );
 }

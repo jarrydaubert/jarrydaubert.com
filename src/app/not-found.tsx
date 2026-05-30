@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/components/link";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -11,17 +11,14 @@ export default function NotFound() {
     <section className="max-w-2xl space-y-6" aria-labelledby="not-found-title">
       <h1
         id="not-found-title"
-        className="text-3xl font-semibold text-[var(--color-fg)] sm:text-4xl"
+        className="text-3xl font-semibold text-fg sm:text-4xl"
       >
         Page not found
       </h1>
-      <p className="text-base leading-7 text-[var(--color-muted)]">
+      <p className="text-base leading-7 text-muted">
         The page you were looking for is not here.
       </p>
-      <Link
-        href="/"
-        className="inline-flex rounded-sm border border-[var(--color-border)] px-3 py-2 text-sm font-medium text-[var(--color-fg)] outline-none transition-colors hover:border-[var(--color-border-hover)] hover:text-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
-      >
+      <Link href="/" variant="back">
         Back home
       </Link>
     </section>

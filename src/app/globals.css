@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
-:root {
-  color-scheme: dark;
+/* The single source of truth for color. @theme emits these as :root custom
+   properties AND generates first-class utilities (bg-surface, text-fg, ring-ring,
+   border-border-hover, ...). lib/tokens.ts parses this block so JS never holds an
+   independent hex literal; tokens.test.ts fails CI on drift or low contrast. */
+@theme {
   --color-bg: #11100d;
   --color-surface: #171512;
   --color-surface-elevated: #1e1a16;
   --color-fg: #f2eee7;
   --color-muted: #b9b0a3;
-  --color-subtle: #7f7669;
+  --color-subtle: #8d8475;
   --color-border: #342d25;
   --color-border-hover: #5a4b38;
   --color-ring: #d6ad67;
@@ -15,12 +18,16 @@
   --color-accent-soft: #2b2419;
 }
 
+:root {
+  color-scheme: dark;
+}
+
 body {
   min-height: 100vh;
   background:
     radial-gradient(
       circle at 20% 0%,
-      rgba(196, 154, 85, 0.14),
+      color-mix(in srgb, var(--color-accent) 14%, transparent),
       transparent 34rem
     ),
     linear-gradient(145deg, #17130f 0%, var(--color-bg) 42%, #0d0c0a 100%);
@@ -33,4 +40,41 @@ body {
 ::selection {
   background: var(--color-ring);
   color: #17130f;
+}
+
+/* Keyboard focus ring. Offset color defaults to the page bg but inherits an
+   override (--focus-offset-color) from any surface a focusable element sits on. */
+@utility focus-ring {
+  outline: none;
+  &:focus-visible {
+    border-radius: 0.125rem;
+    box-shadow:
+      0 0 0 var(--focus-offset-w, 4px)
+      var(--focus-offset-color, var(--color-bg)),
+      0 0 0 calc(var(--focus-offset-w, 4px) + 2px) var(--color-ring);
+  }
+}
+
+/* Inline text link: collapses the ~12-utility string repeated across the site. */
+@utility link {
+  @apply focus-ring;
+  color: var(--color-fg);
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-border-hover);
+  text-underline-offset: 4px;
+  transition: color 150ms ease;
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+/* Card surface: border + surface bg + radius. Padding and hover/interactive
+   states are added by the Card primitive so this never conflicts with overrides. */
+@utility card {
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
 }
