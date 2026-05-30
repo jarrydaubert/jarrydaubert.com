@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <article className="max-w-3xl space-y-10">
       <header className="space-y-4">
-        <p className="text-sm font-medium text-accent">Project</p>
+        <p className="text-sm font-medium text-subtle">Project</p>
         <h1 className="text-3xl font-semibold text-fg sm:text-4xl">
           {project.name}
         </h1>
@@ -69,7 +69,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <p>
           <span className="font-medium text-fg">Status:</span> {project.status}
         </p>
-        {hasCaseStudy ? null : <p>Full case study coming soon.</p>}
         {project.liveUrl ? (
           <p>
             <Link href={project.liveUrl}>Visit live site</Link>

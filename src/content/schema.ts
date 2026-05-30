@@ -27,7 +27,7 @@ export const projectFrontmatterSchema = z.object({
   summary: z.string().min(1),
   theme: z.string().min(1),
   status: z.string().min(1),
-  caseStudyStatus: z.string().min(1),
+  caseStudyStatus: z.string().min(1).optional(),
   liveUrl: z
     .string()
     .regex(/^https?:\/\//, "must be an absolute http(s) URL")
