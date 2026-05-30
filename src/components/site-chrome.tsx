@@ -22,7 +22,7 @@ export function SiteHeader() {
             </li>
           ))}
           <li>
-            <Link href={`mailto:${site.email}`} variant="nav">
+            <Link href="/about#contact" variant="nav">
               Contact
             </Link>
           </li>

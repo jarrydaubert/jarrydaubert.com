@@ -115,7 +115,10 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-4" aria-labelledby="contact">
-            <h2 id="contact" className="text-xl font-semibold text-fg">
+            <h2
+              id="contact"
+              className="scroll-mt-24 text-xl font-semibold text-fg"
+            >
               Contact
             </h2>
             <p className="text-base leading-7 text-muted">

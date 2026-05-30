@@ -53,13 +53,16 @@ export default function Home() {
               the judgement required to ship AI-assisted work properly.
             </p>
           </div>
-          <div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
             <Link
               href={`mailto:${site.email}`}
               variant="back"
               className="border-transparent bg-accent font-semibold text-bg hover:border-transparent hover:bg-ring hover:text-bg"
             >
               Email me
+            </Link>
+            <Link href={`mailto:${site.email}`} className="font-mono text-sm">
+              {site.email}
             </Link>
           </div>
         </div>
