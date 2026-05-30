@@ -37,13 +37,13 @@ export default function Home() {
         aria-labelledby="home-title"
       >
         <div className="max-w-3xl space-y-7">
-          <p className="text-xs font-semibold tracking-[0.18em] text-subtle uppercase">
+          <p className="text-xs font-semibold tracking-[0.16em] text-subtle uppercase">
             QA-minded product builder
           </p>
           <div className="space-y-5">
             <h1
               id="home-title"
-              className="max-w-3xl text-5xl font-semibold leading-[1.02] text-fg sm:text-6xl"
+              className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-tight text-fg sm:text-6xl"
             >
               Useful software, shipped with judgement.
             </h1>
@@ -99,7 +99,7 @@ export default function Home() {
         <ol className="grid gap-4 text-base leading-7 sm:grid-cols-2">
           {principles.map((principle, index) => (
             <li key={principle} className="card p-5">
-              <span className="mb-5 block text-sm font-semibold text-accent">
+              <span className="mb-5 block font-mono text-sm font-semibold text-subtle">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="text-lg font-semibold text-fg">{principle}</span>
@@ -128,7 +128,7 @@ export default function Home() {
 
       {firstEssay ? (
         <section
-          className="rounded-md border border-border-hover bg-surface-elevated p-6 sm:p-8 [--focus-offset-color:var(--color-surface-elevated)]"
+          className="rounded-md border border-border-hover bg-accent-soft p-6 shadow-elevated sm:p-8 [--focus-offset-color:var(--color-accent-soft)]"
           aria-labelledby="first-essay"
         >
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">

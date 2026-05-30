@@ -51,7 +51,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
         <div className="space-y-4">
           <h1
             id="essay-title"
-            className="text-3xl font-semibold leading-tight text-fg sm:text-4xl sm:leading-tight"
+            className="text-3xl font-semibold leading-tight tracking-tight text-fg sm:text-4xl sm:leading-tight"
           >
             {essay.title}
           </h1>

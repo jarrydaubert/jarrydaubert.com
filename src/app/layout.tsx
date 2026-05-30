@@ -1,9 +1,23 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Viewport } from "next";
+import { Fraunces, JetBrains_Mono } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { buildMetadata } from "@/lib/metadata";
 import { token } from "@/lib/tokens";
 import "./globals.css";
+
+// Self-hosted at build time by next/font — no runtime requests to Google.
+const fontDisplay = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display-loaded",
+});
+
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono-loaded",
+});
 
 export const metadata = buildMetadata();
 
@@ -17,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fontDisplay.variable} ${fontMono.variable}`}>
       <body className="min-h-screen antialiased">
         <a
           href="#main-content"
