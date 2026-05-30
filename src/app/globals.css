@@ -22,6 +22,7 @@
     "JetBrains Mono", Menlo, monospace;
   --shadow-elevated:
     0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.55);
+  --spacing-section: 7rem;
 }
 
 :root {
@@ -59,6 +60,7 @@ h3 {
    override (--focus-offset-color) from any surface a focusable element sits on. */
 @utility focus-ring {
   outline: none;
+  transition: box-shadow 120ms ease;
   &:focus-visible {
     border-radius: 0.125rem;
     box-shadow:
@@ -68,16 +70,21 @@ h3 {
   }
 }
 
-/* Inline text link: collapses the ~12-utility string repeated across the site. */
+/* Inline text link: collapses the ~12-utility string repeated across the site.
+   The underline animates from a quiet hairline to accent on hover. */
 @utility link {
   @apply focus-ring;
   color: var(--color-fg);
   text-decoration-line: underline;
   text-decoration-color: var(--color-border-hover);
   text-underline-offset: 4px;
-  transition: color 150ms ease;
+  transition:
+    color 150ms ease,
+    text-decoration-color 150ms ease,
+    box-shadow 120ms ease;
   &:hover {
     color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
   }
 }
 
@@ -89,7 +96,8 @@ h3 {
   background-color: var(--color-surface);
   transition:
     border-color 150ms ease,
-    background-color 150ms ease;
+    background-color 150ms ease,
+    transform 150ms ease;
 }
 
 /* Honor reduced-motion before any transform/reveal motion lands site-wide.
