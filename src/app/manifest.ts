@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/config/site";
+import { site } from "@/lib/site";
+import { token } from "@/lib/tokens";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -8,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: site.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#fafaf9",
-    theme_color: "#0c0a09",
+    background_color: token("bg"),
+    theme_color: token("bg"),
     icons: [
       {
         src: "/favicon.ico",
