@@ -9,7 +9,7 @@ type CardProps = {
 };
 
 const INTERACTIVE =
-  "block focus-ring hover:border-border-hover hover:bg-surface-elevated";
+  "block focus-ring hover:-translate-y-px hover:border-border-hover hover:bg-surface-elevated";
 
 /**
  * Surface primitive: the shared card shell (border + surface + radius + p-5).

@@ -7,9 +7,10 @@ export function SiteHeader() {
       <Link
         href="/"
         variant="nav"
-        className="text-lg font-semibold text-fg hover:text-accent"
+        className="text-lg font-semibold tracking-tight text-fg hover:text-accent"
       >
         {site.name}
+        <span className="text-accent">.</span>
       </Link>
       <nav aria-label="Primary navigation">
         <ul className="flex flex-wrap gap-x-6 gap-y-3 text-[0.95rem] leading-6">

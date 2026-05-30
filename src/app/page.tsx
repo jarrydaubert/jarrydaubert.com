@@ -29,7 +29,7 @@ export default function Home() {
   const firstEssay = allEssays[0];
 
   return (
-    <div className="space-y-24">
+    <div className="space-y-section">
       <JsonLd data={personJsonLd} />
 
       <section
@@ -45,7 +45,8 @@ export default function Home() {
               id="home-title"
               className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-tight text-fg sm:text-6xl"
             >
-              Useful software, shipped with judgement.
+              Useful software, shipped with judgement
+              <span className="text-accent">.</span>
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
               I build small software products, stress-test them, and write about
@@ -119,7 +120,7 @@ export default function Home() {
             of the work.
           </p>
         </div>
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {selectedWork.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
