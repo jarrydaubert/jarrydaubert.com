@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 mx-[calc(50%-50vw)] border-b border-border bg-bg/72 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/72 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
         <Link
           href="/"
