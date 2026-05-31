@@ -47,7 +47,7 @@ const PROJECTS = [
       "The quality work is still in progress, which is the point: it gives me a real product surface for working through tone, context, usefulness, and generic generated output.",
     insightLabel: "What it explores",
     demonstrates:
-      "How you test something when “correct” is a matter of judgement, not a value you can assert against.",
+      "How do you test something when correctness is a matter of judgement, not a value you can assert against?",
     href: "https://www.prosepal.app/",
     linkText: "Visit ProsePal",
   },
