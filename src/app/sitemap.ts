@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
 import { allEssays, allProjects } from "@/lib/content";
 import { absoluteUrl } from "@/lib/metadata";
 
@@ -9,9 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteLastModified = allEssays[0]?.publishedAt ?? "2026-05-25";
 
   const routes = [
-    { path: "/", lastModified: siteLastModified },
-    ...site.nav.map((item) => ({
-      path: item.href,
+    ...["/", "/about", "/projects", "/writing"].map((path) => ({
+      path,
       lastModified: siteLastModified,
     })),
     ...allEssays.map((essay) => ({

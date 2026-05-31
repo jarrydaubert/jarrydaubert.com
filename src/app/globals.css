@@ -5,55 +5,155 @@
    border-border-hover, ...). lib/tokens.ts parses this block so JS never holds an
    independent hex literal; tokens.test.ts fails CI on drift or low contrast. */
 @theme {
-  --color-bg: #11100d;
-  --color-surface: #1c1916;
-  --color-surface-elevated: #26211b;
-  --color-fg: #f2eee7;
-  --color-muted: #b9b0a3;
-  --color-subtle: #968d7e;
-  --color-border: #342d25;
-  --color-border-hover: #5a4b38;
-  --color-ring: #d6ad67;
-  --color-accent: #c49a55;
-  --color-accent-soft: #2b2419;
-  --font-display: var(--font-display-loaded), ui-serif, Georgia, serif;
+  --color-bg: #f7f1e6;
+  --color-surface: #fbf7ee;
+  --color-surface-elevated: #efe6d5;
+  --color-fg: #211c14;
+  --color-muted: #4a4034;
+  --color-subtle: #70624e;
+  --color-border: #ded3bf;
+  --color-border-hover: #c49d5a;
+  --color-ring: #b9852f;
+  --color-accent: #8a5914;
+  --color-accent-soft: #f2e2be;
+  --font-body:
+    var(--font-display-loaded), "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-display: var(--font-display-loaded), "Avenir Next", sans-serif;
   --font-mono:
     var(--font-mono-loaded), ui-monospace, "SF Mono", "Cascadia Code",
     "JetBrains Mono", Menlo, monospace;
   --shadow-elevated:
-    0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.55);
+    0 1px 2px rgb(33 28 20 / 0.08), 0 18px 45px -32px rgb(33 28 20 / 0.32);
   --spacing-section: 7rem;
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 body {
+  position: relative;
   min-height: 100vh;
-  background: linear-gradient(
-    145deg,
-    #17130f 0%,
-    var(--color-bg) 42%,
-    #0d0c0a 100%
-  );
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgb(255 250 239 / 0.85),
+      transparent 34rem
+    ),
+    radial-gradient(
+      circle at 82% 8%,
+      rgb(239 230 213 / 0.72),
+      transparent 30rem
+    ),
+    linear-gradient(145deg, var(--color-bg) 0%, #f3eadb 52%, #efe4d1 100%);
   color: var(--color-fg);
-  font-family:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: var(--font-body);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background-image:
+    radial-gradient(rgb(33 28 20 / 0.12) 0.55px, transparent 0.55px),
+    radial-gradient(rgb(113 90 41 / 0.08) 0.45px, transparent 0.45px);
+  background-position:
+    0 0,
+    19px 23px;
+  background-size:
+    38px 38px,
+    46px 46px;
+  opacity: 0.24;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1510;
+    --color-surface: #211a14;
+    --color-surface-elevated: #2a2118;
+    --color-fg: #f4ebdd;
+    --color-muted: #cbbda8;
+    --color-subtle: #a9977c;
+    --color-border: #3b3024;
+    --color-border-hover: #9d7440;
+    --color-ring: #d39b3a;
+    --color-accent: #d39b3a;
+    --color-accent-soft: #3a2a16;
+  }
+
+  body {
+    background:
+      radial-gradient(
+        circle at 18% 12%,
+        rgb(72 51 28 / 0.32),
+        transparent 34rem
+      ),
+      linear-gradient(145deg, var(--color-bg) 0%, #201711 58%, #15110d 100%);
+  }
+
+  body::before {
+    background-image:
+      radial-gradient(rgb(244 235 221 / 0.1) 0.55px, transparent 0.55px),
+      radial-gradient(rgb(211 155 58 / 0.08) 0.45px, transparent 0.45px);
+    opacity: 0.16;
+  }
 }
 
 ::selection {
   background: var(--color-ring);
-  color: #17130f;
+  color: var(--color-bg);
 }
 
-/* The editorial display voice — applied to every heading from one place. Body
-   stays on the system sans stack (set on body) for reading speed. */
+/* The display voice, applied to every heading from one place. */
 h1,
 h2,
 h3 {
   font-family: var(--font-display);
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-page {
+  animation: page-in 520ms ease-out both;
+}
+
+.reveal {
+  animation: reveal-up 700ms ease-out both;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-subtle);
+}
+
+@supports (animation-timeline: view()) {
+  .home-page > section.reveal:not(:first-of-type) {
+    animation-timeline: view();
+    animation-range: entry 0% cover 24%;
+  }
 }
 
 /* Keyboard focus ring. Offset color defaults to the page bg but inherits an
