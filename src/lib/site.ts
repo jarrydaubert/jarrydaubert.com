@@ -10,7 +10,7 @@ export const site = {
   jobTitle: "Software Tester",
   locale: "en_GB",
   socials: {
-    github: "https://github.com/jarrydaubert/jarrydaubert.com",
+    github: "https://github.com/jarrydaubert",
     linkedin: "https://www.linkedin.com/in/jarrydaubert/",
   },
   nav: [
