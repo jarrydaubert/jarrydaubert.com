@@ -1,13 +1,13 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Viewport } from "next";
-import { Fraunces, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Sora } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { buildMetadata } from "@/lib/metadata";
 import { token } from "@/lib/tokens";
 import "./globals.css";
 
-// Self-hosted at build time by next/font — no runtime requests to Google.
-const fontDisplay = Fraunces({
+// Self-hosted at build time by next/font, with no runtime font requests.
+const fontDisplay = Sora({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-display-loaded",

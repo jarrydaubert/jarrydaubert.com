@@ -4,19 +4,18 @@ export const site = {
   url: "https://jarrydaubert.com",
   email: "me@jarrydaubert.com",
   description:
-    "Personal site of Jarryd Aubert, a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.",
+    "Personal site of Jarryd Aubert, a software tester who builds and ships his own apps to understand what he tests.",
   homeDescription:
-    "Jarryd Aubert is a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.",
-  jobTitle: "Senior QA Specialist / Product Builder",
+    "Jarryd Aubert builds and ships his own apps and sites to understand what he tests.",
+  jobTitle: "Software Tester",
   locale: "en_GB",
   socials: {
     github: "https://github.com/jarrydaubert/jarrydaubert.com",
     linkedin: "https://www.linkedin.com/in/jarrydaubert/",
   },
   nav: [
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/writing", label: "Writing" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#the-why", label: "The Why" },
   ],
 } as const;
 
