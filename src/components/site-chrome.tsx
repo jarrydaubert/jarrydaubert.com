@@ -1,3 +1,4 @@
+import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 import { Link } from "@/components/link";
 import { site } from "@/lib/site";
 
@@ -39,20 +40,30 @@ export function SiteFooter() {
         </p>
         <p className="mt-2">&copy; 2026. Built, tested, and kept honest.</p>
       </div>
-      <ul className="flex flex-wrap gap-x-5 gap-y-2">
+      <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
         <li>
           <Link href={`mailto:${site.email}`} variant="nav">
             Email
           </Link>
         </li>
         <li>
-          <Link href={site.socials.github} variant="nav">
-            GitHub
+          <Link
+            href={site.socials.github}
+            variant="nav"
+            aria-label="GitHub"
+            className="inline-flex"
+          >
+            <GitHubIcon className="h-5 w-5" />
           </Link>
         </li>
         <li>
-          <Link href={site.socials.linkedin} variant="nav">
-            LinkedIn
+          <Link
+            href={site.socials.linkedin}
+            variant="nav"
+            aria-label="LinkedIn"
+            className="inline-flex"
+          >
+            <LinkedInIcon className="h-5 w-5" />
           </Link>
         </li>
       </ul>
