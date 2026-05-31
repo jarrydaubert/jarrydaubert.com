@@ -32,9 +32,9 @@ const PROJECTS = [
     description: "A live UK PAYE, salary, and dividend calculator.",
     built:
       "I chose it because it gave me something a tester wants: a clear right or wrong answer. The work forced me through messy inputs, including Scottish rates, student-loan thresholds on total income, and salary/dividend choices.",
-    proof: "I checked it against my own payslip and it matched to the penny.",
+    proof: "It matches my own payslip to the penny.",
     insightLabel: "What it demonstrates",
-    demonstrates: "Correctness under messy real-world inputs.",
+    demonstrates: "Correctness under real-world inputs, not happy-path ones.",
     href: "https://payetax.co.uk/",
     linkText: "Visit PayeTax",
   },
@@ -47,7 +47,7 @@ const PROJECTS = [
       "The quality work is still in progress, which is the point: it gives me a real product surface for working through tone, context, usefulness, and generic generated output.",
     insightLabel: "What it explores",
     demonstrates:
-      "Judging output quality where there is no single right answer.",
+      "How you test something when “correct” is a matter of judgement, not a value you can assert against.",
     href: "https://www.prosepal.app/",
     linkText: "Visit ProsePal",
   },
@@ -180,11 +180,10 @@ export default function Home() {
             watching analytics, and living with my own bugs.
           </p>
           <p>
-            Going through that pain firsthand changed how I test, because now I
-            understand more of where software actually hurts. The awkward
-            handoffs, the ambiguous decisions, the hidden edge cases, and the
-            small release details all feel different when my own name is on the
-            thing.
+            Going through that pain changed how I test, because now I understand
+            more of where software actually hurts. The awkward handoffs, the
+            ambiguous decisions, the hidden edge cases, and the small release
+            details all feel different when my own name is on the thing.
           </p>
         </div>
       </section>
