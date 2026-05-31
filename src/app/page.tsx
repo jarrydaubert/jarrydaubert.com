@@ -107,7 +107,7 @@ export default function Home() {
       <section
         id="projects"
         aria-labelledby="projects-title"
-        className="reveal scroll-mt-28 py-20 sm:py-28"
+        className="reveal scroll-mt-9 py-20 sm:scroll-mt-1 sm:py-28"
       >
         <p className="eyebrow">01 Projects</p>
         <div className="mt-5 max-w-4xl">
@@ -164,7 +164,7 @@ export default function Home() {
       <section
         id="the-why"
         aria-labelledby="why-title"
-        className="reveal scroll-mt-28 py-20 sm:py-28"
+        className="reveal scroll-mt-9 py-20 sm:scroll-mt-1 sm:py-28"
       >
         <p className="eyebrow">02 The Why</p>
         <h2
