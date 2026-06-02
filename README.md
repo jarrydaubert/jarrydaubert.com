@@ -52,9 +52,11 @@ bun run check
 
 ## Quality Checks
 
-The repo uses Biome for formatting and linting, TypeScript for type safety, Vitest for content/metadata/token invariants, and `next build` for production build validation. Frontmatter is validated by Zod at build time, so a malformed essay or project fails the build.
+The repo uses Biome for formatting and linting, TypeScript for type safety, Vitest for content/metadata/token invariants, GitHub CodeQL for JavaScript/TypeScript security scanning, and `next build` for production build validation. Frontmatter is validated by Zod at build time, so a malformed essay or project fails the build.
 
 GitHub Actions runs the same quality gate on pushes and pull requests to `main`: Biome format check, Biome lint, TypeScript, tests, and production build. Dependabot checks dependencies weekly.
+
+No local environment variables are required to run the site, so this repo intentionally does not include a `.env.example` file.
 
 ## Deployment
 
