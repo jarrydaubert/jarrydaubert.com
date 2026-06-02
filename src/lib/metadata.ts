@@ -26,7 +26,7 @@ export function serializeJsonLd(data: unknown) {
 }
 
 /**
- * Single metadata builder. OG/Twitter images are NOT set here — the file-based
+ * Single metadata builder. OG/Twitter images are NOT set here. The file-based
  * `opengraph-image` convention owns them for every route (default + per-essay),
  * so social cards are real PNGs, never the old SVG.
  */

@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 // Builds the /llms.txt body following the llmstxt.org convention: a concise,
 // link-first Markdown map of the site for LLMs. Sourced from the same content
 // loaders as the sitemap and RSS feed (allProjects/allEssays), so it never
-// drifts from what is actually published — there is no second source of truth.
+// drifts from what is actually published. There is no second source of truth.
 export function buildLlmsTxt(): string {
   const projects = allProjects
     .map((project) => {
