@@ -9,7 +9,7 @@ import { Link } from "@/components/link";
 const components = {
   a: ({ href = "", children, ...rest }: ComponentProps<"a">) =>
     href.startsWith("#") ? (
-      // Heading-anchor link (rehype-autolink behavior:"wrap") — inherits the
+      // Heading-anchor link (rehype-autolink behavior:"wrap") inherits the
       // heading's look, no underline, but stays keyboard-focusable.
       <a
         href={href}

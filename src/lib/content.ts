@@ -11,7 +11,7 @@ import {
 
 // Single content loader. Reads MDX at build time (node:fs → server/build only),
 // validates frontmatter with Zod and THROWS on the first invalid document, so a
-// malformed essay is a red build, not a production bug. The FILENAME IS THE SLUG —
+// malformed essay is a red build, not a production bug. The FILENAME IS THE SLUG.
 // there is no second source of truth for routes, dates, RSS, or OG.
 const CONTENT_DIR = join(process.cwd(), "src/content");
 const includeDrafts = process.env.NODE_ENV !== "production";

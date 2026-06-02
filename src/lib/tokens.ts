@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 /**
  * Parses the @theme block in globals.css so JS (manifest, viewport themeColor,
- * OG images) reads the SAME color values the CSS uses — never an independent
+ * OG images) reads the SAME color values the CSS uses, never an independent
  * literal. globals.css is the single source of truth; this module is the reader.
  * Uses node:fs, so it is inherently server/build-time only.
  */

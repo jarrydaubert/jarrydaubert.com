@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
 // Official brand marks (Simple Icons paths), inlined so there's no icon-library
-// dependency. Rendered as currentColor — not full brand colour — and marked
+// dependency. Rendered as currentColor, not full brand colour, and marked
 // aria-hidden because the accessible name lives on the wrapping link.
 type IconProps = SVGProps<SVGSVGElement>;
 
