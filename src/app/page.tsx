@@ -29,6 +29,7 @@ const MONTHS = [
 const PROJECTS = [
   {
     name: "PayeTax",
+    kind: "settled",
     description: "A live UK PAYE, salary, and dividend calculator.",
     built:
       "I chose it because it gave me something a tester wants: a clear right or wrong answer. The work forced me through messy inputs, including Scottish rates, student-loan thresholds on total income, and salary/dividend choices.",
@@ -37,19 +38,24 @@ const PROJECTS = [
     demonstrates: "Correctness under real-world inputs, not happy-path ones.",
     href: "https://payetax.co.uk/",
     linkText: "Visit PayeTax",
+    evidenceHref: "/writing/proving-my-tax-calculator-correct",
+    evidenceText: "How I tested it, and where that testing stops →",
   },
   {
     name: "ProsePal",
+    kind: "open",
     description: "A live message-writing app.",
     built:
       "I built and shipped it as a real app, then used it to explore the harder problem of judging output where there is no single right answer.",
     proof:
-      "The quality work is still in progress, which is the point: it gives me a real product surface for working through tone, context, usefulness, and generic generated output.",
+      "A message can be grammatically perfect and still completely wrong for the moment. No assertion catches that, which is exactly the problem I am working through.",
     insightLabel: "What it explores",
     demonstrates:
       "How do you test something when correctness is a matter of judgement, not a value you can assert against?",
     href: "https://www.prosepal.app/",
     linkText: "Visit ProsePal",
+    evidenceHref: null,
+    evidenceText: null,
   },
 ];
 
@@ -150,15 +156,28 @@ export default function Home() {
                 </div>
                 <div>
                   <dt className="eyebrow">{project.insightLabel}</dt>
-                  <dd className="mt-3 text-base leading-7 text-muted">
+                  <dd
+                    className={`mt-3 text-base leading-7 text-muted${
+                      project.kind === "open" ? " italic" : ""
+                    }`}
+                  >
                     {project.demonstrates}
                   </dd>
                 </div>
               </dl>
 
-              <p className="mt-8 pt-2 text-sm font-semibold">
-                <Link href={project.href}>{project.linkText}</Link>
-              </p>
+              <div className="mt-8 pt-2 text-sm">
+                <p className="font-semibold">
+                  <Link href={project.href}>{project.linkText}</Link>
+                </p>
+                {project.evidenceHref ? (
+                  <p className="mt-3 text-muted">
+                    <Link href={project.evidenceHref}>
+                      {project.evidenceText}
+                    </Link>
+                  </p>
+                ) : null}
+              </div>
             </article>
           ))}
         </div>
