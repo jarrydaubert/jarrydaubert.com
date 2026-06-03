@@ -53,7 +53,10 @@ const PROJECTS = [
   },
 ];
 
-const WRITING_SLUGS = ["ai-assisted-development-demos-vs-shipping"];
+const WRITING_SLUGS = [
+  "proving-my-tax-calculator-correct",
+  "ai-assisted-development-demos-vs-shipping",
+];
 
 function formatDate(iso: string) {
   const [year, month, day] = iso.split("-").map(Number);
