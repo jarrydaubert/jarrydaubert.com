@@ -4,13 +4,13 @@ import { buildMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 const siteDescription =
-  "About Jarryd Aubert, a UK-based Senior QA specialist and product builder working across quality, delivery, and AI-assisted workflows.";
+  "About Jarryd Aubert, a UK-based software tester who builds and ships his own apps to understand what he tests.";
 
 const focusAreas = [
   "Practical software quality",
   "Test strategy",
-  "AI-assisted development workflows",
-  "Small product shipping",
+  "Testing ambiguous outputs",
+  "Release evidence from shipped apps",
 ];
 
 const workingPrinciples = [
@@ -23,7 +23,7 @@ const workingPrinciples = [
 const operatingProfile = [
   {
     label: "Focus",
-    value: "Software quality, product delivery, AI-assisted workflows",
+    value: "Software quality, test strategy, evidence from shipped apps",
   },
   {
     label: "Working bias",
@@ -47,8 +47,8 @@ export default function AboutPage() {
       <header className="max-w-3xl space-y-4">
         <h1 className="text-3xl font-semibold text-fg sm:text-4xl">About</h1>
         <p className="text-lg leading-8 text-muted">
-          Jarryd Aubert is a Senior QA specialist and product builder based in
-          the UK.
+          Jarryd Aubert is a UK-based software tester who builds and ships his
+          own apps to understand what he tests.
         </p>
       </header>
 
@@ -56,11 +56,11 @@ export default function AboutPage() {
         <div className="max-w-3xl space-y-12">
           <div className="space-y-5 text-base leading-8 text-muted">
             <p>
-              I work at the intersection of software quality, practical product
-              delivery, and AI-assisted development. That means I care less
-              about theatre and more about whether a product does the useful
-              thing, under realistic conditions, with enough evidence to trust
-              the release.
+              I work in software quality, with shipped side projects as a way
+              to understand the failure modes I test for. That means I care
+              less about theatre and more about whether a product does the
+              useful thing, under realistic conditions, with enough evidence to
+              trust the release.
             </p>
             <p>
               My QA background covers mobile and web testing, QA process,
@@ -70,12 +70,12 @@ export default function AboutPage() {
               real questions instead of simply adding ceremony.
             </p>
             <p>
-              I am also building small products and experiments on the side:
-              ProsePal, PayeTax, client website work, and AI operator
-              experiments using tools like Codex, Hermes/R2, and local models.
-              These are not agency claims or full-time AI engineer cosplay. They
-              are practical attempts to ship useful software with better
-              feedback loops, better judgement, and less hand-waving.
+              I also use small shipped projects as a testing lab: ProsePal,
+              PayeTax, client website work, and experiments with AI-assisted
+              development. These are not agency claims or a claim to be a
+              full-time AI engineer. They are practical attempts to ship useful
+              software with better feedback loops, better judgement, and less
+              hand-waving.
             </p>
             <p>
               The thread through the work is quality before testing: shaping the

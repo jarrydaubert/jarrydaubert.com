@@ -25,14 +25,14 @@ export function buildLlmsTxt(): string {
 
 > ${site.description}
 
-${site.homeDescription} This site gathers the apps and sites he has shipped end to end, with case studies on each, alongside writing on building and testing software.
+${site.homeDescription} This site gathers the apps and sites he has shipped end to end, with case studies on each, alongside writing on testing, building, and shipping software.
 
 ## Pages
 
 - [Home](${absoluteUrl("/")}): Introduction and a guided path into the projects and the reasoning behind them.
 - [About](${absoluteUrl("/about")}): Background, focus areas, how he works, and how to get in touch.
 - [Projects](${absoluteUrl("/projects")}): Index of shipped projects, each with a case study.
-- [Writing](${absoluteUrl("/writing")}): Essays on building and testing software.
+- [Writing](${absoluteUrl("/writing")}): Essays on testing, building, and shipping software.
 
 ## Projects
 

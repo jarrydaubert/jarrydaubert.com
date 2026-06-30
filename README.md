@@ -1,10 +1,10 @@
 # jarrydaubert.com
 
-Personal website for Jarryd Aubert, a QA-minded product builder focused on useful software, AI-assisted workflows, and quality.
+Personal website for Jarryd Aubert, a software tester who builds and ships his own apps to understand what he tests.
 
 Live site: [https://jarrydaubert.com](https://jarrydaubert.com)
 
-This site is a personal home base for selected projects, writing, and contact. It presents work around practical software quality, AI-assisted delivery, and evidence-led product building.
+This site is a personal home base for selected projects, writing, and contact. It presents work around practical software quality, evidence-led testing, and shipping small projects under real constraints.
 
 ## Stack
 
