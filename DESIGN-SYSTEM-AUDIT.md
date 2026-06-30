@@ -16,7 +16,7 @@ Component modules inspected: 9.
 
 Files: `README.md`, `src/lib/site.ts`, `src/lib/llms.ts`, `src/app/about/page.tsx`, `src/app/projects/page.tsx`, `src/app/writing/page.tsx`, and project frontmatter.
 
-The retired "QA-minded product builder" phrase, co-equal "product builder" framing, builder-first page descriptions, vendor-led project summary language, and stale in-progress labels for live projects were removed or corrected.
+The retired brand phrase, co-equal builder framing, builder-first page descriptions, vendor-led project summary language, and stale in-progress labels for live projects were removed or corrected.
 
 2. Non-ASCII typography removed from source.
 
