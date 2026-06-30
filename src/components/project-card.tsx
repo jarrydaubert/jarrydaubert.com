@@ -5,7 +5,7 @@ import type { Project } from "@/lib/content";
 const LABEL = "text-xs font-semibold uppercase tracking-[0.16em] text-subtle";
 
 /**
- * Always-linked project teaser → links to the case file. The live-site link
+ * Always-linked project teaser for the case file. The live-site link
  * lives on the detail page (a card cannot nest an interactive anchor).
  */
 export function ProjectCard({

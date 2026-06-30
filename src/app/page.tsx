@@ -39,7 +39,7 @@ const PROJECTS = [
     href: "https://payetax.co.uk/",
     linkText: "Visit PayeTax",
     evidenceHref: "/writing/proving-my-tax-calculator-correct",
-    evidenceText: "How I tested it, and where that testing stops →",
+    evidenceText: "How I tested it, and where that testing stops",
   },
   {
     name: "ProsePal",

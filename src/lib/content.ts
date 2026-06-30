@@ -9,7 +9,7 @@ import {
   projectFrontmatterSchema,
 } from "@/content/schema";
 
-// Single content loader. Reads MDX at build time (node:fs → server/build only),
+// Single content loader. Reads MDX at build time (node:fs, server/build only),
 // validates frontmatter with Zod and THROWS on the first invalid document, so a
 // malformed essay is a red build, not a production bug. The FILENAME IS THE SLUG.
 // there is no second source of truth for routes, dates, RSS, or OG.
