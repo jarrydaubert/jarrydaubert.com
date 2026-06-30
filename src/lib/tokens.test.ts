@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { tokens } from "./tokens";
+import { colorTokens, tokens } from "./tokens";
 
 const EXPECTED = [
   "bg",
@@ -57,21 +57,27 @@ const PAIRS: Array<[string, string]> = [
 ];
 
 describe("design tokens", () => {
-  it("parses every expected token from globals.css @theme", () => {
-    for (const name of EXPECTED) {
-      expect(tokens[name], `--color-${name}`).toMatch(/^#[0-9a-f]{6}$/);
-    }
+  it("keeps the legacy tokens export on the light palette", () => {
+    expect(tokens).toBe(colorTokens.light);
   });
 
-  it("defines no unexpected tokens (catches typos)", () => {
-    expect(Object.keys(tokens).sort()).toEqual([...EXPECTED].sort());
-  });
+  describe.each(Object.entries(colorTokens))("%s palette", (_, palette) => {
+    it("parses every expected token from globals.css", () => {
+      for (const name of EXPECTED) {
+        expect(palette[name], `--color-${name}`).toMatch(/^#[0-9a-f]{6}$/);
+      }
+    });
 
-  it.each(PAIRS)("text %s on %s clears WCAG AA (4.5)", (fg, bg) => {
-    const ratio = contrast(tokens[fg], tokens[bg]);
-    expect(
-      ratio,
-      `${fg} on ${bg} = ${ratio.toFixed(2)}`,
-    ).toBeGreaterThanOrEqual(4.5);
+    it("defines no unexpected tokens (catches typos)", () => {
+      expect(Object.keys(palette).sort()).toEqual([...EXPECTED].sort());
+    });
+
+    it.each(PAIRS)("text %s on %s clears WCAG AA (4.5)", (fg, bg) => {
+      const ratio = contrast(palette[fg], palette[bg]);
+      expect(
+        ratio,
+        `${fg} on ${bg} = ${ratio.toFixed(2)}`,
+      ).toBeGreaterThanOrEqual(4.5);
+    });
   });
 });

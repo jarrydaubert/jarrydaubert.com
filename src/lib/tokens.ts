@@ -9,20 +9,62 @@ import { join } from "node:path";
  */
 const GLOBALS_CSS = join(process.cwd(), "src/app/globals.css");
 
-function parseThemeColors(css: string): Record<string, string> {
-  const block = css.match(/@theme\s*\{([\s\S]*?)\}/);
-  if (!block) {
-    throw new Error("tokens: @theme block not found in globals.css");
+function extractBlock(
+  css: string,
+  startPattern: RegExp,
+  label: string,
+): string {
+  const start = css.search(startPattern);
+  if (start === -1) {
+    throw new Error(`tokens: ${label} block not found in globals.css`);
   }
+
+  const open = css.indexOf("{", start);
+  if (open === -1) {
+    throw new Error(`tokens: ${label} block has no opening brace`);
+  }
+
+  let depth = 0;
+  for (let i = open; i < css.length; i += 1) {
+    const char = css[i];
+    if (char === "{") {
+      depth += 1;
+    }
+    if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return css.slice(open + 1, i);
+      }
+    }
+  }
+
+  throw new Error(`tokens: ${label} block has no closing brace`);
+}
+
+function parseColorDeclarations(block: string): Record<string, string> {
   const colors: Record<string, string> = {};
   const re = /--color-([a-z0-9-]+)\s*:\s*(#[0-9a-fA-F]{3,8})\s*;/g;
-  for (const match of block[1].matchAll(re)) {
+  for (const match of block.matchAll(re)) {
     colors[match[1]] = match[2].toLowerCase();
   }
   return colors;
 }
 
-export const tokens = parseThemeColors(readFileSync(GLOBALS_CSS, "utf8"));
+const css = readFileSync(GLOBALS_CSS, "utf8");
+const darkMediaBlock = extractBlock(
+  css,
+  /@media\s*\(prefers-color-scheme:\s*dark\)/,
+  "dark media",
+);
+
+export const colorTokens = {
+  light: parseColorDeclarations(extractBlock(css, /@theme\s*/, "@theme")),
+  dark: parseColorDeclarations(
+    extractBlock(darkMediaBlock, /:root\s*/, "dark :root"),
+  ),
+};
+
+export const tokens = colorTokens.light;
 
 export function token(name: string): string {
   const value = tokens[name];
