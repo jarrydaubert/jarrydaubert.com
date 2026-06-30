@@ -31,8 +31,12 @@ export default function ProjectsPage() {
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        {allProjects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {allProjects.map((project, index) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            priority={index < 2}
+          />
         ))}
       </div>
     </section>

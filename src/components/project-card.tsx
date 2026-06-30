@@ -9,9 +9,11 @@ import type { Project } from "@/lib/content";
 export function ProjectCard({
   project,
   headingLevel = 2,
+  priority = false,
 }: {
   project: Project;
   headingLevel?: 2 | 3;
+  priority?: boolean;
 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
@@ -23,6 +25,7 @@ export function ProjectCard({
           alt={project.previewImage.alt}
           width={project.previewImage.width}
           height={project.previewImage.height}
+          priority={priority}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="mb-5"
         />
