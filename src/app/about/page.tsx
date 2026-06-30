@@ -32,9 +32,6 @@ const operatingProfile = [
   { label: "Current work", value: "ProsePal, PayeTax, Evolution Padel" },
 ];
 
-const PROFILE_LABEL =
-  "text-xs font-semibold uppercase tracking-[0.14em] text-subtle";
-
 export const metadata: Metadata = buildMetadata({
   title: "About",
   description: siteDescription,
@@ -56,11 +53,11 @@ export default function AboutPage() {
         <div className="max-w-3xl space-y-12">
           <div className="space-y-5 text-base leading-8 text-muted">
             <p>
-              I work in software quality, with shipped side projects as a way
-              to understand the failure modes I test for. That means I care
-              less about theatre and more about whether a product does the
-              useful thing, under realistic conditions, with enough evidence to
-              trust the release.
+              I work in software quality, with shipped side projects as a way to
+              understand the failure modes I test for. That means I care less
+              about theatre and more about whether a product does the useful
+              thing, under realistic conditions, with enough evidence to trust
+              the release.
             </p>
             <p>
               My QA background covers mobile and web testing, QA process,
@@ -138,19 +135,19 @@ export default function AboutPage() {
         >
           <h2
             id="operating-profile"
-            className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-[0.16em] text-subtle"
+            className="label mb-5 border-b border-border pb-4"
           >
             Operating profile
           </h2>
           <dl className="space-y-5">
             {operatingProfile.map((item) => (
               <div key={item.label} className="space-y-1">
-                <dt className={PROFILE_LABEL}>{item.label}</dt>
+                <dt className="label">{item.label}</dt>
                 <dd className="text-sm leading-6 text-fg">{item.value}</dd>
               </div>
             ))}
             <div className="space-y-1">
-              <dt className={PROFILE_LABEL}>Contact</dt>
+              <dt className="label">Contact</dt>
               <dd>
                 <Link
                   href={`mailto:${site.email}`}

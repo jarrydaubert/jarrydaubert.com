@@ -23,8 +23,8 @@ export default function WritingPage() {
           Writing
         </h1>
         <p className="text-base leading-7 text-muted">
-          A small index of working notes on software testing, quality
-          judgement, building as evidence, and shipping discipline.
+          A small index of working notes on software testing, quality judgement,
+          building as evidence, and shipping discipline.
         </p>
       </header>
 

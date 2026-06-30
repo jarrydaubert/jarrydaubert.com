@@ -1,8 +1,9 @@
 import NextLink from "next/link";
 import type { ComponentProps, ReactNode } from "react";
+import { buttonClassName } from "@/components/button";
 import { cn } from "@/lib/cn";
 
-type Variant = "inline" | "nav" | "back";
+type Variant = "inline" | "nav" | "back" | "cta";
 
 const VARIANTS: Record<Variant, string> = {
   // Underlined prose/text link. Collapses the focus+underline string repeated site-wide.
@@ -10,7 +11,9 @@ const VARIANTS: Record<Variant, string> = {
   // Chrome nav link. Color shift only, no underline.
   nav: "focus-ring font-medium text-muted transition-colors hover:text-fg",
   // Bordered "back" button.
-  back: "focus-ring inline-flex rounded-sm border border-border px-3 py-2 text-sm font-medium text-fg transition-colors hover:border-border-hover hover:text-accent",
+  back: buttonClassName("secondary"),
+  // Primary call to action.
+  cta: buttonClassName("primary"),
 };
 
 type LinkProps = {

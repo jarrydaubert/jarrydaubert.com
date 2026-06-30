@@ -95,11 +95,7 @@ export default function Home() {
             and held them to the same scrutiny I&apos;d give anyone else&apos;s.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Link
-              href="#projects"
-              variant="nav"
-              className="rounded-sm bg-accent px-5 py-3 text-sm font-medium text-bg shadow-[0_12px_30px_-22px_var(--color-accent)] hover:bg-fg hover:text-bg sm:font-semibold"
-            >
+            <Link href="#projects" variant="cta">
               See the projects
             </Link>
             <Link

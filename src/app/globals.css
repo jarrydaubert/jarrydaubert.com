@@ -24,6 +24,7 @@
     "JetBrains Mono", Menlo, monospace;
   --shadow-elevated:
     0 1px 2px rgb(33 28 20 / 0.08), 0 18px 45px -32px rgb(33 28 20 / 0.32);
+  --shadow-cta: 0 12px 30px -22px var(--color-accent);
   --spacing-section: 7rem;
 }
 
@@ -146,6 +147,14 @@ h3 {
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
+  color: var(--color-subtle);
+}
+
+@utility label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--color-subtle);
 }
 

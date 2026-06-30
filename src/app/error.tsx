@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/button";
 import { Link } from "@/components/link";
 
 export default function ErrorBoundary({
@@ -20,13 +21,9 @@ export default function ErrorBoundary({
         An unexpected error occurred. You can try again or head back home.
       </p>
       <div className="flex flex-wrap gap-4">
-        <button
-          type="button"
-          onClick={reset}
-          className="focus-ring inline-flex rounded-sm border border-border px-3 py-2 text-sm font-medium text-fg transition-colors hover:border-border-hover hover:text-accent"
-        >
+        <Button type="button" onClick={reset}>
           Try again
-        </button>
+        </Button>
         <Link href="/" variant="back">
           Back home
         </Link>

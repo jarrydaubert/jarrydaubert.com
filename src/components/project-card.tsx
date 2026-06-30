@@ -2,8 +2,6 @@ import { Card } from "@/components/card";
 import { Figure } from "@/components/figure";
 import type { Project } from "@/lib/content";
 
-const LABEL = "text-xs font-semibold uppercase tracking-[0.16em] text-subtle";
-
 /**
  * Always-linked project teaser for the case file. The live-site link
  * lives on the detail page (a card cannot nest an interactive anchor).
@@ -35,12 +33,12 @@ export function ProjectCard({
         </Heading>
         <p className="text-sm leading-6 text-muted">{project.summary}</p>
         <p className="text-sm leading-6 text-muted">
-          <span className={LABEL}>Focus</span> {project.theme}
+          <span className="label">Focus</span> {project.theme}
         </p>
       </div>
       <div className="mt-7 border-t border-border pt-5 text-sm text-muted">
         <p>
-          <span className={LABEL}>Current state</span>{" "}
+          <span className="label">Current state</span>{" "}
           <span className="font-mono text-fg">{project.status}</span>
         </p>
       </div>
