@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* The single source of truth for color. @theme emits these as :root custom
+/* The single source of truth for reusable UI color. @theme emits these as :root custom
    properties AND generates first-class utilities (bg-surface, text-fg, ring-ring,
    border-border-hover, ...). lib/tokens.ts parses this block so JS never holds an
    independent hex literal; tokens.test.ts fails CI on drift or low contrast. */
@@ -52,6 +52,8 @@ body {
   font-family: var(--font-body);
 }
 
+/* Atmospheric background texture is deliberately not a reusable UI color token.
+   Keep interface color in @theme; keep page atmosphere scoped to body here. */
 body::before {
   position: fixed;
   inset: 0;
