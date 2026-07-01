@@ -85,7 +85,7 @@ export default function Home() {
         <div className="max-w-5xl">
           <h1
             id="home-title"
-            className="max-w-[11.5em] text-5xl font-normal leading-[0.92] tracking-[-0.035em] text-fg sm:text-6xl lg:text-[4.25rem]"
+            className="max-w-[9.8em] text-5xl font-medium leading-[1.02] tracking-normal text-fg sm:text-6xl lg:text-[4.25rem]"
           >
             I build to understand what I test.
           </h1>

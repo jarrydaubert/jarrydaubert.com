@@ -35,7 +35,7 @@ export default function ProjectsPage() {
           <ProjectCard
             key={project.slug}
             project={project}
-            priority={index < 2}
+            priority={index < 3}
           />
         ))}
       </div>
