@@ -4,7 +4,7 @@ import { allProjects } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 
 const siteDescription =
-  "Selected shipped apps, client work, and testing experiments by Jarryd Aubert.";
+  "Selected shipped apps, client work, and testing notes by Jarryd Aubert.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Projects",
@@ -23,10 +23,9 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-base leading-7 text-muted">
-          Selected apps, client work, and experiments across practical software
-          quality, deterministic checks, subjective output evaluation, and
-          release discipline. Proper case studies will replace these starter
-          notes.
+          Selected apps, client work, and experiments that show how I test
+          software: checking exact answers, judging messy human outputs, and
+          making sure small projects are safe enough to ship.
         </p>
       </header>
 

@@ -36,12 +36,13 @@ export function ProjectCard({
         </Heading>
         <p className="text-sm leading-6 text-muted">{project.summary}</p>
         <p className="text-sm leading-6 text-muted">
-          <span className="label">Focus</span> {project.theme}
+          <span className="label mb-1 block">What it shows</span>
+          {project.theme}
         </p>
       </div>
       <div className="mt-7 border-t border-border pt-5 text-sm text-muted">
         <p>
-          <span className="label">Current state</span>{" "}
+          <span className="label">Status</span>{" "}
           <span className="font-mono text-fg">{project.status}</span>
         </p>
       </div>

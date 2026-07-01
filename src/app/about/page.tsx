@@ -7,26 +7,26 @@ const siteDescription =
   "About Jarryd Aubert, a UK-based software tester who builds and ships his own apps to understand what he tests.";
 
 const focusAreas = [
-  "Practical software quality",
-  "Test strategy",
-  "Testing ambiguous outputs",
-  "Release evidence from shipped apps",
+  "Finding software risks",
+  "Planning useful tests",
+  "Testing messy human outputs",
+  "Checking real shipped apps",
 ];
 
 const workingPrinciples = [
   "Start with risk.",
-  "Make quality visible.",
+  "Make quality easy to see.",
   "Keep systems small enough to reason about.",
-  "Use AI to accelerate work, not excuse weak judgement.",
+  "Use AI to move faster, not to lower the bar.",
 ];
 
 const operatingProfile = [
   {
     label: "Focus",
-    value: "Software quality, test strategy, evidence from shipped apps",
+    value: "Software testing, useful test plans, and proof from shipped apps",
   },
   {
-    label: "Working bias",
+    label: "How I work",
     value: "Start with risk, make quality visible, keep systems small",
   },
   { label: "Current work", value: "ProsePal, PayeTax, Evolution Padel" },
@@ -53,32 +53,30 @@ export default function AboutPage() {
         <div className="max-w-3xl space-y-12">
           <div className="space-y-5 text-base leading-8 text-muted">
             <p>
-              I work in software quality, with shipped side projects as a way to
-              understand the failure modes I test for. That means I care less
-              about theatre and more about whether a product does the useful
-              thing, under realistic conditions, with enough evidence to trust
-              the release.
+              I work in software testing, and I use shipped side projects to
+              understand the problems I test for. I care less about theatre and
+              more about whether a product does the useful thing, in realistic
+              conditions, with enough proof to trust the release.
             </p>
             <p>
-              My QA background covers mobile and web testing, QA process,
-              risk-based testing, non-functional thinking, and coordinating
-              testing work across people and delivery constraints. I like clear
-              acceptance criteria, visible trade-offs, and tests that answer
-              real questions instead of simply adding ceremony.
+              My QA background covers mobile and web testing, test planning,
+              performance and reliability concerns, and coordinating testing
+              work across people and deadlines. I like clear rules for what
+              "done" means, visible trade-offs, and tests that answer real
+              questions instead of adding ceremony.
             </p>
             <p>
               I also use small shipped projects as a testing lab: ProsePal,
               PayeTax, client website work, and experiments with AI-assisted
               development. These are not agency claims or a claim to be a
               full-time AI engineer. They are practical attempts to ship useful
-              software with better feedback loops, better judgement, and less
+              software with faster feedback, better judgement, and less
               hand-waving.
             </p>
             <p>
-              The thread through the work is quality before testing: shaping the
-              problem clearly, reducing avoidable complexity, making risks
-              visible, and using AI where it helps move faster without lowering
-              the bar for evidence.
+              The thread through the work is simple: understand the problem,
+              reduce the avoidable complexity, make the risks visible, and use
+              AI only where it helps without lowering the bar for proof.
             </p>
           </div>
 
@@ -137,7 +135,7 @@ export default function AboutPage() {
             id="operating-profile"
             className="label mb-5 border-b border-border pb-4"
           >
-            Operating profile
+            Quick profile
           </h2>
           <dl className="space-y-5">
             {operatingProfile.map((item) => (
