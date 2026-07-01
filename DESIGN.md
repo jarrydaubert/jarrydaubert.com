@@ -16,6 +16,12 @@ The type scale is Tailwind's default scale. Use the configured font families fro
 
 Arbitrary text sizes should stay rare and local. They are acceptable for one-off editorial display decisions such as the home hero, or for relative inline code sizing in prose.
 
+## Brand Mark
+
+The full stop after `Jarryd Aubert` in the header and footer is intentional. Treat it as the brass full stop in spirit: a small signal of closure, evidence, and work that has been checked rather than merely presented.
+
+Keep the mark token-driven. In the current cool-paper palette it uses `text-ring`, not a hardcoded brass colour, so the meaning survives palette changes without creating a one-off colour rule.
+
 ## Primitives
 
 Use these shared primitives before adding local class strings:

@@ -1,7 +1,8 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import matter from "gray-matter";
 import readingTime from "reading-time";
+import { VFile } from "vfile";
+import { matter } from "vfile-matter";
 import {
   type EssayFrontmatter,
   essayFrontmatterSchema,
@@ -54,9 +55,16 @@ function formatIssues(error: {
     .join("\n");
 }
 
+function parseMdx(raw: string): { data: unknown; content: string } {
+  const file = new VFile({ value: raw });
+  matter(file, { strip: true });
+
+  return { data: file.data.matter, content: String(file) };
+}
+
 function loadEssays(): Essay[] {
   const essays = readDir("essays").map(({ slug, raw }) => {
-    const { data, content } = matter(raw);
+    const { data, content } = parseMdx(raw);
     const parsed = essayFrontmatterSchema.safeParse(data);
     if (!parsed.success) {
       throw new Error(
@@ -79,7 +87,7 @@ function loadEssays(): Essay[] {
 
 function loadProjects(): Project[] {
   const projects = readDir("projects").map(({ slug, raw }) => {
-    const { data, content } = matter(raw);
+    const { data, content } = parseMdx(raw);
     const parsed = projectFrontmatterSchema.safeParse(data);
     if (!parsed.success) {
       throw new Error(
