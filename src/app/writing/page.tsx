@@ -4,7 +4,7 @@ import { allEssays } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 
 const siteDescription =
-  "Notes from Jarryd Aubert on software quality, AI-assisted delivery, product building, and shipping discipline.";
+  "Notes from Jarryd Aubert on software testing, judgement, building, and shipping work he can stand behind.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Writing",
@@ -23,8 +23,8 @@ export default function WritingPage() {
           Writing
         </h1>
         <p className="text-base leading-7 text-muted">
-          A small index of working notes on software quality, AI-assisted
-          delivery, product building, and shipping discipline.
+          A small index of working notes on software testing, judgement,
+          building, and shipping work I can stand behind.
         </p>
       </header>
 

@@ -4,7 +4,7 @@ import { allProjects } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 
 const siteDescription =
-  "Selected products, client work, and AI operator experiments by Jarryd Aubert.";
+  "Selected shipped apps, client work, and testing notes by Jarryd Aubert.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Projects",
@@ -23,15 +23,19 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-base leading-7 text-muted">
-          Selected products, client work, and experiments across practical
-          software quality, AI-assisted delivery, and small product shipping.
-          Proper case studies will replace these starter notes.
+          Selected apps, client work, and experiments that show how I test
+          software: checking exact answers, judging messy human outputs, and
+          making sure small projects are safe enough to ship.
         </p>
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        {allProjects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {allProjects.map((project, index) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            priority={index < 3}
+          />
         ))}
       </div>
     </section>

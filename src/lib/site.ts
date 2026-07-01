@@ -6,7 +6,7 @@ export const site = {
   description:
     "Personal site of Jarryd Aubert, a software tester who builds and ships his own apps to understand what he tests.",
   homeDescription:
-    "Jarryd Aubert builds and ships his own apps and sites to understand what he tests.",
+    "Jarryd Aubert is a software tester who builds and ships his own apps to understand what he tests.",
   jobTitle: "Software Tester",
   locale: "en_GB",
   socials: {

@@ -54,7 +54,7 @@ Bad direction:
 
 ## Voice and copy rules
 
-* **No em dashes.** Use full stops, commas, colons, semicolons, or parentheses. This is a hard rule everywhere, including markdown, metadata, comments, and generated copy.
+* **No auto-substituted typography.** No em dashes and no en dashes. No curly or smart quotes, and no smart apostrophes. No ellipsis character; write three full stops if you need one. Use full stops, commas, colons, semicolons, or parentheses to separate clauses, and straight quotes for quotation. This is a hard rule everywhere, including markdown, metadata, comments, alt text, and generated copy. The reason fences the whole category: auto-substituted typography is an AI tell, and this site's credibility depends on copy that does not read as generated. A rule that banned only em dashes would invite an agent to treat a curly quote as acceptable. It is not.
 * **UK English.** This is a UK-facing credibility surface. Use UK spelling on this site.
 * **Surface-specific spelling matters.** The ProsePal product site may use US English for its audience. Do not copy spelling rules blindly between surfaces.
 * **Calm, evidence-led, low hype.** Avoid superlatives, growth-marketing tone, inflated labels, and vague credibility claims.
@@ -66,6 +66,15 @@ Target register:
 "I do not just want something to work. I want to know how it fails."
 
 Then support it with concrete evidence.
+
+## Design and content anti-patterns
+
+These are the defaults an agent falls into. Each is forbidden, and each carries its reason so it cannot be reasoned around.
+
+* **When a section feels flat or thin, connect and differentiate. Do not decorate.** No icons, gradients, badges, or ornament added to solve what is really a content problem. Decoration laid over weak content makes it read as generated filler. Fix the words and the structure first.
+* **Do not make things visually equal when their value is that they differ.** Equal-weight treatment flattens the one argument that matters here: the testing range across deterministic and non-deterministic products. Equal prominence is fine. Equal sameness is not.
+* **Do not pad to look complete.** A short, true list beats a long, padded one. Three real things stated at their true level are stronger than ten propped up with filler.
+* **Do not reach for the generic builder or AI-startup aesthetic.** Gradient hero, inflated claims, logo soup, founder energy. That is the opposite of a calm, evidence-led tester credibility surface.
 
 ## The work section
 
@@ -304,6 +313,8 @@ Unverified AI-assisted code is not.
 
 Agents may suggest, edit, refactor, and generate code, but every change must be grounded in the repo's actual state and validated before commit.
 
+Verify against the source before asserting. An impressive-looking summary is not verification. Reading the file, running the command, or checking the artifact is. If you cannot verify a claim, cut it or mark it clearly as unverified.
+
 Agents must not:
 
 * invent commands
@@ -322,7 +333,9 @@ Agents must not:
 * Put AI, vendor, or model names in hero or positioning copy.
 * Invent metrics, testimonials, client engagements, revenue, user numbers, or team size.
 * Inflate Evolution Padel beyond its real state.
-* Use em dashes.
+* Use em dashes, en dashes, curly quotes, smart apostrophes, or any other auto-substituted typography.
+* Decorate a flat or thin section instead of fixing its content.
+* Assert something from a summary without checking the source.
 * Change the positioning or target reader unless explicitly asked.
 * Hand-edit generated files instead of their source.
 * Tidy a privacy, security, or factual claim before confirming it is true.

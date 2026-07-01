@@ -34,12 +34,13 @@ const PROJECTS = [
     built:
       "I chose it because it gave me something a tester wants: a clear right or wrong answer. The work forced me through messy inputs, including Scottish rates, student-loan thresholds on total income, and salary/dividend choices.",
     proof: "It matches my own payslip to the penny.",
-    insightLabel: "What it demonstrates",
-    demonstrates: "Correctness under real-world inputs, not happy-path ones.",
+    insightLabel: "What it shows",
+    demonstrates:
+      "How I check software when there is a right answer and real numbers to compare.",
     href: "https://payetax.co.uk/",
     linkText: "Visit PayeTax",
     evidenceHref: "/writing/proving-my-tax-calculator-correct",
-    evidenceText: "How I tested it, and where that testing stops →",
+    evidenceText: "How I tested it, and where that testing stops",
   },
   {
     name: "ProsePal",
@@ -48,10 +49,10 @@ const PROJECTS = [
     built:
       "I built and shipped it as a real app, then used it to explore the harder problem of judging output where there is no single right answer.",
     proof:
-      "A message can be grammatically perfect and still completely wrong for the moment. No assertion catches that, which is exactly the problem I am working through.",
-    insightLabel: "What it explores",
+      "A message can be grammatically perfect and still completely wrong for the moment. A normal pass-or-fail test does not catch that, which is exactly the problem I am working through.",
+    insightLabel: "What it shows",
     demonstrates:
-      "How do you test something when correctness is a matter of judgement, not a value you can assert against?",
+      "How I judge software when there is no single right answer, only a better or worse fit for the person using it.",
     href: "https://www.prosepal.app/",
     linkText: "Visit ProsePal",
     evidenceHref: null,
@@ -85,7 +86,7 @@ export default function Home() {
         <div className="max-w-5xl">
           <h1
             id="home-title"
-            className="max-w-[11.5em] text-5xl font-normal leading-[0.92] tracking-[-0.035em] text-fg sm:text-6xl lg:text-[4.25rem]"
+            className="max-w-[9.8em] text-5xl font-medium leading-[1.02] tracking-normal text-fg sm:text-6xl lg:text-[4.25rem]"
           >
             I build to understand what I test.
           </h1>
@@ -95,11 +96,7 @@ export default function Home() {
             and held them to the same scrutiny I&apos;d give anyone else&apos;s.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Link
-              href="#projects"
-              variant="nav"
-              className="rounded-sm bg-accent px-5 py-3 text-sm font-medium text-bg shadow-[0_12px_30px_-22px_var(--color-accent)] hover:bg-fg hover:text-bg sm:font-semibold"
-            >
+            <Link href="#projects" variant="cta">
               See the projects
             </Link>
             <Link
@@ -198,14 +195,15 @@ export default function Home() {
         <div className="mt-10 max-w-3xl space-y-7 text-xl leading-9 text-muted">
           <p>
             I wanted to feel firsthand what building software is actually like,
-            from buying a domain and setting up a repo to deploying, publishing,
-            watching analytics, and living with my own bugs.
+            from buying a domain and setting up the code to putting it online,
+            watching how people use it, and living with my own bugs.
           </p>
           <p>
             Going through that pain changed how I test, because now I understand
             more of where software actually hurts. The awkward handoffs, the
-            ambiguous decisions, the hidden edge cases, and the small release
-            details all feel different when my own name is on the thing.
+            unclear decisions, the things that only break in odd situations, and
+            the small details before launch all feel different when my own name
+            is on the thing.
           </p>
         </div>
       </section>
@@ -221,7 +219,8 @@ export default function Home() {
               id="writing-title"
               className="max-w-xl text-2xl font-semibold leading-9 text-fg sm:text-3xl"
             >
-              Notes on testing, building, and shipping software that holds up.
+              Notes on testing, building, and shipping software I can stand
+              behind.
             </h2>
             <div className="grid w-full max-w-xl gap-4">
               {essays.map((essay) => (
