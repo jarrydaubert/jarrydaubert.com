@@ -19,14 +19,44 @@ export const site = {
   ],
 } as const;
 
+export const knowsAbout = [
+  "software testing",
+  "QA",
+  "test planning",
+  "test automation",
+  "accessibility checks",
+  "shipping small apps",
+  "AI-assisted development review",
+  "deterministic testing",
+  "non-deterministic product evaluation",
+];
+
+const personRef = {
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+};
+
 export const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
   url: site.url,
+  description: site.homeDescription,
   email: site.email,
   jobTitle: site.jobTitle,
+  knowsAbout,
   sameAs: [site.socials.github, site.socials.linkedin],
+} as const;
+
+export const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  inLanguage: "en-GB",
+  publisher: personRef,
 } as const;
 
 type ArticleInput = {
@@ -35,6 +65,14 @@ type ArticleInput = {
   publishedAt: string;
   updatedAt?: string;
   href: string;
+};
+
+type ProjectInput = {
+  name: string;
+  summary: string;
+  theme: string;
+  href: string;
+  liveUrl?: string;
 };
 
 export function articleJsonLd(essay: ArticleInput) {
@@ -47,6 +85,22 @@ export function articleJsonLd(essay: ArticleInput) {
     dateModified: essay.updatedAt ?? essay.publishedAt,
     url: `${site.url}${essay.href}`,
     mainEntityOfPage: `${site.url}${essay.href}`,
-    author: { "@type": "Person", name: site.name, url: site.url },
+    image: `${site.url}${essay.href}/opengraph-image`,
+    inLanguage: "en-GB",
+    author: personRef,
+    publisher: personRef,
+  };
+}
+
+export function projectJsonLd(project: ProjectInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.name,
+    description: `${project.summary} ${project.theme}`,
+    url: `${site.url}${project.href}`,
+    ...(project.liveUrl ? { sameAs: project.liveUrl } : {}),
+    inLanguage: "en-GB",
+    author: personRef,
   };
 }

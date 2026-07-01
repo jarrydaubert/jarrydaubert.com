@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_CONTENT_TYPE, OG_SIZE } from "@/lib/og";
 import { site } from "@/lib/site";
 
 type MetadataType = "website" | "article";
@@ -26,9 +27,9 @@ export function serializeJsonLd(data: unknown) {
 }
 
 /**
- * Single metadata builder. OG/Twitter images are NOT set here. The file-based
- * `opengraph-image` convention owns them for every route (default + per-essay),
- * so social cards are real PNGs, never the old SVG.
+ * Single metadata builder. OG/Twitter image tags point at file-based
+ * `opengraph-image` routes: the default site image for normal pages and a
+ * per-essay image for article pages.
  */
 export function buildMetadata({
   title,
@@ -46,11 +47,26 @@ export function buildMetadata({
         ? { absolute: title }
         : title;
   const displayTitle = title ?? site.name;
+  const normalizedPath = path === "/" ? "" : path.replace(/\/$/, "");
+  const imagePath =
+    type === "article" && normalizedPath
+      ? `${normalizedPath}/opengraph-image`
+      : "/opengraph-image";
+  const socialImage = {
+    url: absoluteUrl(imagePath),
+    width: OG_SIZE.width,
+    height: OG_SIZE.height,
+    alt: displayTitle,
+    type: OG_CONTENT_TYPE,
+  };
 
   return {
     metadataBase: new URL(site.url),
     title: metadataTitle,
     description,
+    authors: [{ name: site.name, url: site.url }],
+    creator: site.name,
+    publisher: site.name,
     alternates: {
       canonical: path,
     },
@@ -61,6 +77,17 @@ export function buildMetadata({
       ],
     },
     manifest: "/manifest.webmanifest",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
     openGraph: {
       title: displayTitle,
       description,
@@ -68,6 +95,7 @@ export function buildMetadata({
       siteName: site.name,
       locale: site.locale,
       type,
+      images: [socialImage],
       ...(type === "article" && publishedAt
         ? {
             publishedTime: publishedAt,
@@ -79,6 +107,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title: displayTitle,
       description,
+      images: [socialImage],
     },
   };
 }

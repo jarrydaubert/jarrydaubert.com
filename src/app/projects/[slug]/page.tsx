@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Figure } from "@/components/figure";
+import { JsonLd } from "@/components/json-ld";
 import { Link } from "@/components/link";
 import { Prose } from "@/components/prose";
 import { getProject, projectSlugs } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { projectJsonLd } from "@/lib/site";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -43,6 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article className="max-w-3xl space-y-10">
+      <JsonLd data={projectJsonLd(project)} />
       <header className="space-y-4">
         <p className="text-sm font-medium text-subtle">Project</p>
         <h1 className="text-3xl font-semibold text-fg sm:text-4xl">
