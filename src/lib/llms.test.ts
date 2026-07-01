@@ -18,6 +18,18 @@ describe("buildLlmsTxt", () => {
     }
   });
 
+  it("states the tester-first positioning and testing spectrum", () => {
+    const text = buildLlmsTxt();
+
+    expect(text).toContain("## Core Positioning");
+    expect(text).toContain(
+      "Jarryd Aubert is a software tester who builds and ships his own apps to understand what he tests.",
+    );
+    expect(text).toContain("## Testing Spectrum");
+    expect(text).toContain("PayeTax shows deterministic testing");
+    expect(text).toContain("ProsePal shows non-deterministic testing");
+  });
+
   it("links every published project and essay so the map cannot drift", () => {
     const text = buildLlmsTxt();
     for (const project of allProjects) {

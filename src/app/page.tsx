@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/json-ld";
 import { Link } from "@/components/link";
 import { allEssays } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
-import { personJsonLd, site } from "@/lib/site";
+import { personJsonLd, site, websiteJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: site.name,
@@ -78,6 +78,7 @@ export default function Home() {
   return (
     <div className="home-page">
       <JsonLd data={personJsonLd} />
+      <JsonLd data={websiteJsonLd} />
 
       <section
         aria-labelledby="home-title"

@@ -1,7 +1,6 @@
 import { token } from "@/lib/tokens";
 
-export const OG_SIZE = { width: 1200, height: 630 };
-export const OG_CONTENT_TYPE = "image/png";
+export { OG_CONTENT_TYPE, OG_SIZE } from "@/lib/og";
 
 /**
  * Shared OG layout for the default site image and per-essay images. Uses inline

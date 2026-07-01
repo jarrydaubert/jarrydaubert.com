@@ -13,6 +13,9 @@ function escapeXml(value: string) {
 }
 
 export function GET() {
+  const lastBuildDate = allEssays[0]?.publishedAt
+    ? new Date(allEssays[0].publishedAt).toUTCString()
+    : new Date("2026-05-25").toUTCString();
   const items = allEssays
     .map(
       (essay) => `    <item>
@@ -26,12 +29,14 @@ export function GET() {
     .join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${escapeXml(site.name)}</title>
     <link>${site.url}</link>
+    <atom:link href="${absoluteUrl("/feed.xml")}" rel="self" type="application/rss+xml" />
     <description>${escapeXml(site.description)}</description>
     <language>en-GB</language>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
 ${items}
   </channel>
 </rss>`;

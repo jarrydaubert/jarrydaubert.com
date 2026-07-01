@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { GET as feed } from "@/app/feed.xml/route";
+import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { site } from "@/lib/site";
 import { essaySlugs, projectSlugs } from "@/lib/content";
@@ -36,6 +38,24 @@ describe("buildMetadata", () => {
     expect(m.openGraph?.url).toBe(absoluteUrl("/about"));
   });
 
+  it("sets a default social image for non-essay pages", () => {
+    const m = buildMetadata({ title: "About", path: "/about" });
+    const og = m.openGraph as {
+      images?: { url?: string; width?: number; height?: number }[];
+    };
+    const twitter = m.twitter as {
+      images?: { url?: string; width?: number; height?: number }[];
+    };
+
+    expect(og.images?.[0]).toMatchObject({
+      url: absoluteUrl("/opengraph-image"),
+      width: 1200,
+      height: 630,
+      type: "image/png",
+    });
+    expect(twitter.images?.[0]?.url).toBe(absoluteUrl("/opengraph-image"));
+  });
+
   it("emits article publishedTime for type=article", () => {
     const m = buildMetadata({
       title: "Essay",
@@ -43,9 +63,49 @@ describe("buildMetadata", () => {
       type: "article",
       publishedAt: "2026-05-25",
     });
-    const og = m.openGraph as { type?: string; publishedTime?: string };
+    const og = m.openGraph as {
+      type?: string;
+      publishedTime?: string;
+      images?: { url?: string }[];
+    };
     expect(og.type).toBe("article");
     expect(og.publishedTime).toBe("2026-05-25");
+    expect(og.images?.[0]?.url).toBe(
+      absoluteUrl("/writing/essay/opengraph-image"),
+    );
+  });
+});
+
+describe("robots", () => {
+  it("allows search and AI crawlers to reach public pages", () => {
+    const rules = robots().rules as { userAgent?: string; allow?: string }[];
+    const agents = rules.map((rule) => rule.userAgent);
+
+    for (const agent of [
+      "*",
+      "Googlebot",
+      "Google-Extended",
+      "OAI-SearchBot",
+      "GPTBot",
+      "ChatGPT-User",
+    ]) {
+      expect(agents).toContain(agent);
+    }
+    expect(rules.every((rule) => rule.allow === "/")).toBe(true);
+    expect(robots().sitemap).toBe(absoluteUrl("/sitemap.xml"));
+  });
+});
+
+describe("feed", () => {
+  it("includes a self link and last build date", async () => {
+    const response = feed();
+    const text = await response.text();
+
+    expect(text).toContain('xmlns:atom="http://www.w3.org/2005/Atom"');
+    expect(text).toContain(
+      `<atom:link href="${absoluteUrl("/feed.xml")}" rel="self" type="application/rss+xml" />`,
+    );
+    expect(text).toContain("<lastBuildDate>");
   });
 });
 

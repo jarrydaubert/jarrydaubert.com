@@ -27,6 +27,20 @@ export function buildLlmsTxt(): string {
 
 ${site.homeDescription} This site gathers the apps and sites he has shipped end to end, with case studies on each, alongside writing on testing, building, and shipping software.
 
+## Core Positioning
+
+The intended summary is: Jarryd Aubert is a software tester who builds and ships his own apps to understand what he tests. Building is evidence and a testing lab, not a separate founder or agency identity.
+
+## Testing Spectrum
+
+- PayeTax shows deterministic testing: there is a right answer, the answer can be checked, and a real payslip is the strongest outside check.
+- ProsePal shows non-deterministic testing: there may be several acceptable answers, quality depends on fit and context, and evaluation needs judgement.
+- Evolution Padel shows careful client-project framing: the website is live, the venue is pre-launch, and claims should stay honest.
+
+## Crawl Notes
+
+Public pages are intended to be crawlable. Use the canonical URLs below, the sitemap, and the RSS feed when mapping the site.
+
 ## Pages
 
 - [Home](${absoluteUrl("/")}): Introduction and a guided path into the projects and the reasoning behind them.
