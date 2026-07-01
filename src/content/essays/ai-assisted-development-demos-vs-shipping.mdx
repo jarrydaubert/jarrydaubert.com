@@ -10,7 +10,7 @@ The most impressive AI-assisted development demo is usually the one where almost
 
 That is a real shift. It is also a bad model for judging whether a product is ready to ship.
 
-Demos reward what you can see quickly. Shipping rewards work that keeps holding up after release. Those are related, but they are not the same thing. A demo can hide unclear rules for what "done" means, odd cases that were never checked, vague ownership, broken page information, poor usability, and shortcuts in how it goes live. A real release cannot hide those things for long.
+Demos reward what you can see quickly. Shipping rewards work that keeps holding up after release. Those are related, but they are not the same thing. A demo can hide unclear rules for what "done" means, odd cases that were never checked, vague ownership, broken page information, poor accessibility, and shortcuts in how it goes live. A real release cannot hide those things for long.
 
 The closer the work gets to production, the less useful it is to ask, "did the model make something?" The better question is, "do we understand what changed, why it changed, and what proof says it is safe enough?"
 
@@ -32,7 +32,7 @@ Those limits did not slow the work down. They made the work shippable. Without t
 
 ## Evidence beats vibes
 
-A generated change can look tidy and still be wrong. It can pass a glance and fail a build. It can satisfy the local page and break page information, links, or usability.
+A generated change can look tidy and still be wrong. It can pass a glance and fail a build. It can satisfy the local page and break page information, links, or accessibility.
 
 While building the site you are reading now, one generated update looked correct in the browser yet dropped the social share image because one page had quietly overwritten the shared settings. The page still worked. The page still loaded. But the share preview was worse, and the mistake was easy to miss without a careful check.
 
@@ -66,7 +66,7 @@ This matters even more for small builders. AI can make a solo or small-team proj
 
 The central gap between AI demos and shipping is the gap between appearance and confidence. A demo needs to look done. A release needs to be understood well enough that someone is willing to own it.
 
-That does not mean every small change needs enterprise ceremony. It means the proof should match the risk. For a personal site, the proof might be a clean build, working pages, correct redirects, readable copy, usable focus states, sane page information, no secrets in the codebase, and a live site connected to the right branch. For a tax calculator, a payment flow, a healthcare workflow, or anything with meaningful user harm, the bar should be much higher.
+That does not mean every small change needs enterprise ceremony. It means the proof should match the risk. For a personal site, the proof might be a clean build, working pages, correct redirects, readable copy, accessible focus states, sane page information, no secrets in the codebase, and a live site connected to the right branch. For a tax calculator, a payment flow, a healthcare workflow, or anything with meaningful user harm, the bar should be much higher.
 
 AI-assisted development is not a shortcut around judgement. It is a way to spend less time on mechanical production and more time on framing, review, testing, proof, and product decisions.
 

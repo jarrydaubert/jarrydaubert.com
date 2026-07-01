@@ -74,9 +74,10 @@ export default function AboutPage() {
               hand-waving.
             </p>
             <p>
-              The thread through the work is simple: understand the problem,
-              reduce the avoidable complexity, make the risks visible, and use
-              AI only where it helps without lowering the bar for proof.
+              The thread through the work is quality before testing: understand
+              the problem, cut the complexity that is not needed, make the risks
+              easy to see, and use AI only where it helps without lowering the
+              bar for proof.
             </p>
           </div>
 
