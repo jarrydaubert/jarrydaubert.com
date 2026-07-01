@@ -4,7 +4,7 @@ Personal website for Jarryd Aubert, a software tester who builds and ships his o
 
 Live site: [https://jarrydaubert.com](https://jarrydaubert.com)
 
-This site is a personal home base for selected projects, writing, and contact. It presents work around practical software quality, evidence-led testing, and shipping small projects under real constraints.
+This site is a personal home base for selected projects, writing, and contact. It presents work around practical software testing, proof-led quality, and shipping small projects under real constraints.
 
 ## Stack
 
@@ -40,14 +40,22 @@ public
 ## Local Development
 
 ```bash
-bun install
+bun install --frozen-lockfile
 bun dev
 bun run format
 bun run lint:biome
 bun run typecheck
 bun run test
+bun run check:repo
 bun run build
 bun run check
+```
+
+Normal pre-commit validation is:
+
+```bash
+bun run check:repo
+bun run build
 ```
 
 ## Quality Checks

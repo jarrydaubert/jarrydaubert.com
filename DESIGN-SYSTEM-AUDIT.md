@@ -1,6 +1,6 @@
 # Design System Audit
 
-Generated 2026-06-30. Scope: `src/` tokens, `globals.css`, `src/components`, and page-level usage. Updated 2026-06-30 after verified follow-up fixes.
+Generated 2026-06-30. Scope: `src/` tokens, `globals.css`, `src/components`, and page-level usage. Updated 2026-07-01 after verified follow-up fixes and the concept-port reskin.
 
 This file is now a status record for the audit work. For current design-system rules, use `DESIGN.md`.
 
@@ -8,7 +8,7 @@ This file is now a status record for the audit work. For current design-system r
 
 The original audit found strong foundations and several edge inconsistencies. The verified issues have now been addressed in follow-up commits.
 
-Component modules inspected: 9.
+Component modules inspected: 10.
 
 ## Fixes Completed
 
@@ -56,9 +56,9 @@ Files: `src/app/globals.css` and `DESIGN.md`.
 - No hardcoded hex values should appear in TSX.
 - Shared primitives now cover links, cards, figures, buttons, labels, focus rings, MDX prose, and JSON-LD injection.
 
-## Remaining Verification
+## Verification Rule
 
-The implementation still needs final local validation and rendered visual QA before handoff:
+Before handing off UI or design-system changes, run:
 
 ```bash
 bun run check:repo
