@@ -31,7 +31,7 @@ These are load-bearing. Do not casually rewrite them.
 
 1. **Building and AI lead.** The headline identity is someone exploring AI by building and shipping real things: websites and an iPhone app, built with AI coding agents, with AI running inside ProsePal itself. Testing is how he keeps the work honest. It appears as evidence (how each project is checked), not as the headline identity.
 
-2. **Creative presentation can lead.** A project can open with a live preview, an interaction, a diagram or a story. Make the stack, architecture and decisions discoverable, not compulsory opening sections. Let the work determine the form and order; avoid turning project pages into product brochures.
+2. **Screenshots and creative presentation lead.** A project can open with a screenshot, a live preview, an interaction or a story. Technical detail is optional and should earn its place by helping the reader understand the work. Let the project determine the form and order; do not require stack or architecture sections.
 
 3. **Say who did what.** AI coding agents propose approaches and write code as part of a collaboration. He directs the work, evaluates proposals, reviews changes and owns the final decisions, including architecture and validation. Where a page describes a build, make that division of work clear. Do not imply that he hand-wrote all the code or that agents own the final decisions.
 
@@ -39,7 +39,7 @@ These are load-bearing. Do not casually rewrite them.
 
 5. **Every project states its real release state.** Live, in TestFlight, in development or archived, taken from the repo or the live product, never assumed. An architecture that is not yet released must not be presented as the shipped product. If the state cannot be verified, ask.
 
-6. **Tools and vendors are allowed where they describe the work.** Naming the stack on project and "how I build" pages is the point (for example Next.js, SwiftUI, Supabase, Apple Foundation Models, Playwright, Codex, Claude). Do not name-drop tools or model vendors in the hero, and do not claim a vendor is deployed in production unless the deployed configuration proves it. A configurable OpenAI-compatible endpoint is not evidence of which provider is used.
+6. **Tools and vendors are allowed where they describe the work.** Naming the stack on project and "how I build" pages can help explain the work (for example Next.js, SwiftUI, Supabase, Apple Foundation Models, Playwright, Codex, Claude). Do not name-drop tools or model vendors in the hero, and do not claim a vendor is deployed in production unless the deployed configuration proves it. A configurable OpenAI-compatible endpoint is not evidence of which provider is used.
 
 Good direction:
 
@@ -75,16 +75,7 @@ These are the defaults an agent falls into. Each is forbidden, and each carries 
 
 ## The work section
 
-Creative presentation can lead each project page. A project can open with a live preview, an interactive walkthrough, a diagram or a story, and the order is free. Stack and architecture should be discoverable, not compulsory opening sections. Do not force every project into the same layout. Whatever the form, these must be findable and true:
-
-* what it is, in one line
-* release state (rule 5)
-* the stack, with what each part does
-* how the system fits together (a diagram, a walkthrough or prose; if it is a diagram, it shows the real system)
-* two or three real decisions and their trade-offs
-* how it is tested and checked
-* what broke or what is still open
-* links to the live product and the source
+Each project should have a short description, an accurate release status and useful links. Screenshots and creative presentation should lead. Technical detail is optional and should earn its place by helping the reader understand the work. Do not force every project into the same layout or require a project-page checklist.
 
 ### PayeTax
 
