@@ -11,7 +11,9 @@ export const labRobots: Metadata["robots"] = {
 
 export function labMetadata(title: string, description: string): Metadata {
   return {
-    title: { absolute: `${title} | Design lab` },
+    title: {
+      absolute: title === "Design lab" ? title : `${title} | Design lab`,
+    },
     description,
     robots: labRobots,
     alternates: { canonical: null },
