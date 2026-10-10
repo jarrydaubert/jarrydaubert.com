@@ -30,6 +30,7 @@ export async function generateMetadata({
     title: project.name,
     description: `${project.summary} ${project.theme}`,
     path: project.href,
+    index: project.listed,
   });
 }
 

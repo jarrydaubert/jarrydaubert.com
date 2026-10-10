@@ -41,4 +41,10 @@ describe("buildLlmsTxt", () => {
       expect(text).toContain(essay.title);
     }
   });
+
+  it("omits the unlisted experiment from generated references", () => {
+    const text = buildLlmsTxt();
+    expect(text).not.toContain("AI workflow experiments");
+    expect(text).not.toContain("/projects/ai-operator-experiments");
+  });
 });

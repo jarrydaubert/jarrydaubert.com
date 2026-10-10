@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { GET as feed } from "@/app/feed.xml/route";
+import { generateMetadata as generateProjectMetadata } from "@/app/projects/[slug]/page";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { site } from "@/lib/site";
-import { essaySlugs, projectSlugs } from "@/lib/content";
+import { allProjects, essaySlugs, getProject } from "@/lib/content";
 import { absoluteUrl, buildMetadata, serializeJsonLd } from "./metadata";
 
 describe("absoluteUrl", () => {
@@ -23,6 +24,20 @@ describe("serializeJsonLd", () => {
 });
 
 describe("buildMetadata", () => {
+  it("keeps indexing and following enabled by default for all crawlers", () => {
+    expect(buildMetadata().robots).toEqual({
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    });
+  });
+
   it("builds website defaults with a title template + canonical", () => {
     const m = buildMetadata();
     expect(m.alternates?.canonical).toBe("/");
@@ -76,6 +91,51 @@ describe("buildMetadata", () => {
   });
 });
 
+describe("project metadata", () => {
+  it("sets noindex, follow for unlisted projects and Googlebot", async () => {
+    const metadata = await generateProjectMetadata({
+      params: Promise.resolve({ slug: "ai-operator-experiments" }),
+    });
+
+    expect(metadata.robots).toEqual({
+      index: false,
+      follow: true,
+      googleBot: {
+        index: false,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    });
+    expect(metadata.alternates?.canonical).toBe(
+      "/projects/ai-operator-experiments",
+    );
+  });
+
+  it.each(
+    allProjects,
+  )("preserves the existing metadata for listed project $name", async (project) => {
+    expect(getProject(project.slug)?.listed).toBe(true);
+    const metadata = await generateProjectMetadata({
+      params: Promise.resolve({ slug: project.slug }),
+    });
+
+    expect(metadata).toEqual(
+      buildMetadata({
+        title: project.name,
+        description: `${project.summary} ${project.theme}`,
+        path: project.href,
+      }),
+    );
+    expect(metadata.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    });
+  });
+});
+
 describe("robots", () => {
   it("allows search and AI crawlers to reach public pages", () => {
     const rules = robots().rules as { userAgent?: string; allow?: string }[];
@@ -110,7 +170,7 @@ describe("feed", () => {
 });
 
 describe("sitemap", () => {
-  it("covers every static, essay, and project route with no duplicates", () => {
+  it("covers static, essay, and listed project routes with no duplicates", () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(new Set(urls).size).toBe(urls.length);
     for (const path of ["/", "/about", "/projects", "/writing"]) {
@@ -119,9 +179,12 @@ describe("sitemap", () => {
     for (const slug of essaySlugs) {
       expect(urls).toContain(absoluteUrl(`/writing/${slug}`));
     }
-    for (const slug of projectSlugs) {
-      expect(urls).toContain(absoluteUrl(`/projects/${slug}`));
+    for (const project of allProjects) {
+      expect(urls).toContain(absoluteUrl(project.href));
     }
+    expect(urls).not.toContain(
+      absoluteUrl("/projects/ai-operator-experiments"),
+    );
   });
 });
 

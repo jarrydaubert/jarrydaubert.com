@@ -30,6 +30,17 @@ describe("content loader", () => {
     expect(getProject("prosepal")?.href).toBe("/projects/prosepal");
   });
 
+  it("omits the unlisted experiment while preserving its existing URL", () => {
+    expect(allProjects.map((project) => project.slug)).toEqual([
+      "prosepal",
+      "payetax",
+      "evolution-padel",
+    ]);
+    expect(getProject("ai-operator-experiments")?.href).toBe(
+      "/projects/ai-operator-experiments",
+    );
+  });
+
   it("selects exactly the featured projects for the home page", () => {
     expect(selectedWork.map((p) => p.slug)).toEqual([
       "prosepal",
