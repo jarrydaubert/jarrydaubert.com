@@ -44,8 +44,10 @@ bun run build
 
 ## Guardrails
 
-- Do not reintroduce the retired builder-first positioning.
-- Do not make AI the headline.
+- Positioning follows AGENTS.md: building and AI lead, testing is the evidence, career history stays short.
+- Creative presentation can lead; stack and architecture should be discoverable, not compulsory opening sections.
+- AI collaboration is explicit: he directs the work, evaluates proposals, reviews changes and owns the final decisions.
+- Every project states its real release state; never present unreleased architecture as the shipped product.
 - Do not inflate Evolution Padel beyond a live website for a pre-launch client venue.
-- Do not add CMS, database, auth, comments, newsletter, search, 3D/workbench, animation system, component library, visual-regression workflow, Lighthouse workflow, or governance workflow without a specific need.
+- Do not add CMS, database, auth, comments, newsletter, search, animation system, component library, visual-regression workflow, Lighthouse workflow, or governance workflow without a specific need.
 - Do not add `.env.example` unless local environment variables become required.
