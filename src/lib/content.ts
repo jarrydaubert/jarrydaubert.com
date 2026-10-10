@@ -113,11 +113,14 @@ function assertUniqueSlugs(essays: Essay[], projects: Project[]) {
 }
 
 export const allEssays: Essay[] = loadEssays();
-export const allProjects: Project[] = loadProjects();
-assertUniqueSlugs(allEssays, allProjects);
+const projects: Project[] = loadProjects();
+export const allProjects: Project[] = projects.filter(
+  (project) => project.listed,
+);
+assertUniqueSlugs(allEssays, projects);
 
 export const essaySlugs = allEssays.map((essay) => essay.slug);
-export const projectSlugs = allProjects.map((project) => project.slug);
+export const projectSlugs = projects.map((project) => project.slug);
 
 const featured = allProjects.filter((project) => project.featured);
 export const selectedWork: Project[] = featured.length
@@ -129,5 +132,5 @@ export function getEssay(slug: string): Essay | undefined {
 }
 
 export function getProject(slug: string): Project | undefined {
-  return allProjects.find((project) => project.slug === slug);
+  return projects.find((project) => project.slug === slug);
 }

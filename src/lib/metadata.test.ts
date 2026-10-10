@@ -3,7 +3,7 @@ import { GET as feed } from "@/app/feed.xml/route";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { site } from "@/lib/site";
-import { essaySlugs, projectSlugs } from "@/lib/content";
+import { allProjects, essaySlugs } from "@/lib/content";
 import { absoluteUrl, buildMetadata, serializeJsonLd } from "./metadata";
 
 describe("absoluteUrl", () => {
@@ -110,7 +110,7 @@ describe("feed", () => {
 });
 
 describe("sitemap", () => {
-  it("covers every static, essay, and project route with no duplicates", () => {
+  it("covers static, essay, and listed project routes with no duplicates", () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(new Set(urls).size).toBe(urls.length);
     for (const path of ["/", "/about", "/projects", "/writing"]) {
@@ -119,9 +119,12 @@ describe("sitemap", () => {
     for (const slug of essaySlugs) {
       expect(urls).toContain(absoluteUrl(`/writing/${slug}`));
     }
-    for (const slug of projectSlugs) {
-      expect(urls).toContain(absoluteUrl(`/projects/${slug}`));
+    for (const project of allProjects) {
+      expect(urls).toContain(absoluteUrl(project.href));
     }
+    expect(urls).not.toContain(
+      absoluteUrl("/projects/ai-operator-experiments"),
+    );
   });
 });
 

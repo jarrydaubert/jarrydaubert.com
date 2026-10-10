@@ -34,6 +34,7 @@ export const projectFrontmatterSchema = z.object({
     .optional(),
   previewImage: previewImageSchema.optional(),
   featured: z.boolean().default(false),
+  listed: z.boolean().default(true),
   order: z.number().int(),
 });
 
