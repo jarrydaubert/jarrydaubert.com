@@ -8,116 +8,90 @@ Read the positioning and voice sections before editing any copy. A change that b
 
 Personal site for Jarryd Aubert.
 
-It exists as proof-of-work credibility: a software tester who builds and ships his own apps to understand what he tests. Building is in service of testing. It is the lab, not a rival identity.
+It exists to show what he builds and how he builds it: real web, mobile and AI projects, the architecture and decisions underneath them, and the AI-assisted way he works. His testing career is covered by his CV and LinkedIn. This site is for the work.
 
 One-line spine:
 
-**A software tester who builds and ships his own apps to understand what he tests.**
+**Exploring AI by building real things, and checking that they work.**
 
 Primary reader:
 
-Hiring managers and recruiters for QA, software testing, test automation, and quality-focused engineering roles, plus anyone who reaches the site from LinkedIn, GitHub, or job applications.
+Curious technical people, founders and teams building with AI, and anyone who reaches the site from GitHub, LinkedIn or a project. Assume a reader who will open the repo and check.
 
 What this is not:
 
-* Not a consultancy or freelance landing page. There is no "hire me to build your software" ask, and copy must not drift toward one.
-* Not product marketing. The apps have their own sites. This site positions the person.
-* Not an AI portfolio. AI assistance is part of the working method, not the headline identity.
-* Not a place to be modest or to oversell. State things at their true level.
+* Not a CV or a LinkedIn copy. Career history is supporting context, kept short.
+* Not a consultancy or freelance landing page. There is no "hire me to build your software" ask.
+* Not product marketing. The apps have their own sites. This site shows how they are built.
+* Not a claim to be a professional software engineer or AI researcher. State things at their true level.
 
 ## Positioning guardrails
 
 These are load-bearing. Do not casually rewrite them.
 
-1. **Tester-first, always.** Testing is the identity. Building is how he learns what he tests. Never reorder this into "builder who also tests," "indie dev," "AI developer," or "founder."
+1. **Building and AI lead.** The headline identity is someone exploring AI by building and shipping real things: websites and an iPhone app, built with AI coding agents, with AI running inside ProsePal itself. Testing is how he keeps the work honest. It appears as evidence (how each project is checked), not as the headline identity.
 
-2. **AI is demoted.** The site can mention that projects were built with AI assistance where relevant, but AI is never the headline. Vendor or model names must not appear in the hero or positioning copy. Feature-level AI language is allowed only inside a project detail when it helps explain the testing challenge.
+2. **Screenshots and creative presentation lead.** A project can open with a screenshot, a live preview, an interaction or a story. Technical detail is optional and should earn its place by helping the reader understand the work. Let the project determine the form and order; do not require stack or architecture sections.
 
-3. **No overclaiming, and no underclaiming.** Raise labels to match reality. A shipped app can be called live. But do not invent delivered client work, metrics, testimonials, commercial traction, team size, funding, or production maturity.
+3. **Say who did what.** AI coding agents propose approaches and write code as part of a collaboration. He directs the work, evaluates proposals, reviews changes and owns the final decisions, including architecture and validation. Where a page describes a build, make that division of work clear. Do not imply that he hand-wrote all the code or that agents own the final decisions.
 
-4. **The retired brand stays retired.** Do not reintroduce "QA-minded product builder," or any builder-first or AI-forward framing. If you find that wording in copy, metadata, Open Graph text, alt text, README copy, or generated content, treat it as a bug.
+4. **No overclaiming, and no underclaiming.** Raise labels to match reality. Do not invent delivered client work, metrics, testimonials, commercial traction, user numbers, team size, funding, performance figures or production maturity.
 
-5. **Acts, not vendors.** Describe what was done and what it proves. Do not lead with tools or model names.
+5. **Every project states its real release state.** Live, in TestFlight, in development or archived, taken from the repo or the live product, never assumed. An architecture that is not yet released must not be presented as the shipped product. If the state cannot be verified, ask.
+
+6. **Tools and vendors are allowed where they describe the work.** Naming the stack on project and "how I build" pages can help explain the work (for example Next.js, SwiftUI, Supabase, Apple Foundation Models, Playwright, Codex, Claude). Do not name-drop tools or model vendors in the hero, and do not claim a vendor is deployed in production unless the deployed configuration proves it. A configurable OpenAI-compatible endpoint is not evidence of which provider is used.
 
 Good direction:
 
-* "Built and shipped a tax calculator that can be checked against a real payslip."
-* "Tests deterministic and non-deterministic products differently."
-* "Uses building as a way to understand failure modes."
+* "A native iPhone app that drafts on-device with Apple's model and sends harder moments to a cloud model through a Supabase edge function."
+* "A tax calculator with Jest unit tests and Playwright end-to-end tests across desktop and mobile browsers."
+* "Built with AI coding agents. I direct the work, evaluate proposals, review changes and own the final decisions."
 
 Bad direction:
 
-* "AI-powered builder."
-* "Founder of multiple apps."
-* "Product builder with QA experience."
-* "Built using GPT, Claude, Gemini, or other model names."
+* "AI engineer." "Full-stack developer." "Founder of multiple apps."
+* "Built entirely by me" when agents wrote the code.
+* "Production-grade AI platform" or any maturity label the repo does not support.
+* A wall of logos with no explanation of what each tool does in the system.
 
 ## Voice and copy rules
 
 * **No auto-substituted typography.** No em dashes and no en dashes. No curly or smart quotes, and no smart apostrophes. No ellipsis character; write three full stops if you need one. Use full stops, commas, colons, semicolons, or parentheses to separate clauses, and straight quotes for quotation. This is a hard rule everywhere, including markdown, metadata, comments, alt text, and generated copy. The reason fences the whole category: auto-substituted typography is an AI tell, and this site's credibility depends on copy that does not read as generated. A rule that banned only em dashes would invite an agent to treat a curly quote as acceptable. It is not.
-* **UK English.** This is a UK-facing credibility surface. Use UK spelling on this site.
+* **UK English.** Use UK spelling on this site.
 * **Surface-specific spelling matters.** The ProsePal product site may use US English for its audience. Do not copy spelling rules blindly between surfaces.
-* **Calm, evidence-led, low hype.** Avoid superlatives, growth-marketing tone, inflated labels, and vague credibility claims.
-* **Concrete over slogan.** Prefer earned conclusions backed by specific examples.
+* **Curious, specific, low hype.** Enthusiasm is welcome when it is about something concrete. Avoid superlatives, growth-marketing tone, inflated labels and vague claims.
+* **Concrete over slogan.** Prefer a real decision, a real diagram or a real failure over an adjective.
 * **Name projects consistently.** Use one spelling and capitalisation everywhere: ProsePal, PayeTax, Evolution Padel.
-
-Target register:
-
-"I do not just want something to work. I want to know how it fails."
-
-Then support it with concrete evidence.
 
 ## Design and content anti-patterns
 
 These are the defaults an agent falls into. Each is forbidden, and each carries its reason so it cannot be reasoned around.
 
-* **When a section feels flat or thin, connect and differentiate. Do not decorate.** No icons, gradients, badges, or ornament added to solve what is really a content problem. Decoration laid over weak content makes it read as generated filler. Fix the words and the structure first.
-* **Do not make things visually equal when their value is that they differ.** Equal-weight treatment flattens the one argument that matters here: the testing range across deterministic and non-deterministic products. Equal prominence is fine. Equal sameness is not.
-* **Do not pad to look complete.** A short, true list beats a long, padded one. Three real things stated at their true level are stronger than ten propped up with filler.
-* **Do not reach for the generic builder or AI-startup aesthetic.** Gradient hero, inflated claims, logo soup, founder energy. That is the opposite of a calm, evidence-led tester credibility surface.
+* **When a section feels flat or thin, fix the content. Do not decorate.** No icons, gradients, badges or ornament added to solve what is really a content problem. Decoration over weak content reads as generated filler.
+* **Diagrams must show the real system.** An architecture diagram is drawn from the repo, with real component names and real data flow. No generic boxes, no components that do not exist.
+* **Do not pad to look complete.** A short, true list beats a long, padded one.
+* **Visual ambition is welcome.** Motion, interaction, illustration and a strong visual identity are encouraged when they show the work or the system. They are not a substitute for content.
+* **Do not reach for the generic AI-startup aesthetic.** Gradient hero, logo soup, founder energy and "revolutionary" copy undermine a site whose point is that the work is real.
 
 ## The work section
 
-The work section should show a testing spectrum, not just "three things I built."
-
-The intended structure for each project card is:
-
-* what it is
-* what I did
-* what it proves
-
-The three projects can have equal prominence, but each card should surface what that project uniquely proves.
+Each project should have a short description, an accurate release status and useful links. Screenshots and creative presentation should lead. Technical detail is optional and should earn its place by helping the reader understand the work. Do not force every project into the same layout or require a project-page checklist.
 
 ### PayeTax
 
-PayeTax is the deterministic case.
-
-It is a live UK tax calculator where correctness can be checked against a hard oracle. In plain terms: the output can be compared to a real payslip.
-
-What it proves:
-
-* correctness testing
-* edge-case thinking
-* deterministic calculation logic
-* trust in outputs where there is a right answer
+Web development and test automation. A live UK tax calculator. It has no runtime AI: its AI story is how it was built, not what it does. The interesting parts are the calculation engine, the test suite (unit and end-to-end across browsers and devices, plus accessibility checks), monitoring and CI. Correctness against real payslips is evidence, not the headline.
 
 Do not turn this into generic SaaS or fintech marketing.
 
 ### ProsePal
 
-ProsePal is the non-deterministic case.
+Mobile development and AI integration. The interesting parts are the native iPhone app, the split between on-device and cloud generation, routing, prompt and user-data separation, the backend, and the evaluation tooling. What the app writes is context, not the headline.
 
-It is a live message-writing app where there is no single right answer. Quality depends on fit, tone, context, usefulness, and judgement.
+Check the release state of the native app against the repo and the App Store before describing it as live. The repo records an archived Flutter production app; do not merge the two.
 
-What it proves:
+### This site
 
-* testing without a fixed oracle
-* quality judgement under ambiguity
-* AI-assisted product evaluation
-* rubric-led thinking
-* user outcome testing rather than only code correctness
-
-Do not make AI the headline. The interesting part is not "uses AI." The interesting part is how quality is judged when outputs are subjective.
+AI-assisted development. How the site is built and kept honest: the stack, the CI gates, and the workflow of directing the work, evaluating AI proposals, reviewing changes and owning the final decisions. Real examples from the repo's history are the evidence.
 
 ### Evolution Padel
 
@@ -140,30 +114,9 @@ Do not inflate it into:
 * proven revenue channel
 * large client engagement
 
-"Live / client project" is already generous. Keep the wording honest.
-
-## Determinism spectrum
-
-The PayeTax and ProsePal pairing is intentional.
-
-PayeTax shows a deterministic testing problem:
-
-* there is a right answer
-* the answer can be checked
-* failures are measurable
-
-ProsePal shows a non-deterministic testing problem:
-
-* there may be several acceptable answers
-* quality is contextual
-* failures are partly subjective
-* evaluation needs rubrics and judgement
-
-Do not flatten this into "apps I built." The point is the testing range.
-
 ## Cross-surface consistency
 
-This site is one node in a wider credibility surface:
+This site is one node in a wider surface:
 
 * GitHub profile
 * LinkedIn
@@ -174,20 +127,19 @@ This site is one node in a wider credibility surface:
 
 Rules:
 
-* Credibility surfaces lead tester-first.
-* Product surfaces sell the product on their own terms.
-* Do not copy product marketing language into the personal site without checking fit.
-* Do not copy personal positioning into product sites if it weakens the product message.
-* Metadata and Open Graph descriptions must stay tester-first.
-* If positioning changes here, flag GitHub bio and LinkedIn headline as follow-up surfaces in the PR description.
+* LinkedIn and the CV carry the testing career. This site carries the builds.
+* Product surfaces sell the product on their own terms. Do not copy product marketing into this site, or this site's framing into product sites.
+* Metadata and Open Graph descriptions must match the positioning above.
+* If positioning changes here, flag the GitHub bio and LinkedIn headline as follow-up surfaces in the PR description.
 
 Recommended meta direction:
 
-"Jarryd Aubert is a software tester who builds and ships his own apps to understand what he tests."
+"Jarryd Aubert explores AI by building real things: web apps, an iPhone app, and the architecture and checks underneath them."
 
-Avoid stale or retired meta direction:
+Retired meta direction (do not reintroduce):
 
 "QA-minded product builder."
+"A software tester who builds and ships his own apps to understand what he tests."
 
 ## Tech, setup, and commands
 
@@ -328,9 +280,12 @@ Agents must not:
 
 ## Things an agent must never do
 
-* Reintroduce the old "QA-minded product builder" brand.
-* Reframe Jarryd as builder-first, founder-first, AI-first, or consultant-first.
-* Put AI, vendor, or model names in hero or positioning copy.
+* Reintroduce the retired "QA-minded product builder" or tester-first spine.
+* Reframe Jarryd as a professional software engineer, AI researcher, founder or consultant.
+* Imply he hand-wrote all the code, or that agents own the final decisions.
+* Name-drop tools or model vendors in the hero, or claim a production vendor the deployed configuration does not prove.
+* Describe a project as live or released without checking its real release state.
+* Draw an architecture diagram that does not match the repo.
 * Invent metrics, testimonials, client engagements, revenue, user numbers, or team size.
 * Inflate Evolution Padel beyond its real state.
 * Use em dashes, en dashes, curly quotes, smart apostrophes, or any other auto-substituted typography.
@@ -353,6 +308,7 @@ For copy changes, include:
 * whether metadata changed
 * whether any cross-surface follow-up is needed
 * confirmation that no retired positioning was reintroduced
+* confirmation that every release state and stack claim was checked against the repo or live product
 * confirmation that no em dashes were added
 
 For frontend changes, include:

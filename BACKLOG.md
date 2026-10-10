@@ -38,14 +38,16 @@ bun run build
 - [ ] Run Lighthouse only when there is a specific performance or SEO question, not as standing CI.
 - [ ] Decide whether the header `Projects` link should stay as `/#projects` or point to `/projects`.
 - [ ] Add richer project case studies when there is real detail to show.
-- [ ] Add another essay when there is a useful testing lesson to publish.
 - [ ] Consider route smoke tests only if route generation starts changing often.
 - [ ] Consider accessibility smoke tests only if there is enough stable UI to justify the maintenance.
 
 ## Guardrails
 
-- Do not reintroduce the retired builder-first positioning.
-- Do not make AI the headline.
+- Positioning follows AGENTS.md: building and AI lead, testing is the evidence, career history stays short.
+- Screenshots and creative presentation should lead; technical detail is optional and should earn its place.
+- Do not prioritise a blog or writing section; keep existing article URLs accessible.
+- AI collaboration is explicit: he directs the work, evaluates proposals, reviews changes and owns the final decisions.
+- Every project states its real release state; never present unreleased architecture as the shipped product.
 - Do not inflate Evolution Padel beyond a live website for a pre-launch client venue.
-- Do not add CMS, database, auth, comments, newsletter, search, 3D/workbench, animation system, component library, visual-regression workflow, Lighthouse workflow, or governance workflow without a specific need.
+- Do not add CMS, database, auth, comments, newsletter, search, animation system, component library, visual-regression workflow, Lighthouse workflow, or governance workflow without a specific need.
 - Do not add `.env.example` unless local environment variables become required.
