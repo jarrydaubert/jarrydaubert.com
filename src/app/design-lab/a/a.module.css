@@ -634,12 +634,6 @@
   transition: opacity 300ms ease;
 }
 
-/* The lane not taken goes quiet without dropping below readable contrast. */
-.lane[data-on="false"] .laneTitle {
-  color: var(--graphite);
-  font-weight: 500;
-}
-
 .laneCircle {
   position: absolute;
   top: -0.6rem;
@@ -653,6 +647,12 @@
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: -0.015em;
+}
+
+/* The lane not taken goes quiet without dropping below readable contrast. */
+.lane[data-on="false"] .laneTitle {
+  color: var(--graphite);
+  font-weight: 500;
 }
 
 .laneBody {
