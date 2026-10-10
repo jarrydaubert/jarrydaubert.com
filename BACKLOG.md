@@ -48,6 +48,5 @@ bun run build
 - Do not prioritise a blog or writing section; keep existing article URLs accessible.
 - AI collaboration is explicit: he directs the work, evaluates proposals, reviews changes and owns the final decisions.
 - Every project states its real release state; never present unreleased architecture as the shipped product.
-- Do not inflate Evolution Padel beyond a live website for a pre-launch client venue.
 - Do not add CMS, database, auth, comments, newsletter, search, animation system, component library, visual-regression workflow, Lighthouse workflow, or governance workflow without a specific need.
 - Do not add `.env.example` unless local environment variables become required.

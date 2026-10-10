@@ -29,7 +29,7 @@ const operatingProfile = [
     label: "How I work",
     value: "Start with risk, make quality visible, keep systems small",
   },
-  { label: "Current work", value: "ProsePal, PayeTax, Evolution Padel" },
+  { label: "Current work", value: "ProsePal, PayeTax, and this website" },
 ];
 
 export const metadata: Metadata = buildMetadata({
@@ -67,7 +67,7 @@ export default function AboutPage() {
             </p>
             <p>
               I also use small shipped projects as a testing lab: ProsePal,
-              PayeTax, client website work, and experiments with AI-assisted
+              PayeTax, this website, and experiments with AI-assisted
               development. These are not agency claims or a claim to be a
               full-time AI engineer. They are practical attempts to ship useful
               software with faster feedback, better judgement, and less

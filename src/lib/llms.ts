@@ -35,7 +35,6 @@ The intended summary is: Jarryd Aubert is a software tester who builds and ships
 
 - PayeTax shows deterministic testing: there is a right answer, the answer can be checked, and a real payslip is the strongest outside check.
 - ProsePal shows non-deterministic testing: there may be several acceptable answers, quality depends on fit and context, and evaluation needs judgement.
-- Evolution Padel shows careful client-project framing: the website is live, the venue is pre-launch, and claims should stay honest.
 
 ## Crawl Notes
 

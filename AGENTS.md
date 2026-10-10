@@ -61,7 +61,7 @@ Bad direction:
 * **Surface-specific spelling matters.** The ProsePal product site may use US English for its audience. Do not copy spelling rules blindly between surfaces.
 * **Curious, specific, low hype.** Enthusiasm is welcome when it is about something concrete. Avoid superlatives, growth-marketing tone, inflated labels and vague claims.
 * **Concrete over slogan.** Prefer a real decision, a real diagram or a real failure over an adjective.
-* **Name projects consistently.** Use one spelling and capitalisation everywhere: ProsePal, PayeTax, Evolution Padel.
+* **Name projects consistently.** Use one spelling and capitalisation everywhere: ProsePal and PayeTax.
 
 ## Design and content anti-patterns
 
@@ -93,27 +93,6 @@ Check the release state of the native app against the repo and the App Store bef
 
 AI-assisted development. How the site is built and kept honest: the stack, the CI gates, and the workflow of directing the work, evaluating AI proposals, reviewing changes and owning the final decisions. Real examples from the repo's history are the evidence.
 
-### Evolution Padel
-
-Evolution Padel is a careful credibility case.
-
-The venue site is live. The venue itself is pre-launch. Booking is not live unless the repo or live site proves otherwise.
-
-Acceptable framing:
-
-* "pre-launch client venue"
-* "early digital work"
-* "live venue website"
-* "client project, framed carefully"
-
-Do not inflate it into:
-
-* delivered commercial platform
-* live booking system
-* operating venue
-* proven revenue channel
-* large client engagement
-
 ## Cross-surface consistency
 
 This site is one node in a wider surface:
@@ -123,7 +102,6 @@ This site is one node in a wider surface:
 * App Store listings
 * PayeTax site
 * ProsePal site
-* Evolution Padel site
 
 Rules:
 
@@ -287,7 +265,6 @@ Agents must not:
 * Describe a project as live or released without checking its real release state.
 * Draw an architecture diagram that does not match the repo.
 * Invent metrics, testimonials, client engagements, revenue, user numbers, or team size.
-* Inflate Evolution Padel beyond its real state.
 * Use em dashes, en dashes, curly quotes, smart apostrophes, or any other auto-substituted typography.
 * Decorate a flat or thin section instead of fixing its content.
 * Assert something from a summary without checking the source.
