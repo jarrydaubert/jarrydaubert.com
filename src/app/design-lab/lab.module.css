@@ -1,0 +1,164 @@
+/* The gallery stays neutral so neither concept is framed by the other. */
+
+.lab {
+  --bg: #f4f4f2;
+  --fg: #141414;
+  --muted: #5b5b57;
+  --line: #dcdcd8;
+
+  min-height: 100vh;
+  padding: clamp(2.5rem, 7vw, 6rem) clamp(1.25rem, 5vw, 5rem) 4rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab {
+    --bg: #161615;
+    --fg: #f2f2ee;
+    --muted: #a6a6a0;
+    --line: #34342f;
+  }
+}
+
+.lab h1 {
+  font-family: inherit;
+}
+
+.lab a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lab :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+
+.head {
+  max-width: 40rem;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.kicker a:hover {
+  color: var(--fg);
+}
+
+.title {
+  margin: 0.75rem 0 0;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.intro {
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.cards {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  display: block;
+}
+
+.frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 30px 60px -40px rgb(0 0 0 / 0.5);
+  transition:
+    transform 450ms cubic-bezier(0.34, 1.32, 0.64, 1),
+    box-shadow 450ms ease;
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card:hover .frame,
+.card:focus-visible .frame {
+  transform: translateY(-0.5rem) rotate(-0.6deg);
+  box-shadow: 0 40px 70px -40px rgb(0 0 0 / 0.6);
+}
+
+.cards li:first-child .card:hover .frame {
+  transform: translateY(-0.5rem) rotate(0.6deg);
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.letter {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  place-items: center;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.name {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.line {
+  display: block;
+  max-width: 34rem;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.foot {
+  max-width: 40rem;
+  margin: clamp(4rem, 8vw, 6rem) 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame {
+    transition: none;
+  }
+
+  .card:hover .frame,
+  .card:focus-visible .frame {
+    transform: none;
+  }
+}

@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
+import { generateMetadata as generateProjectMetadata } from "@/app/(site)/projects/[slug]/page";
 import { GET as feed } from "@/app/feed.xml/route";
-import { generateMetadata as generateProjectMetadata } from "@/app/projects/[slug]/page";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
-import { site } from "@/lib/site";
 import { allProjects, essaySlugs, getProject } from "@/lib/content";
+import { site } from "@/lib/site";
 import { absoluteUrl, buildMetadata, serializeJsonLd } from "./metadata";
 
 describe("absoluteUrl", () => {

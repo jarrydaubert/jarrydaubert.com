@@ -1,0 +1,16 @@
+/* Concept B only: the timing of the swatch-to-page morph. View transition
+   pseudo-elements live on the document root, so this cannot be a CSS module.
+   It has no effect unless a view transition is running, and only concept B
+   starts one. */
+::view-transition-group(*) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}

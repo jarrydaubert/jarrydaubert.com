@@ -1,0 +1,839 @@
+/* Concept B: Swatch book.
+   Card-stock grey, one characterful grotesque, and four paint chips in each
+   project's real colour. A chip grows into its project's page. */
+
+.page {
+  --stock: #ebeae6;
+  --stock-raised: #f8f8f5;
+  --ink: #0a0a0a;
+  --muted: #55554f;
+  --line: #cfcec8;
+  --chip-shadow:
+    0 1px 1px rgb(0 0 0 / 0.08), 0 22px 44px -24px rgb(0 0 0 / 0.45);
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --spring: cubic-bezier(0.34, 1.32, 0.64, 1);
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--b-page-bg, var(--stock));
+  color: var(--b-page-ink, var(--ink));
+  font-family: var(--b-font), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-optical-sizing: auto;
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+  color-scheme: light;
+  transition:
+    background-color 450ms ease,
+    color 450ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --stock: #1b1b19;
+    --stock-raised: #262623;
+    --ink: #f1f0eb;
+    --muted: #a9a8a1;
+    --line: #3a3a36;
+    --chip-shadow:
+      0 1px 1px rgb(0 0 0 / 0.3), 0 22px 44px -20px rgb(0 0 0 / 0.8);
+    color-scheme: dark;
+  }
+}
+
+.page h1,
+.page h2,
+.page h3 {
+  font-family: inherit;
+}
+
+.page a {
+  color: inherit;
+}
+
+.page :focus-visible {
+  outline: 2.5px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.page ::selection {
+  background: var(--b-page-ink, var(--ink));
+  color: var(--b-page-bg, var(--stock));
+}
+
+/* ---------- Chrome ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem var(--gutter);
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 32,
+    "wdth" 85;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.hello {
+  padding: 0.45rem 0.9rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.hello:hover {
+  background: var(--b-page-ink, var(--ink));
+  color: var(--b-page-bg, var(--stock));
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  z-index: 50;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--stock);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 0.75rem);
+  transition:
+    opacity 200ms ease,
+    transform 300ms var(--spring);
+}
+
+.toastOn {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.main {
+  flex: 1;
+  padding: 0 var(--gutter);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding: 2.5rem var(--gutter);
+  font-size: 0.9375rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer a {
+  text-underline-offset: 0.25em;
+}
+
+/* ---------- Home ---------- */
+
+.home {
+  display: grid;
+  gap: 3rem;
+  padding: clamp(2rem, 6vh, 4rem) 0 2rem;
+}
+
+@media (min-width: 900px) {
+  .home {
+    min-height: calc(100svh - 10rem);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+  }
+}
+
+.introTitle {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(2.5rem, 5.6vw, 5.25rem);
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 78;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.introPick {
+  margin: 1.75rem 0 0;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 500;
+}
+
+.introNote {
+  max-width: 22rem;
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.fan {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Swatch ---------- */
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 7px;
+  background: var(--stock-raised);
+  box-shadow: var(--chip-shadow);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.chip {
+  position: relative;
+  display: block;
+  flex: 1;
+  overflow: hidden;
+  background: var(--swatch);
+  color: var(--swatch-ink);
+}
+
+.chipShot {
+  position: absolute;
+  top: 34%;
+  left: 12%;
+  width: 104%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 16px 30px -18px rgb(0 0 0 / 0.6);
+  transform: rotate(-3deg);
+  transition: transform 500ms var(--spring);
+}
+
+.chipIcon {
+  position: absolute;
+  top: 34%;
+  left: 14%;
+  width: 46%;
+  height: auto;
+  border-radius: 22%;
+  box-shadow: 0 16px 30px -16px rgb(0 0 0 / 0.6);
+  transform: rotate(-6deg);
+  transition: transform 500ms var(--spring);
+}
+
+.chipName {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  left: 1rem;
+  font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 72,
+    "wdth" 75;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.strip {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem 0.95rem;
+}
+
+.stripLine {
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+
+.stripMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.hex {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Desktop: a fanned swatch book, pinned at its corner. */
+@media (min-width: 900px) {
+  .fan {
+    height: min(44rem, 76svh);
+  }
+
+  .fanItem {
+    position: absolute;
+    bottom: 16%;
+    left: 4%;
+    width: clamp(15rem, 21vw, 19.5rem);
+    aspect-ratio: 5 / 7.4;
+    z-index: calc(4 - var(--i));
+    /* The unrotated box would steal clicks meant for the cards beneath. */
+    pointer-events: none;
+  }
+
+  .fanItem .swatch {
+    pointer-events: auto;
+  }
+
+  .fanItem:has(.swatch:hover),
+  .fanItem:has(.swatch:focus-visible) {
+    z-index: 10;
+  }
+
+  .swatch {
+    height: 100%;
+    transform-origin: 10% 96%;
+    transform: rotate(calc(18deg - var(--i) * 11deg));
+    transition: transform 520ms var(--spring);
+    animation: fan-open 900ms var(--spring) backwards;
+    animation-delay: calc(120ms + var(--i) * 90ms);
+  }
+
+  .fan:hover .swatch,
+  .fan:focus-within .swatch {
+    transform: rotate(calc(24deg - var(--i) * 15deg));
+  }
+
+  .fan .swatch:hover,
+  .fan .swatch:focus-visible {
+    transform: rotate(calc(24deg - var(--i) * 15deg)) translateY(-1.75rem);
+  }
+
+  .swatch:hover .chipShot {
+    transform: rotate(0deg) translateY(-0.5rem);
+  }
+
+  .swatch:hover .chipIcon {
+    transform: rotate(4deg) scale(1.05);
+  }
+}
+
+@keyframes fan-open {
+  from {
+    transform: rotate(-6deg) translateY(1.5rem);
+    opacity: 0;
+  }
+}
+
+/* Small screens: the book becomes a deck that stacks as you scroll. */
+@media (max-width: 899px) {
+  .fanItem {
+    position: sticky;
+    top: calc(1rem + var(--n, 0) * 0.85rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .fanItem:nth-child(2) {
+    --n: 1;
+  }
+
+  .fanItem:nth-child(3) {
+    --n: 2;
+  }
+
+  .fanItem:nth-child(4) {
+    --n: 3;
+  }
+
+  .swatch {
+    height: min(34rem, 78svh);
+    transform: rotate(calc((var(--i) - 1.5) * 1.1deg));
+  }
+
+  .chipShot {
+    width: 92%;
+  }
+
+  .chipName {
+    font-size: clamp(2.25rem, 11vw, 3.25rem);
+  }
+}
+
+/* ---------- Project page ---------- */
+
+.project {
+  padding-bottom: 2rem;
+}
+
+.projectInner {
+  max-width: 82rem;
+}
+
+.projectBack {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  text-underline-offset: 0.25em;
+}
+
+.projectHead {
+  margin-top: clamp(2.5rem, 8vh, 5rem);
+}
+
+.projectHex {
+  margin: 0;
+  color: var(--b-page-soft, var(--muted));
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.projectTitle {
+  margin: 0.5rem 0 0 -0.04em;
+  font-size: clamp(3.6rem, 15vw, 13.5rem);
+  font-weight: 760;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 75;
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+
+.projectLine {
+  max-width: 26ch;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+  font-weight: 500;
+  font-variation-settings: "opsz" 32;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.projectStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1.25rem 0 0;
+  font-weight: 500;
+}
+
+.projectStatus::before {
+  width: 0.6rem;
+  height: 0.6rem;
+  flex: none;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+
+/* A filled dot for things that are live; an open ring for work in progress. */
+.projectStatus[data-live="true"]::before {
+  background: currentColor;
+}
+
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+}
+
+.projectLinks a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.projectLinks a:hover {
+  text-decoration-thickness: 3px;
+}
+
+.rail {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin: clamp(3.5rem, 9vh, 6rem) calc(-1 * var(--gutter)) 0;
+  padding: 0.5rem var(--gutter) 1.75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--gutter);
+  scroll-snap-type: x proximity;
+  scrollbar-color: color-mix(in srgb, currentColor 35%, transparent) transparent;
+  cursor: grab;
+}
+
+.rail[data-dragging] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.rail figure {
+  flex: none;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.rail img {
+  display: block;
+  width: auto;
+  height: clamp(15rem, 62vh, 38rem);
+  border-radius: 8px;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.55);
+}
+
+.railPhone img {
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .rail img {
+    height: 19rem;
+  }
+}
+
+.facts {
+  display: grid;
+  gap: 2.25rem;
+  margin: clamp(4rem, 10vh, 7rem) 0 0;
+}
+
+@media (min-width: 900px) {
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}
+
+.facts dt {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.facts dd {
+  margin: 0.6rem 0 0;
+  font-size: 1.1875rem;
+  line-height: 1.5;
+}
+
+.others {
+  margin-top: clamp(5rem, 12vh, 8rem);
+}
+
+.othersTitle {
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+
+.others ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.otherChip {
+  display: flex;
+  width: 11rem;
+  height: 7.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.85rem 0.95rem;
+  border-radius: 6px;
+  background: var(--swatch);
+  box-shadow: var(--chip-shadow);
+  text-decoration: none;
+  transition: transform 400ms var(--spring);
+}
+
+.others a.otherChip {
+  color: var(--swatch-ink);
+}
+
+.otherChip:hover {
+  transform: translateY(-0.4rem) rotate(-1.5deg);
+}
+
+.otherName {
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 48,
+    "wdth" 78;
+  line-height: 1;
+}
+
+.otherHex {
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ProsePal: no shipped screenshots yet, so the icon and the real routing. */
+
+.prose {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 82rem;
+  margin-top: clamp(3.5rem, 9vh, 6rem);
+}
+
+@media (min-width: 900px) {
+  .prose {
+    grid-template-columns: 15rem minmax(0, 1fr) 15rem;
+    align-items: center;
+  }
+}
+
+.proseIcon img {
+  display: block;
+  width: min(14rem, 60vw);
+  height: auto;
+  border-radius: 22%;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.6);
+  transform: rotate(-5deg);
+}
+
+.lanes {
+  display: grid;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lanes li {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: 1rem;
+  border-top: 2px solid currentColor;
+}
+
+.laneWhen {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 72,
+    "wdth" 80;
+  line-height: 1;
+}
+
+.laneWhere {
+  max-width: 34rem;
+  font-size: 1.125rem;
+}
+
+.placeholderTile {
+  display: grid;
+  min-height: 12rem;
+  margin: 0;
+  padding: 1.25rem;
+  place-content: center;
+  border: 2px dashed currentColor;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+/* ---------- About ---------- */
+
+.about {
+  margin: clamp(1rem, 4vh, 3rem) 0 0;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  border-radius: 10px;
+  background: var(--about-bg, var(--stock-raised));
+  box-shadow: var(--chip-shadow);
+  color: var(--about-ink, var(--ink));
+  transition:
+    background-color 500ms ease,
+    color 500ms ease;
+}
+
+.aboutGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 800px) {
+  .aboutGrid {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+.aboutPhoto {
+  display: grid;
+  width: 12rem;
+  aspect-ratio: 1;
+  place-content: center;
+  gap: 0.25rem;
+  border: 2px dashed currentColor;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.aboutPhoto span:last-child {
+  font-weight: 400;
+}
+
+.aboutText {
+  max-width: 38rem;
+}
+
+.aboutTitle {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 760;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 75;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.aboutLead {
+  margin: 1.75rem 0 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.aboutText > p:not(.aboutLead) {
+  margin: 1.1rem 0 0;
+  font-size: 1.125rem;
+}
+
+.aboutActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 2.25rem;
+  font-weight: 600;
+}
+
+.aboutActions a {
+  text-underline-offset: 0.3em;
+}
+
+/* Filled with the card's ink, so the label takes the card colour. */
+.aboutButton {
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--about-ink, var(--ink));
+  color: var(--about-bg, var(--stock-raised));
+  font: inherit;
+  cursor: pointer;
+}
+
+.borrow {
+  min-width: 0;
+  margin-inline: 0;
+  padding-inline: 0;
+  padding-bottom: 0;
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: color-mix(in srgb, currentColor 25%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+}
+
+/* A legend inside a flex fieldset, floated so it sits in the row. */
+.borrowLabel {
+  float: left;
+  padding: 0;
+  font-size: 0.9375rem;
+}
+
+.borrowChips {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.borrowChip {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 2px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 50%;
+  background: var(--chip);
+  cursor: pointer;
+  transition: transform 300ms var(--spring);
+}
+
+.borrowChip:hover {
+  transform: scale(1.1);
+}
+
+.borrowChip[aria-pressed="true"] {
+  border-color: currentColor;
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .swatch,
+  .chipShot,
+  .chipIcon,
+  .otherChip,
+  .borrowChip,
+  .about {
+    animation: none;
+    transition: none;
+  }
+}

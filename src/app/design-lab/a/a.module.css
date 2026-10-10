@@ -1,0 +1,1003 @@
+/* Concept A: Marked up.
+   Cool drafting paper, one sans family, and a reviewer's blue pencil that
+   draws on the work. In dark mode the paper turns into a blueprint. */
+
+.page {
+  --paper: #f5f6f3;
+  --paper-raised: #ffffff;
+  --ink: #15171c;
+  --graphite: #50565f;
+  --rule: #d5d9d2;
+  --grid: rgb(40 82 200 / 0.055);
+  --pencil: #2852c8;
+  --pencil-wash: rgb(40 82 200 / 0.09);
+  --shadow:
+    0 1px 2px rgb(21 23 28 / 0.06), 0 24px 48px -28px rgb(21 23 28 / 0.35);
+  --gutter: clamp(1.25rem, 4.5vw, 4.5rem);
+  --measure: 34rem;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--ink);
+  font-family: var(--a-font), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "kern";
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --paper: #0f1f3a;
+    --paper-raised: #142848;
+    --ink: #edf1f8;
+    --graphite: #aebad0;
+    --rule: #2a4068;
+    --grid: rgb(173 197 255 / 0.07);
+    --pencil: #9dbbff;
+    --pencil-wash: rgb(157 187 255 / 0.12);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 24px 48px -24px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+/* The public site styles every heading in its display serif; this concept is
+   one sans family throughout. */
+.page h1,
+.page h2,
+.page h3 {
+  font-family: inherit;
+}
+
+.page ::selection {
+  background: var(--pencil);
+  color: var(--paper);
+}
+
+.page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page :focus-visible {
+  outline: 2px solid var(--pencil);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ---------- Marks ---------- */
+
+.mark {
+  display: block;
+  overflow: visible;
+  fill: none;
+  stroke: var(--pencil);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.mark path {
+  stroke-dasharray: var(--mark-length, 2000px);
+  stroke-dashoffset: var(--mark-length, 2000px);
+  vector-effect: non-scaling-stroke;
+  transition: stroke-dashoffset 700ms cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: var(--mark-delay, 0ms);
+}
+
+.markDrawn path {
+  stroke-dashoffset: 0;
+}
+
+/* ---------- Chrome ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem var(--gutter);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--graphite);
+  font-size: 0.9375rem;
+}
+
+.nav a {
+  transition: color 160ms ease;
+}
+
+.nav a:hover {
+  color: var(--pencil);
+}
+
+.main {
+  flex: 1;
+  padding: 0 var(--gutter);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: clamp(4rem, 10vw, 8rem);
+  padding: 2rem var(--gutter) 2.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--graphite);
+  font-size: 0.9375rem;
+}
+
+.footerLine {
+  position: relative;
+  margin: 0;
+  padding-right: 2.25rem;
+}
+
+.footerTick {
+  position: absolute;
+  top: -0.35rem;
+  right: 0;
+  width: 1.6rem;
+  height: 1.4rem;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerLinks a:hover {
+  color: var(--pencil);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: clamp(4rem, 13vh, 9rem) 0 clamp(4rem, 10vw, 7rem);
+}
+
+.heroTitle {
+  max-width: 13ch;
+  margin: 0;
+  font-size: clamp(2.6rem, 7.6vw, 7.25rem);
+  font-weight: 500;
+  font-stretch: 92%;
+  line-height: 0.98;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+.heroLast {
+  position: relative;
+  display: inline-block;
+}
+
+.heroTick {
+  position: absolute;
+  right: -0.72em;
+  bottom: 0.08em;
+  width: 0.68em;
+  height: 0.58em;
+  stroke-width: 3.25;
+}
+
+.heroLede {
+  max-width: 36rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  color: var(--graphite);
+  font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.heroLink {
+  position: relative;
+  color: var(--ink);
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 160ms ease;
+}
+
+.heroLink:hover,
+.heroLink:focus-visible {
+  text-decoration-color: transparent;
+}
+
+.heroCircle {
+  position: absolute;
+  top: -0.42em;
+  left: -0.5em;
+  width: calc(100% + 1em);
+  height: calc(100% + 0.84em);
+}
+
+.float {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 22rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  will-change: transform;
+}
+
+.floatOn {
+  opacity: 1;
+}
+
+.floatImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.floatSquare {
+  width: 9rem;
+  border-radius: 22%;
+}
+
+.floatImageOn {
+  opacity: 1;
+}
+
+/* ---------- Work sheets ---------- */
+
+.work {
+  display: grid;
+  gap: clamp(5rem, 12vw, 10rem);
+  scroll-margin-top: 5rem;
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 900px) {
+  .sheet {
+    grid-template-columns: minmax(16rem, 4fr) minmax(0, 8fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .sheetFlip {
+    grid-template-columns: minmax(0, 8fr) minmax(16rem, 4fr);
+  }
+
+  .sheetText {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .sheetFlip .sheetText {
+    order: 2;
+  }
+}
+
+.sheetTitle {
+  margin: 0;
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  font-weight: 600;
+  font-stretch: 82%;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.sheetTitle a {
+  background-image: linear-gradient(var(--pencil), var(--pencil));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition:
+    background-size 320ms cubic-bezier(0.65, 0, 0.35, 1),
+    color 160ms ease;
+}
+
+.sheetTitle a:hover {
+  color: var(--pencil);
+  background-size: 100% 2px;
+}
+
+.sheetLine {
+  max-width: 24rem;
+  margin: 1rem 0 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0;
+  color: var(--pencil);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.statusTick {
+  width: 1.15rem;
+  height: 1rem;
+  flex: none;
+}
+
+.statusOpen {
+  width: 1.15rem;
+  height: 0.95rem;
+  flex: none;
+}
+
+.sheetBody {
+  max-width: var(--measure);
+  margin: 1.25rem 0 0;
+  color: var(--graphite);
+}
+
+.sheetLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1.5rem 0 0;
+  font-weight: 500;
+}
+
+.sheetLinks a {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.sheetLinks a:hover {
+  color: var(--pencil);
+  text-decoration-color: var(--pencil);
+}
+
+/* ---------- Figures ---------- */
+
+.figure {
+  position: relative;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.shotPhone {
+  position: absolute;
+  right: -0.5rem;
+  bottom: -3rem;
+  width: 27%;
+  border-radius: 14px;
+  transform: rotate(2.5deg);
+  transition: transform 400ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.figure:hover .shotPhone {
+  transform: rotate(0deg) translateY(-0.5rem);
+}
+
+.note {
+  position: relative;
+  max-width: 15rem;
+  margin: 1.5rem 0 0;
+  color: var(--pencil);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.noteArrow {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .note {
+    position: absolute;
+    margin: 0;
+  }
+
+  .noteArrow {
+    position: absolute;
+    display: block;
+  }
+
+  .notePaye {
+    top: -4.5rem;
+    right: 2%;
+    max-width: 17rem;
+    text-align: right;
+  }
+
+  .notePaye .noteArrow {
+    top: 1.6rem;
+    right: calc(100% + 0.5rem);
+    width: 4.5rem;
+    height: 3.5rem;
+    transform: scaleX(-1);
+  }
+
+  .notePadel {
+    bottom: -4.25rem;
+    left: 0;
+    max-width: 19rem;
+    padding-left: 5.5rem;
+  }
+
+  .notePadel .noteArrow {
+    top: -2.6rem;
+    left: 0;
+    width: 4.5rem;
+    height: 2.6rem;
+    transform: scaleY(-1);
+  }
+
+  .noteSite {
+    position: relative;
+    margin-top: 2.5rem;
+    padding-left: 5rem;
+    max-width: 22rem;
+  }
+
+  .noteSite .noteArrow {
+    top: -2.25rem;
+    left: 0.5rem;
+    width: 4rem;
+    height: 2.5rem;
+    transform: scale(-1, -1);
+  }
+}
+
+.figurePaye,
+.figurePadel {
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 899px) {
+  .figurePaye .note,
+  .figurePadel .note {
+    margin-top: 4.25rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .figurePaye {
+    margin-top: 4.5rem;
+  }
+
+  .figurePadel {
+    margin-bottom: 5rem;
+  }
+}
+
+/* ProsePal: icon plus a sketch of the real routing. */
+
+.figureProse {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 700px) {
+  .figureProse {
+    grid-template-columns: 10rem minmax(0, 1fr);
+  }
+}
+
+.iconWrap {
+  display: grid;
+  gap: 0.85rem;
+  justify-items: start;
+}
+
+.icon {
+  width: 9rem;
+  height: auto;
+  border-radius: 22%;
+  box-shadow: var(--shadow);
+  transform: rotate(-4deg);
+  transition: transform 400ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.iconWrap:hover .icon {
+  transform: rotate(3deg) scale(1.03);
+}
+
+.placeholder {
+  max-width: 10rem;
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  border: 1px dashed var(--pencil);
+  border-radius: 4px;
+  color: var(--pencil);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.sketch {
+  margin: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.sketchToggle {
+  display: flex;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+}
+
+.sketchChoice {
+  position: relative;
+  padding: 0.35rem 0 0.6rem;
+  border: 0;
+  background: none;
+  color: var(--graphite);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.sketchChoice[aria-pressed="true"],
+.sketchChoice:hover {
+  color: var(--ink);
+}
+
+.sketchUnderline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.6rem;
+}
+
+.sketch {
+  container-type: inline-size;
+}
+
+.lanes {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+@container (min-width: 500px) {
+  .lanes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lane {
+  position: relative;
+  padding: 1rem 1.1rem 1.1rem;
+  transition: opacity 300ms ease;
+}
+
+/* The lane not taken goes quiet without dropping below readable contrast. */
+.lane[data-on="false"] .laneTitle {
+  color: var(--graphite);
+  font-weight: 500;
+}
+
+.laneCircle {
+  position: absolute;
+  top: -0.6rem;
+  left: -0.9rem;
+  width: calc(100% + 1.8rem);
+  height: calc(100% + 1.2rem);
+}
+
+.laneTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.laneBody {
+  margin: 0.4rem 0 0;
+  color: var(--graphite);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.laneCode {
+  margin: 0.75rem 0 0;
+  overflow-wrap: anywhere;
+  color: var(--graphite);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.sketchNote {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  color: var(--pencil);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* This site: current homepage, struck through, plus real commits. */
+
+.figureSite {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .figureSite {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.siteShot {
+  position: relative;
+}
+
+.siteStrike {
+  position: absolute;
+  top: 42%;
+  left: -2%;
+  width: 103%;
+  height: 1.5rem;
+  stroke-width: 3;
+}
+
+.log {
+  padding: 1.25rem 1.4rem;
+  border-left: 2px solid var(--pencil);
+}
+
+.logTitle {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+
+.logList {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.logList li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.logList time {
+  color: var(--graphite);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- About teaser ---------- */
+
+.aboutTeaser {
+  max-width: 40rem;
+  margin: clamp(7rem, 16vw, 12rem) 0 0;
+}
+
+.aboutTeaserTitle {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  font-stretch: 86%;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.aboutTeaserBody {
+  margin: 1.25rem 0 0;
+  color: var(--graphite);
+  font-size: 1.1875rem;
+}
+
+/* ---------- Project page ---------- */
+
+.project {
+  padding-top: clamp(2rem, 6vw, 4rem);
+}
+
+.back {
+  color: var(--graphite);
+  font-size: 0.9375rem;
+  transition: color 160ms ease;
+}
+
+.back::before {
+  content: "\2190\00a0";
+}
+
+.back:hover {
+  color: var(--pencil);
+}
+
+.projectHeader {
+  max-width: 48rem;
+  margin-top: clamp(2.5rem, 7vw, 5rem);
+}
+
+.projectTitle {
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 8.5rem);
+  font-weight: 600;
+  font-stretch: 80%;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.projectLine {
+  max-width: 30rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.projectFigure {
+  margin-top: clamp(4rem, 9vw, 7rem);
+}
+
+.projectNotes {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 64rem;
+  margin-top: clamp(5rem, 10vw, 8rem);
+}
+
+@media (min-width: 900px) {
+  .projectNotes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}
+
+.projectNotes h2 {
+  margin: 0;
+  color: var(--pencil);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.projectNotes p {
+  margin: 0.75rem 0 0;
+  color: var(--graphite);
+}
+
+.next {
+  display: block;
+  margin-top: clamp(6rem, 14vw, 10rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.nextLabel {
+  display: block;
+  color: var(--graphite);
+  font-size: 0.9375rem;
+}
+
+.nextName {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 600;
+  font-stretch: 82%;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: color 200ms ease;
+}
+
+.nextUnderline {
+  position: absolute;
+  bottom: -0.35rem;
+  left: 0;
+  width: 100%;
+  height: 0.75rem;
+  stroke-width: 3;
+}
+
+/* Hover and focus draw the line regardless of scroll state. */
+.next:hover .nextUnderline path,
+.next:focus-visible .nextUnderline path {
+  stroke-dashoffset: 0;
+}
+
+.next:not(:hover):not(:focus-visible) .nextUnderline path {
+  stroke-dashoffset: var(--mark-length, 2000px);
+}
+
+.next:hover .nextName {
+  color: var(--pencil);
+}
+
+/* ---------- About page ---------- */
+
+.about {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  max-width: 64rem;
+  padding-top: clamp(3rem, 9vw, 7rem);
+}
+
+@media (min-width: 800px) {
+  .about {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.portrait {
+  display: grid;
+  aspect-ratio: 4 / 5;
+  max-width: 15rem;
+  place-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1.5px dashed var(--pencil);
+  border-radius: 6px;
+  background: var(--pencil-wash);
+  color: var(--pencil);
+  text-align: center;
+  font-weight: 500;
+  transform: rotate(-2deg);
+}
+
+.portraitHint {
+  color: var(--graphite);
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+.aboutText {
+  max-width: var(--measure);
+}
+
+.aboutText > p {
+  margin: 1.25rem 0 0;
+  color: var(--graphite);
+}
+
+.aboutTitle {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 600;
+  font-stretch: 80%;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.aboutText > .aboutLead {
+  margin-top: 2rem;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+}
+
+.aboutContact {
+  margin-top: 2rem;
+}
+
+.aboutText > .aboutContact {
+  color: var(--ink);
+}
+
+.aboutEmail {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.aboutUnderline {
+  position: absolute;
+  bottom: -0.3rem;
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+}
+
+.aboutLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 500;
+}
+
+.aboutLinks a:hover {
+  color: var(--pencil);
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .mark path {
+    transition: none;
+  }
+
+  .shotPhone,
+  .icon,
+  .figure:hover .shotPhone,
+  .iconWrap:hover .icon {
+    transition: none;
+    transform: none;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

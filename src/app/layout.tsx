@@ -1,7 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Viewport } from "next";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { buildMetadata } from "@/lib/metadata";
 import { token } from "@/lib/tokens";
 import "./globals.css";
@@ -48,13 +47,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SiteHeader />
-        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10">
-          <main id="main-content" className="flex-1 py-14 sm:py-20">
-            {children}
-          </main>
-          <SiteFooter />
-        </div>
+        {children}
         <Analytics />
       </body>
     </html>
