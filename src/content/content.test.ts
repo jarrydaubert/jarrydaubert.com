@@ -40,10 +40,7 @@ describe("content loader", () => {
   });
 
   it("selects exactly the featured projects for the home page", () => {
-    expect(selectedWork.map((p) => p.slug)).toEqual([
-      "prosepal",
-      "payetax",
-    ]);
+    expect(selectedWork.map((p) => p.slug)).toEqual(["prosepal", "payetax"]);
   });
 
   it("has unique slugs within and across content types", () => {
