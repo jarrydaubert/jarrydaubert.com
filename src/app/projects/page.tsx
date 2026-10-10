@@ -23,9 +23,9 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-base leading-7 text-muted">
-          Selected apps and experiments that show how I test
-          software: checking exact answers, judging messy human outputs, and
-          making sure small projects are safe enough to ship.
+          Selected apps and experiments that show how I test software: checking
+          exact answers, judging messy human outputs, and making sure small
+          projects are safe enough to ship.
         </p>
       </header>
 
