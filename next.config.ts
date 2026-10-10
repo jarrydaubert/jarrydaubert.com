@@ -11,11 +11,16 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.prosepal.app",
       },
-      {
-        protocol: "https",
-        hostname: "www.evolutionpadel.uk",
-      },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/projects/evolution-padel",
+        destination: "/projects",
+        permanent: true,
+      },
+    ];
   },
   async headers() {
     return [
