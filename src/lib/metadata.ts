@@ -12,6 +12,7 @@ type BuildMetadataOptions = {
   type?: MetadataType;
   publishedAt?: string;
   modifiedAt?: string;
+  index?: boolean;
 };
 
 export function absoluteUrl(path = "/") {
@@ -39,6 +40,7 @@ export function buildMetadata({
   type = "website",
   publishedAt,
   modifiedAt,
+  index = true,
 }: BuildMetadataOptions = {}): Metadata {
   const metadataTitle =
     title === undefined
@@ -78,10 +80,10 @@ export function buildMetadata({
     },
     manifest: "/manifest.webmanifest",
     robots: {
-      index: true,
+      index,
       follow: true,
       googleBot: {
-        index: true,
+        index,
         follow: true,
         "max-image-preview": "large",
         "max-snippet": -1,

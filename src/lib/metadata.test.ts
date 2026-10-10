@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { GET as feed } from "@/app/feed.xml/route";
+import { generateMetadata as generateProjectMetadata } from "@/app/projects/[slug]/page";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { site } from "@/lib/site";
-import { allProjects, essaySlugs } from "@/lib/content";
+import { allProjects, essaySlugs, getProject } from "@/lib/content";
 import { absoluteUrl, buildMetadata, serializeJsonLd } from "./metadata";
 
 describe("absoluteUrl", () => {
@@ -23,6 +24,20 @@ describe("serializeJsonLd", () => {
 });
 
 describe("buildMetadata", () => {
+  it("keeps indexing and following enabled by default for all crawlers", () => {
+    expect(buildMetadata().robots).toEqual({
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    });
+  });
+
   it("builds website defaults with a title template + canonical", () => {
     const m = buildMetadata();
     expect(m.alternates?.canonical).toBe("/");
@@ -73,6 +88,51 @@ describe("buildMetadata", () => {
     expect(og.images?.[0]?.url).toBe(
       absoluteUrl("/writing/essay/opengraph-image"),
     );
+  });
+});
+
+describe("project metadata", () => {
+  it("sets noindex, follow for unlisted projects and Googlebot", async () => {
+    const metadata = await generateProjectMetadata({
+      params: Promise.resolve({ slug: "ai-operator-experiments" }),
+    });
+
+    expect(metadata.robots).toEqual({
+      index: false,
+      follow: true,
+      googleBot: {
+        index: false,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    });
+    expect(metadata.alternates?.canonical).toBe(
+      "/projects/ai-operator-experiments",
+    );
+  });
+
+  it.each(
+    allProjects,
+  )("preserves the existing metadata for listed project $name", async (project) => {
+    expect(getProject(project.slug)?.listed).toBe(true);
+    const metadata = await generateProjectMetadata({
+      params: Promise.resolve({ slug: project.slug }),
+    });
+
+    expect(metadata).toEqual(
+      buildMetadata({
+        title: project.name,
+        description: `${project.summary} ${project.theme}`,
+        path: project.href,
+      }),
+    );
+    expect(metadata.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    });
   });
 });
 
