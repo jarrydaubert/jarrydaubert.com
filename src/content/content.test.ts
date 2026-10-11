@@ -20,11 +20,10 @@ describe("content loader", () => {
     expect(essay?.readingTime).toMatch(/min read/);
   });
 
-  it("loads all four projects in declared order", () => {
+  it("loads all three projects in declared order", () => {
     expect(projectSlugs).toEqual([
       "prosepal",
       "payetax",
-      "evolution-padel",
       "ai-operator-experiments",
     ]);
     expect(getProject("prosepal")?.href).toBe("/projects/prosepal");
@@ -34,7 +33,6 @@ describe("content loader", () => {
     expect(allProjects.map((project) => project.slug)).toEqual([
       "prosepal",
       "payetax",
-      "evolution-padel",
     ]);
     expect(getProject("ai-operator-experiments")?.href).toBe(
       "/projects/ai-operator-experiments",
@@ -42,11 +40,7 @@ describe("content loader", () => {
   });
 
   it("selects exactly the featured projects for the home page", () => {
-    expect(selectedWork.map((p) => p.slug)).toEqual([
-      "prosepal",
-      "payetax",
-      "evolution-padel",
-    ]);
+    expect(selectedWork.map((p) => p.slug)).toEqual(["prosepal", "payetax"]);
   });
 
   it("has unique slugs within and across content types", () => {
