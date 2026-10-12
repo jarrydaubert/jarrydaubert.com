@@ -1,10 +1,10 @@
 # jarrydaubert.com
 
-Personal website for Jarryd Aubert, a software tester who builds and ships his own apps to understand what he tests.
+Personal website for Jarryd Aubert, exploring AI by building real things.
 
 Live site: [https://jarrydaubert.com](https://jarrydaubert.com)
 
-This site is a personal home base for selected projects, writing, and contact. It presents work around practical software testing, proof-led quality, and shipping small projects under real constraints.
+A small collection of projects, a brief introduction, and contact links. Older writing remains available at its original URLs, but is not promoted in the main site.
 
 ## Stack
 
@@ -32,7 +32,7 @@ public
 
 - `src/app` contains the App Router routes and metadata routes (sitemap, robots, manifest, RSS, OG images).
 - `src/components` contains reusable primitives (`Link`, `Card`, `Prose`, ...) and site components.
-- `src/content` contains essays and project case studies as MDX (filename is the slug) plus the Zod frontmatter schema.
+- `src/content` contains archived essays and project descriptions as MDX (filename is the slug) plus the Zod frontmatter schema.
 - `src/lib` contains the content loader, metadata builder, site config, and design-token reader.
 - `public` contains static assets.
 - `.github/workflows` contains CI.

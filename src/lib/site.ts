@@ -1,12 +1,14 @@
 export const site = {
   name: "Jarryd Aubert",
   shortName: "Jarryd",
+  // Last substantive revision of the public pages. Update with content, not builds.
+  updatedAt: "2026-10-12",
   url: "https://jarrydaubert.com",
   email: "me@jarrydaubert.com",
   description:
-    "Personal site of Jarryd Aubert, a software tester who builds and ships his own apps to understand what he tests.",
+    "Jarryd Aubert explores AI by building real things: web apps, an iPhone app, and this website.",
   homeDescription:
-    "Jarryd Aubert is a software tester who builds and ships his own apps to understand what he tests.",
+    "A few things Jarryd Aubert is building with AI: PayeTax, the native ProsePal rebuild, and this website.",
   jobTitle: "Software Tester",
   locale: "en_GB",
   socials: {
@@ -14,22 +16,16 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/jarrydaubert/",
   },
   nav: [
-    { href: "/#projects", label: "Projects" },
-    { href: "/#the-why", label: "The Why" },
+    { href: "/projects", label: "Work" },
     { href: "/about", label: "About" },
   ],
 } as const;
 
 export const knowsAbout = [
+  "AI-assisted development",
+  "web apps",
+  "iPhone apps",
   "software testing",
-  "QA",
-  "test planning",
-  "test automation",
-  "accessibility checks",
-  "shipping small apps",
-  "AI-assisted development review",
-  "deterministic testing",
-  "non-deterministic product evaluation",
 ];
 
 const personRef = {

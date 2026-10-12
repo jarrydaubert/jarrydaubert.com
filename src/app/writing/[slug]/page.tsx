@@ -44,7 +44,10 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
   }
 
   return (
-    <article className="max-w-3xl space-y-12" aria-labelledby="essay-title">
+    <article
+      className="archive-page max-w-3xl space-y-12"
+      aria-labelledby="essay-title"
+    >
       <JsonLd data={articleJsonLd(essay)} />
       <header className="space-y-5">
         <p className="text-sm font-medium text-subtle">Writing</p>

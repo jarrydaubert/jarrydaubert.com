@@ -5,17 +5,17 @@
    border-border-hover, ...). lib/tokens.ts parses this block so JS never holds an
    independent hex literal; tokens.test.ts fails CI on drift or low contrast. */
 @theme {
-  --color-bg: #f9f8f6;
-  --color-surface: #efece6;
-  --color-surface-elevated: #e6e1d7;
-  --color-fg: #1c1c1c;
-  --color-muted: #545454;
-  --color-subtle: #5d5d5d;
-  --color-border: #d8d4cb;
-  --color-border-hover: #b6b0a4;
-  --color-ring: #4a6572;
-  --color-accent: #45616e;
-  --color-accent-soft: #e4eaed;
+  --color-bg: #f7f6f2;
+  --color-surface: #eeede7;
+  --color-surface-elevated: #e6e4dc;
+  --color-fg: #20211f;
+  --color-muted: #575850;
+  --color-subtle: #5b5c54;
+  --color-border: #d4d3cb;
+  --color-border-hover: #a6a79c;
+  --color-ring: #a83c28;
+  --color-accent: #a83c28;
+  --color-accent-soft: #eee1d8;
   --font-body:
     var(--font-body-loaded), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-display-loaded), Georgia, "Times New Roman", serif;
@@ -33,70 +33,116 @@
 }
 
 body {
-  position: relative;
   min-height: 100vh;
-  overflow-x: hidden;
-  background:
-    radial-gradient(
-      circle at 18% 12%,
-      rgb(255 255 255 / 0.8),
-      transparent 34rem
-    ),
-    radial-gradient(circle at 82% 8%, rgb(231 227 215 / 0.6), transparent 30rem),
-    linear-gradient(145deg, var(--color-bg) 0%, #f1eee8 52%, #e9e5dd 100%);
+  background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-body);
 }
-
-/* Atmospheric background texture is deliberately not a reusable UI color token.
-   Keep interface color in @theme; keep page atmosphere scoped to body here. */
-body::before {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  background-image:
-    radial-gradient(rgb(28 28 28 / 0.1) 0.55px, transparent 0.55px),
-    radial-gradient(rgb(74 101 114 / 0.06) 0.45px, transparent 0.45px);
-  background-position:
-    0 0,
-    19px 23px;
-  background-size:
-    38px 38px,
-    46px 46px;
-  opacity: 0.24;
+:root {
+  --paye-surface: #e3eaed;
+  --prose-surface: #eee1d8;
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #121212;
-    --color-surface: #1c1c1c;
-    --color-surface-elevated: #262626;
-    --color-fg: #eaeaea;
-    --color-muted: #a6a6a6;
-    --color-subtle: #9a9a9a;
-    --color-border: #333333;
-    --color-border-hover: #4a4a4a;
-    --color-ring: #88a5b3;
-    --color-accent: #88a5b3;
-    --color-accent-soft: #25313a;
+    --color-bg: #191a18;
+    --color-surface: #232520;
+    --color-surface-elevated: #30332c;
+    --color-fg: #eeede6;
+    --color-muted: #bfc1b6;
+    --color-subtle: #b7b9ae;
+    --color-border: #42453c;
+    --color-border-hover: #74786b;
+    --color-ring: #e5a58e;
+    --color-accent: #e5a58e;
+    --color-accent-soft: #3a302b;
+    --paye-surface: #27343b;
+    --prose-surface: #3a302b;
   }
-
-  body {
-    background:
-      radial-gradient(
-        circle at 18% 12%,
-        rgb(74 101 114 / 0.16),
-        transparent 34rem
-      ),
-      linear-gradient(145deg, var(--color-bg) 0%, #181818 58%, #0e0e0e 100%);
+}
+.site-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 5.5%;
+}
+.site-main {
+  flex: 1;
+  padding-bottom: 75px;
+}
+.site-main:focus {
+  outline: none;
+}
+.archive-page {
+  padding-top: 60px;
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.site-mark {
+  font-family: var(--font-display);
+  font-size: 27px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: var(--color-fg);
+  white-space: nowrap;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 13px;
+}
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 400;
+}
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 32px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+@media (max-width: 600px) {
+  .site-container {
+    padding-left: 6%;
+    padding-right: 6%;
   }
-
-  body::before {
-    background-image:
-      radial-gradient(rgb(234 234 234 / 0.1) 0.55px, transparent 0.55px),
-      radial-gradient(rgb(136 165 179 / 0.07) 0.45px, transparent 0.45px);
-    opacity: 0.16;
+  .site-header {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    gap: 16px;
+  }
+  .site-mark {
+    font-size: 23px;
+  }
+  .site-nav {
+    gap: 20px;
+    font-size: 12px;
+  }
+  .nav-hello {
+    display: none;
+  }
+  .site-footer {
+    flex-direction: column;
+    padding: 28px 0;
+  }
+  .site-main {
+    padding-bottom: 35px;
   }
 }
 
@@ -110,34 +156,6 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-}
-
-@keyframes page-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.home-page {
-  animation: page-in 520ms ease-out both;
-}
-
-.reveal {
-  animation: reveal-up 700ms ease-out both;
 }
 
 .eyebrow {
@@ -154,13 +172,6 @@ h3 {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-subtle);
-}
-
-@supports (animation-timeline: view()) {
-  .home-page > section.reveal:not(:first-of-type) {
-    animation-timeline: view();
-    animation-range: entry 0% cover 24%;
-  }
 }
 
 /* Keyboard focus ring. Offset color defaults to the page bg but inherits an
