@@ -86,8 +86,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             unoptimized
             src="/projects/payetax-calculator.webp"
             alt="PayeTax showing the tax breakdown for an illustrative annual salary of 50,000 pounds."
-            width={1425}
-            height={891}
+            width={1410}
+            height={1184}
             sizes="90vw"
             className={styles.calculator}
           />

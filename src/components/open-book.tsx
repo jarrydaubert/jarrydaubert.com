@@ -27,9 +27,9 @@ export function PayeTaxMedia({ priority = false }: { priority?: boolean }) {
         unoptimized
         className={styles.desktopImage}
         src="/projects/payetax-desktop.webp"
-        alt="PayeTax's live website on desktop, opening with See your take-home pay."
+        alt="PayeTax's live UK PAYE calculator homepage on desktop."
         width={1425}
-        height={891}
+        height={800}
         sizes="(max-width: 600px) 70vw, 72vw"
         priority={priority}
       />
@@ -39,7 +39,7 @@ export function PayeTaxMedia({ priority = false }: { priority?: boolean }) {
         src="/projects/payetax-mobile.webp"
         alt="The same PayeTax website on a mobile screen."
         width={375}
-        height={812}
+        height={814}
         sizes="(max-width: 600px) 22vw, 17vw"
       />
     </div>
@@ -62,14 +62,18 @@ export function ProsePalMedia() {
       <p className={styles.proseNote}>
         Finding the words.
         <br />
-        <em>Finding a new home on iPhone.</em>
+        <em>Rebuilding it natively for iOS.</em>
       </p>
-      <p className={styles.proseStatus}>Native rebuild in development</p>
     </div>
   );
 }
 
-export function ProjectShowcase() {
+export function ProjectShowcase({
+  headingLevel = 3,
+}: {
+  headingLevel?: 2 | 3;
+}) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   const payetax = allProjects.find((p) => p.slug === "payetax");
   const prosepal = allProjects.find((p) => p.slug === "prosepal");
   const website = allProjects.find((p) => p.slug === "this-website");
@@ -87,11 +91,11 @@ export function ProjectShowcase() {
         </Link>
         <div className={styles.projectCaption}>
           <div>
-            <h3>
+            <Heading className={styles.projectTitle}>
               <Link href={payetax.href} variant="nav">
                 {payetax.name} <Arrow />
               </Link>
-            </h3>
+            </Heading>
             <p>{payetax.summary}</p>
           </div>
           <span className={styles.status}>{payetax.status}</span>
@@ -108,11 +112,11 @@ export function ProjectShowcase() {
         </Link>
         <div className={styles.proseCopy}>
           <span className={styles.status}>{prosepal.status}</span>
-          <h3>
+          <Heading className={styles.projectTitle}>
             <Link href={prosepal.href} variant="nav">
               {prosepal.name} <Arrow />
             </Link>
-          </h3>
+          </Heading>
           <p>{prosepal.summary}</p>
           <p>{prosepal.theme}</p>
           <Link href={prosepal.href} className={styles.arrowLink}>
@@ -121,11 +125,11 @@ export function ProjectShowcase() {
         </div>
       </article>
       <article className={styles.websiteProject}>
-        <h3>
+        <Heading className={styles.projectTitle}>
           <Link href={website.href} variant="nav">
             This website <Arrow />
           </Link>
-        </h3>
+        </Heading>
         <div>
           <p>{website.summary} You&apos;re looking at it.</p>
           <Link

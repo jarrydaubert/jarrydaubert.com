@@ -69,6 +69,9 @@ body {
   flex: 1;
   padding-bottom: 75px;
 }
+.site-main:focus {
+  outline: none;
+}
 .archive-page {
   padding-top: 60px;
 }

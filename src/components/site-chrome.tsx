@@ -32,7 +32,8 @@ export function SiteFooter() {
     <footer className="site-footer">
       <p>
         {site.name}
-        <span className="text-accent">.</span> &copy; 2026
+        <span className="text-accent">.</span>
+        {" \u00a9 2026"}
       </p>
       <ul>
         <li>

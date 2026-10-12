@@ -57,5 +57,5 @@ The original essay and unlisted experiment routes retain their content and index
 
 ### Image provenance
 
-- PayeTax screenshots: live `https://payetax.co.uk/`, captured 11 October 2026. Desktop 1425 x 891, mobile 375 x 812. The calculator uses the site's example salary of GBP 50,000. Saved as WebP without changing the interface. These compact captures are served directly through Next Image with reserved dimensions, avoiding runtime recompression.
+- PayeTax screenshots: live `https://payetax.co.uk/`, recaptured 12 October 2026. Desktop hero 1425 x 800, mobile hero 375 x 814, calculator 1410 x 1184. Browser captures are cropped at section boundaries and exclude the scrollbar gutter. The calculator uses the site's example salary of GBP 50,000. Saved as WebP without changing the interface. These compact captures are served directly through Next Image with reserved dimensions, avoiding runtime recompression.
 - ProsePal icon: `https://prosepal.app/apple-touch-icon.png`, retrieved 11 October 2026. The icon is identity material, not a screenshot of the native rebuild.

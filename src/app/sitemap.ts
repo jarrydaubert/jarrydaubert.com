@@ -8,10 +8,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteLastModified = site.updatedAt;
 
   const routes = [
-    ...["/", "/about", "/projects", "/writing"].map((path) => ({
+    ...["/", "/about", "/projects"].map((path) => ({
       path,
       lastModified: siteLastModified,
     })),
+    { path: "/writing", lastModified: undefined },
     ...allEssays.map((essay) => ({
       path: essay.href,
       lastModified: essay.updatedAt ?? essay.publishedAt,

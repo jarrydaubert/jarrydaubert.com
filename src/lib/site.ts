@@ -1,7 +1,8 @@
 export const site = {
   name: "Jarryd Aubert",
   shortName: "Jarryd",
-  updatedAt: "2026-10-11",
+  // Last substantive revision of the public pages. Update with content, not builds.
+  updatedAt: "2026-10-12",
   url: "https://jarrydaubert.com",
   email: "me@jarrydaubert.com",
   description:

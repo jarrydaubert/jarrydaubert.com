@@ -78,17 +78,25 @@
   gap: 25px;
   margin-top: 26px;
 }
-.work h3 {
+.work .projectTitle {
   font-size: 36px;
   line-height: 1.1;
   letter-spacing: -0.025em;
 }
-.work h3 a {
+.work .projectTitle a {
   display: inline-flex;
   align-items: center;
   gap: 22px;
   color: var(--color-fg);
   font-weight: 400;
+}
+.work article:focus-within .projectTitle a {
+  color: var(--color-accent);
+}
+@media (hover: hover) {
+  .work article:hover .projectTitle a {
+    color: var(--color-accent);
+  }
 }
 .work p {
   color: var(--color-muted);
@@ -140,14 +148,10 @@
   margin-top: 20px;
   color: var(--color-fg);
 }
-.proseMedia .proseStatus {
-  font-size: 11px;
-  margin-top: 28px;
-}
 .proseCopy {
   max-width: 385px;
 }
-.proseCopy h3 {
+.proseCopy .projectTitle {
   margin-top: 15px;
   margin-bottom: 20px;
 }
@@ -329,7 +333,7 @@
   .projectCaption .status {
     padding: 0;
   }
-  .work h3 {
+  .work .projectTitle {
     font-size: 32px;
   }
   .work p {
@@ -352,7 +356,7 @@
   .proseMedia .proseName {
     font-size: 46px;
   }
-  .proseCopy h3 {
+  .proseCopy .projectTitle {
     margin: 10px 0 14px;
   }
   .websiteProject {

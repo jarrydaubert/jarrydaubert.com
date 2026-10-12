@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           A calculator, an iPhone app, and this little corner of the internet.
         </p>
       </header>
-      <ProjectShowcase />
+      <ProjectShowcase headingLevel={2} />
     </section>
   );
 }
