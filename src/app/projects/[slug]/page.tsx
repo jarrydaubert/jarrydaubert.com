@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Figure } from "@/components/figure";
 import { JsonLd } from "@/components/json-ld";
 import { Link } from "@/components/link";
+import { PayeTaxMedia, ProsePalMedia } from "@/components/open-book";
+import styles from "@/components/open-book.module.css";
 import { Prose } from "@/components/prose";
 import { getProject, projectSlugs } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
@@ -42,49 +44,58 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const hasCaseStudy = project.body.trim().length > 0;
-
   return (
-    <article className="max-w-3xl space-y-10">
+    <article className={styles.detail}>
       <JsonLd data={projectJsonLd(project)} />
-      <header className="space-y-4">
-        <p className="text-sm font-medium text-subtle">Project</p>
-        <h1 className="text-3xl font-semibold text-fg sm:text-4xl">
-          {project.name}
-        </h1>
-        <p className="text-lg leading-8 text-muted">{project.summary}</p>
-      </header>
-
-      {project.previewImage ? (
-        <Figure
-          src={project.previewImage.src}
-          alt={project.previewImage.alt}
-          width={project.previewImage.width}
-          height={project.previewImage.height}
-          priority
-        />
-      ) : null}
-
-      <div className="space-y-5 text-base leading-8 text-muted">
-        <p>
-          <span className="font-medium text-fg">Theme/focus:</span>{" "}
-          {project.theme}
-        </p>
-        <p>
-          <span className="font-medium text-fg">Status:</span> {project.status}
-        </p>
-        {project.liveUrl ? (
-          <p>
-            <Link href={project.liveUrl}>Visit live site</Link>
-          </p>
-        ) : null}
-      </div>
-
-      {hasCaseStudy ? <Prose source={project.body} /> : null}
-
-      <Link href="/projects" variant="back">
-        Back to projects
+      <Link href="/projects" className={styles.back}>
+        Back to work
       </Link>
+      <header className={styles.pageIntro}>
+        <div className={styles.detailStatus}>{project.status}</div>
+        <h1>{project.name}</h1>
+        <p>{project.summary}</p>
+      </header>
+      {slug === "payetax" ? <PayeTaxMedia priority /> : null}
+      <div className={slug === "prosepal" ? styles.proseDetail : undefined}>
+        {slug === "prosepal" ? <ProsePalMedia /> : null}
+        <div>
+          {project.body.trim() ? (
+            <div className={styles.detailBody}>
+              <Prose source={project.body} />
+            </div>
+          ) : (
+            <p className="text-muted">{project.theme}</p>
+          )}
+          <div className={styles.detailLinks}>
+            {project.liveUrl ? (
+              <Link href={project.liveUrl}>
+                {slug === "this-website"
+                  ? "Explore the source on GitHub"
+                  : "Visit PayeTax"}
+              </Link>
+            ) : null}
+            {slug === "prosepal" ? (
+              <Link href="https://prosepal.app/">Visit ProsePal</Link>
+            ) : null}
+          </div>
+        </div>
+      </div>
+      {slug === "payetax" ? (
+        <figure>
+          <Image
+            unoptimized
+            src="/projects/payetax-calculator.webp"
+            alt="PayeTax showing the tax breakdown for an illustrative annual salary of 50,000 pounds."
+            width={1425}
+            height={891}
+            sizes="90vw"
+            className={styles.calculator}
+          />
+          <figcaption className="mt-3 text-xs text-muted">
+            The live calculator, with an example salary.
+          </figcaption>
+        </figure>
+      ) : null}
     </article>
   );
 }

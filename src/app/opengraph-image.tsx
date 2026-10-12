@@ -10,8 +10,8 @@ export default function OpengraphImage() {
   return new ImageResponse(
     <OgTemplate
       eyebrow="jarrydaubert.com"
-      title="Useful software, shipped with judgement."
-      footer={site.jobTitle}
+      title="A few things I've been building."
+      footer="Jarryd Aubert. Exploring AI by making things."
     />,
     { ...size },
   );

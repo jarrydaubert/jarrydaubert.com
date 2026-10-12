@@ -1,43 +1,26 @@
-import type { Metadata } from "next";
-import { ProjectCard } from "@/components/project-card";
-import { allProjects } from "@/lib/content";
+import { ProjectShowcase } from "@/components/open-book";
+import styles from "@/components/open-book.module.css";
 import { buildMetadata } from "@/lib/metadata";
 
-const siteDescription =
-  "Selected apps, experiments and testing notes by Jarryd Aubert.";
-
-export const metadata: Metadata = buildMetadata({
+export const metadata = buildMetadata({
   title: "Projects",
-  description: siteDescription,
+  description:
+    "A few things Jarryd Aubert is building with AI: PayeTax, the native ProsePal rebuild, and this website.",
   path: "/projects",
 });
 
 export default function ProjectsPage() {
   return (
-    <section className="space-y-10" aria-labelledby="projects-title">
-      <header className="max-w-3xl space-y-4">
-        <h1
-          id="projects-title"
-          className="text-3xl font-semibold text-fg sm:text-4xl"
-        >
-          Projects
+    <section aria-labelledby="projects-title">
+      <header className={styles.pageIntro}>
+        <h1 id="projects-title">
+          Things taking <em>shape.</em>
         </h1>
-        <p className="text-base leading-7 text-muted">
-          Selected apps and experiments that show how I test software: checking
-          exact answers, judging messy human outputs, and making sure small
-          projects are safe enough to ship.
+        <p>
+          A calculator, an iPhone app, and this little corner of the internet.
         </p>
       </header>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        {allProjects.map((project, index) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            priority={index < 3}
-          />
-        ))}
-      </div>
+      <ProjectShowcase />
     </section>
   );
 }

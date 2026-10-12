@@ -3,7 +3,7 @@ import type { Viewport } from "next";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { buildMetadata } from "@/lib/metadata";
-import { token } from "@/lib/tokens";
+import { colorTokens } from "@/lib/tokens";
 import "./globals.css";
 
 // Self-hosted at build time by next/font, with no runtime font requests.
@@ -11,6 +11,7 @@ const fontDisplay = Newsreader({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-display-loaded",
+  style: ["normal", "italic"],
 });
 
 const fontBody = Inter({
@@ -28,7 +29,10 @@ const fontMono = JetBrains_Mono({
 export const metadata = buildMetadata();
 
 export const viewport: Viewport = {
-  themeColor: token("bg"),
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: colorTokens.light.bg },
+    { media: "(prefers-color-scheme: dark)", color: colorTokens.dark.bg },
+  ],
 };
 
 export default function RootLayout({
@@ -49,8 +53,8 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteHeader />
-        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10">
-          <main id="main-content" className="flex-1 py-14 sm:py-20">
+        <div className="site-container flex flex-1 flex-col">
+          <main id="main-content" className="site-main" tabIndex={-1}>
             {children}
           </main>
           <SiteFooter />

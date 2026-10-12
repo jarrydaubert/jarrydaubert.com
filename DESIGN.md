@@ -8,7 +8,7 @@ Reusable UI colour lives in `src/app/globals.css` inside `@theme`. Those values 
 
 JavaScript reads the same colour source through `src/lib/tokens.ts`. The default `tokens` export is the light palette for metadata, manifest, and Open Graph images. `colorTokens` exposes both light and dark palettes for tests.
 
-The body gradients and dot texture are atmospheric page treatment, not reusable UI colour. Keep those scoped to `body` and `body::before`; do not reuse them in components.
+Open Book uses a flat paper background and an automatic dark palette through `prefers-color-scheme`. The project-specific `--paye-surface` and `--prose-surface` colours also adapt to the theme. Screenshots retain the real product colours.
 
 ## Typography
 
@@ -20,7 +20,7 @@ Arbitrary text sizes should stay rare and local. They are acceptable for one-off
 
 The full stop after `Jarryd Aubert` in the header and footer is intentional. Treat it as the brass full stop in spirit: a small signal of closure, evidence, and work that has been checked rather than merely presented.
 
-Keep the mark token-driven. In the current cool-paper palette it uses `text-ring`, not a hardcoded brass colour, so the meaning survives palette changes without creating a one-off colour rule.
+Keep the mark token-driven. In the Open Book palette it uses `text-accent`, not a hardcoded brass colour, so the meaning survives palette changes without creating a one-off colour rule.
 
 ## Primitives
 
@@ -46,3 +46,16 @@ Before committing a design-system change, run:
 bun run check:repo
 bun run build
 ```
+
+## Open Book
+
+Newsreader supplies the editorial headings, including a real italic face. Inter keeps supporting copy quiet. The wide page gutter, expressive introduction and thin section rules come from the selected Open Book concept.
+
+PayeTax uses genuine desktop and mobile captures. ProsePal uses its real icon and an editorial development note, never fabricated native screens. This website stays a short text entry. `open-book.tsx` and its CSS module share these presentations across the public routes.
+
+The original essay and unlisted experiment routes retain their content and indexing behaviour. No experimental design routes are part of the public implementation.
+
+### Image provenance
+
+- PayeTax screenshots: live `https://payetax.co.uk/`, captured 11 October 2026. Desktop 1425 x 891, mobile 375 x 812. The calculator uses the site's example salary of GBP 50,000. Saved as WebP without changing the interface. These compact captures are served directly through Next Image with reserved dimensions, avoiding runtime recompression.
+- ProsePal icon: `https://prosepal.app/apple-touch-icon.png`, retrieved 11 October 2026. The icon is identity material, not a screenshot of the native rebuild.

@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
 import { allEssays, allProjects } from "@/lib/content";
 import { absoluteUrl } from "@/lib/metadata";
+import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Static pages have no content date; use the freshest essay as the site's
-  // "last updated" signal (no divorced hardcoded constant).
-  const siteLastModified = allEssays[0]?.publishedAt ?? "2026-05-25";
+  // Public page revisions are independent of the archived essay dates.
+  const siteLastModified = site.updatedAt;
 
   const routes = [
     ...["/", "/about", "/projects", "/writing"].map((path) => ({

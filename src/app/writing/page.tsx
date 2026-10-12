@@ -14,7 +14,10 @@ export const metadata: Metadata = buildMetadata({
 
 export default function WritingPage() {
   return (
-    <section className="max-w-4xl space-y-10" aria-labelledby="writing-title">
+    <section
+      className="archive-page max-w-4xl space-y-10"
+      aria-labelledby="writing-title"
+    >
       <header className="max-w-3xl space-y-4">
         <h1
           id="writing-title"
